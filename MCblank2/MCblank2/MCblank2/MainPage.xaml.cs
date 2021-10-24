@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MCtabbed2.Views
+namespace MCblank2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
-        public AboutPage()
+        public MainPage()
         {
             InitializeComponent();
         }

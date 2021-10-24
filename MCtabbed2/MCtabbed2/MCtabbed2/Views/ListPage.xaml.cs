@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace MCtabbed2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentPage
+    public partial class ListPage : ContentPage
     {
-        public AboutPage()
+        public ListPage()
         {
             InitializeComponent();
         }
