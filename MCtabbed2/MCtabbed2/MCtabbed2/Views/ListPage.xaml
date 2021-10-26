@@ -2,13 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels"
-             x:Class="MCtabbed2.Views.ListPage" >
+             x:Class="MCtabbed2.Views.ListPage"
+             Shell.NavBarIsVisible="False" >
 
     <ContentPage.BindingContext>
         <viewmodels:ListViewModel/>
     </ContentPage.BindingContext>
 
-    <CollectionView x:Name="regioniCollectionView"
+    <StackLayout>
+        <Label Text="Regioni"
+               FontSize="Title" HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Start"
+               />
+        <CollectionView x:Name="regioniCollectionView"
                     ItemsSource="{Binding Regioni}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
@@ -33,4 +39,5 @@
         </CollectionView.ItemTemplate>
 
     </CollectionView>
+    </StackLayout>    
 </ContentPage>

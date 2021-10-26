@@ -122,6 +122,8 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\icon_map.png" />
+    <BundleResource Include="Resources\outline_format_list_bulleted_white_20.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -141,14 +143,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MCtabbed2\MCtabbed2.csproj">
-      <Project>{AE477EFC-AA66-4299-AEFE-96A627577261}</Project>
+      <Project>{003BCB3B-4E66-476D-9359-DAC559875FCA}</Project>
       <Name>MCtabbed2</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_list.png" />
   </ItemGroup>
 </Project>
