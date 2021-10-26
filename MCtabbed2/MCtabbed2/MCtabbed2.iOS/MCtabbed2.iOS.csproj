@@ -147,4 +147,7 @@
       <Name>MCtabbed2</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\flag_abruzzo.png" />
+  </ItemGroup>
 </Project>

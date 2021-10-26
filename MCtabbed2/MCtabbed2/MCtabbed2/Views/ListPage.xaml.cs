@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MCtabbed2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace MCtabbed2.Views
         public ListPage()
         {
             InitializeComponent();
+
+            BindingContext = new ListViewModel();
         }
     }
 }

@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels"
              x:Class="MCtabbed2.Views.ListPage"
              Shell.NavBarIsVisible="False" >
-
-    <ContentPage.BindingContext>
-        <viewmodels:ListViewModel/>
-    </ContentPage.BindingContext>
 
     <StackLayout>
         <Label Text="Regioni"
@@ -35,7 +30,8 @@
                            WidthRequest="60" />
                     <Label Grid.Column="1"
                        Text="{Binding Nome}"
-                       FontAttributes="Bold" />
+                       FontAttributes="Bold"
+                       Padding="17" />
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
