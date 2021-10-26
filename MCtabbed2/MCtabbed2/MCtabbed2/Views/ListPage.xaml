@@ -11,8 +11,10 @@
 
     <StackLayout>
         <Label Text="Regioni"
-               FontSize="Title" HorizontalOptions="CenterAndExpand"
+               FontSize="Large" HorizontalOptions="CenterAndExpand"
                HorizontalTextAlignment="Start"
+               Padding="10"
+               FontAttributes="Bold"
                />
         <CollectionView x:Name="regioniCollectionView"
                     ItemsSource="{Binding Regioni}">
