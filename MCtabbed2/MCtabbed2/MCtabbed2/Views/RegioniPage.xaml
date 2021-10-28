@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:data="clr-namespace:MCtabbed2.Data"
+             x:Class="MCtabbed2.Views.RegioniPage"
+             Shell.NavBarIsVisible="False" 
+             x:Name="ListaRegioni"
+             Title="Regioni" >
+
+    <StackLayout>
+        <Label Text="Regioni"
+               FontSize="Large" HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Start"
+               Padding="10"
+               FontAttributes="Bold"
+               />
+    
+        <CollectionView x:Name="regioniCollectionView"
+                    ItemsSource="{x:Static data:RegioniData.Regioni}"
+                    ItemTemplate="{StaticResource RegioniTemplate}"
+                    SelectionMode="None"
+                    SelectionChanged="OnCollectionViewSelectionChanged"
+                    EmptyView="Nessun elemento da visualizzare" >
+        </CollectionView>
+    </StackLayout>    
+</ContentPage>

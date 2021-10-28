@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:MCtabbed2.Views"
-       Title="MCtabbed2"
+       xmlns:views="clr-namespace:MCtabbed2.Views"
+       x:Name="shell"
        x:Class="MCtabbed2.AppShell">
 
     <!--
@@ -30,8 +30,8 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Map" Icon="icon_map.png" Route="MapPage" ContentTemplate="{DataTemplate local:MapPage}" />
-        <ShellContent Title="List" Icon="icon_list.png" ContentTemplate="{DataTemplate local:ListPage}" />
+        <ShellContent Title="Map" Icon="icon_map.png" Route="Map" ContentTemplate="{DataTemplate views:MapPage}" />
+        <ShellContent Title="List" Icon="icon_list.png" Route="List" ContentTemplate="{DataTemplate views:RegioniPage}" />
     </TabBar>
 
     <!--
@@ -39,7 +39,7 @@
         await Shell.Current.GoToAsync("//LoginPage");
     -->
     <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
     </TabBar>
 
 

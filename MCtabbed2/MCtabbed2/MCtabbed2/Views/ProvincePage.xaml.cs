@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace MCtabbed2.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListPage : ContentPage
+    public partial class ProvincePage : ContentPage
     {
-        public ListPage()
+        public ProvincePage()
         {
             InitializeComponent();
 
-            BindingContext = new ListViewModel();
+            BindingContext = new ProvinceViewModel();
         }
     }
 }
