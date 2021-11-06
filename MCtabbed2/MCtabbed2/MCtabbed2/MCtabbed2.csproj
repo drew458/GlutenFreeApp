@@ -6,6 +6,52 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\flag_abruzzo.png" />
+    <None Remove="Images\flag_basilicata.png" />
+    <None Remove="Images\flag_calabria.png" />
+    <None Remove="Images\flag_campania.png" />
+    <None Remove="Images\flag_emiliaromagna.png" />
+    <None Remove="Images\flag_friuli.png" />
+    <None Remove="Images\flag_lazio.png" />
+    <None Remove="Images\flag_liguria.png" />
+    <None Remove="Images\flag_lombardia.png" />
+    <None Remove="Images\flag_marche.png" />
+    <None Remove="Images\flag_molise.png" />
+    <None Remove="Images\flag_piemonte.png" />
+    <None Remove="Images\flag_puglia.png" />
+    <None Remove="Images\flag_sardegna.png" />
+    <None Remove="Images\flag_sicilia.png" />
+    <None Remove="Images\flag_toscana.png" />
+    <None Remove="Images\flag_trentino.png" />
+    <None Remove="Images\flag_umbria.png" />
+    <None Remove="Images\flag_valleaosta.png" />
+    <None Remove="Images\flag_veneto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\flag_abruzzo.png" />
+    <EmbeddedResource Include="Images\flag_basilicata.png" />
+    <EmbeddedResource Include="Images\flag_calabria.png" />
+    <EmbeddedResource Include="Images\flag_campania.png" />
+    <EmbeddedResource Include="Images\flag_emiliaromagna.png" />
+    <EmbeddedResource Include="Images\flag_friuli.png" />
+    <EmbeddedResource Include="Images\flag_lazio.png" />
+    <EmbeddedResource Include="Images\flag_liguria.png" />
+    <EmbeddedResource Include="Images\flag_lombardia.png" />
+    <EmbeddedResource Include="Images\flag_marche.png" />
+    <EmbeddedResource Include="Images\flag_molise.png" />
+    <EmbeddedResource Include="Images\flag_piemonte.png" />
+    <EmbeddedResource Include="Images\flag_puglia.png" />
+    <EmbeddedResource Include="Images\flag_sardegna.png" />
+    <EmbeddedResource Include="Images\flag_sicilia.png" />
+    <EmbeddedResource Include="Images\flag_toscana.png" />
+    <EmbeddedResource Include="Images\flag_trentino.png" />
+    <EmbeddedResource Include="Images\flag_umbria.png" />
+    <EmbeddedResource Include="Images\flag_valleaosta.png" />
+    <EmbeddedResource Include="Images\flag_veneto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2196" />
