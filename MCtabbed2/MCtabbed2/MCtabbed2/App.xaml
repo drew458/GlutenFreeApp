@@ -14,11 +14,14 @@
                 <Image Grid.RowSpan="2" 
                        Source="{Binding Immagine}" 
                        Aspect="AspectFill"
-                       HeightRequest="60" 
+                       HeightRequest="50" 
                        WidthRequest="60" />
                 <Label Grid.Column="1" 
                        Text="{Binding Nome}" 
-                       FontAttributes="Bold" />
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       Padding="10"
+                       HeightRequest="50" />
             </Grid>
         </DataTemplate>
 

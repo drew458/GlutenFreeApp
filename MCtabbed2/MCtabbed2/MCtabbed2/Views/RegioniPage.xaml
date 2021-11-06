@@ -15,8 +15,8 @@
                FontAttributes="Bold"
                />
 
-        <!-- Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
-             Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
+        <!-- ItemsSource: Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
+             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
         <CollectionView x:Name="regioniCollectionView"
                     ItemsSource="{x:Static data:RegioniData.Regioni}"
                     ItemTemplate="{StaticResource RegioniTemplate}"
