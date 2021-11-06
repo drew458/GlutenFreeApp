@@ -30,8 +30,23 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Map" Icon="icon_map.png" Route="Map" ContentTemplate="{DataTemplate views:MapPage}" />
-        <ShellContent Title="List" Icon="icon_list.png" Route="List" ContentTemplate="{DataTemplate views:RegioniPage}" />
+        <ShellContent Title="Mappa"
+                      Route="Mappa" 
+                      ContentTemplate="{DataTemplate views:MapPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAR"
+                                 Glyph="{StaticResource IconMap}" />
+            </ShellContent.Icon>
+        </ShellContent>
+        
+        <ShellContent Title="Regioni" 
+                      Route="Regioni" 
+                      ContentTemplate="{DataTemplate views:RegioniPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAS"
+                                     Glyph="{StaticResource IconList}" />
+            </ShellContent.Icon>
+        </ShellContent>
     </TabBar>
 
     <!--

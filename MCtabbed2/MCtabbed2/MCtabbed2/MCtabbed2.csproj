@@ -26,6 +26,9 @@
     <None Remove="Images\flag_umbria.png" />
     <None Remove="Images\flag_valleaosta.png" />
     <None Remove="Images\flag_veneto.png" />
+    <None Remove="Resources\Fonts\fa-brands-400.otf" />
+    <None Remove="Resources\Fonts\fa-regular-400.otf" />
+    <None Remove="Resources\Fonts\fa-solid-900.otf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +52,9 @@
     <EmbeddedResource Include="Images\flag_umbria.png" />
     <EmbeddedResource Include="Images\flag_valleaosta.png" />
     <EmbeddedResource Include="Images\flag_veneto.png" />
+    <EmbeddedResource Include="Resources\Fonts\fa-brands-400.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-regular-400.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-solid-900.otf" />
   </ItemGroup>
 
   <ItemGroup>

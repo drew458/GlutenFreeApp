@@ -5,6 +5,12 @@
     
     <!-- Definizione di risorse e stili globali che si applicano a tutta l'applicazione -->
     <Application.Resources>
+        
+        <!-- Icona Unicode per la mappa -->
+        <x:String x:Key="IconMap">&#xf279;</x:String>
+
+        <!-- Icona Unicode per la lista -->
+        <x:String x:Key="IconList">&#xf0ca;</x:String>
 
         <!-- Template per la visualizzazione di una lista (regioni e province) -->
         <DataTemplate x:Key="RegioniTemplate">

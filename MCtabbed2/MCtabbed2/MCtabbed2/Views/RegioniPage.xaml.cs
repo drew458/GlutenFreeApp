@@ -2,7 +2,6 @@
 using MCtabbed2.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Reflection;
 
 namespace MCtabbed2.Views
 {
