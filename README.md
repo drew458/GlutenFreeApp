@@ -4,7 +4,7 @@ Progetto per Mobile Computing da parte degli studenti [Gianluca Proietti](https:
 
 ## Nome applicazione
 
-Work in progess...
+EasyCrag
 
 ## Descrizione
 
