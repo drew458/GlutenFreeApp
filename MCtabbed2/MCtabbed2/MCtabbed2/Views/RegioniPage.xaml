@@ -9,32 +9,33 @@
              x:Name="ListaRegioni"
              Title="Regioni" >
 
+    <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
+    <Shell.SearchHandler>
+        <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
+                                    ShowsResults="true"
+                                    ItemTemplate="{StaticResource RegioniSearchTemplate}"
+                                    Regioni="{x:Static data:RegioniData.Regioni}"
+                                    SelectedItemNavigationTarget="{x:Type views:RegioniDetailPage}" />
+    </Shell.SearchHandler>
+
     <StackLayout>
-        
-        <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
-        <Shell.SearchHandler>
-            <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
-                                       ShowsResults="true"
-                                       ItemTemplate="{StaticResource RegioniSearchTemplate}"
-                                       Regioni="{x:Static data:RegioniData.Regioni}"
-                                       SelectedItemNavigationTarget="{x:Type views:RegioniDetailPage}" />
-        </Shell.SearchHandler>
-        
+    
         <Label Text="Regioni"
-               FontSize="Large" HorizontalOptions="CenterAndExpand"
-               HorizontalTextAlignment="Start"
-               Padding="10"
-               FontAttributes="Bold"
-               />
+            FontSize="Large" HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Start"
+            Padding="10"
+            FontAttributes="Bold"
+            />
 
         <!-- ItemsSource: Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
-             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
+            ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
         <CollectionView x:Name="regioniCollectionView"
-                    ItemsSource="{x:Static data:RegioniData.Regioni}"
-                    ItemTemplate="{StaticResource RegioniTemplate}"
-                    SelectionMode="None"
-                    SelectionChanged="OnCollectionViewSelectionChanged"
-                    EmptyView="Nessun elemento da visualizzare" >
+                ItemsSource="{x:Static data:RegioniData.Regioni}"
+                ItemTemplate="{StaticResource RegioniTemplate}"
+                SelectionMode="None"
+                SelectionChanged="OnCollectionViewSelectionChanged"
+                EmptyView="Nessun elemento da visualizzare" >
         </CollectionView>
-    </StackLayout>    
+    </StackLayout>
+
 </ContentPage>
