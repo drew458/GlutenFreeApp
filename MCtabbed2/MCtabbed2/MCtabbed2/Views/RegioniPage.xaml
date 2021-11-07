@@ -20,12 +20,12 @@
 
     <StackLayout>
     
-        <Label Text="Regioni"
+        <!-- <Label Text="Regioni"
             FontSize="Large" HorizontalOptions="CenterAndExpand"
             HorizontalTextAlignment="Start"
             Padding="10"
             FontAttributes="Bold"
-            />
+            /> -->
 
         <!-- ItemsSource: Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
