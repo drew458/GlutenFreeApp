@@ -22,7 +22,7 @@ namespace MCtabbed2
 
         void RegisterRoutes()
         {
-            Routes.Add("regionidetails", typeof(RegioniDetailPage));
+            Routes.Add("province", typeof(ProvincePage));
 
             foreach (var item in Routes)
             {

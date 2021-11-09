@@ -64,6 +64,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ProvincePage.xaml.cs">
+      <DependentUpon>ProvincePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RegioniPage.xaml.cs">
       <DependentUpon>RegioniPage.xaml</DependentUpon>
     </Compile>
@@ -80,9 +83,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProvincePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\RegioniDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

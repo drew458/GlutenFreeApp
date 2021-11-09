@@ -8,6 +8,8 @@
              Shell.NavBarIsVisible="True" 
              x:Name="ListaRegioni"
              Title="Regioni" >
+    
+    <!-- BUG: Il titolo della pagina (ovvero "regioni") si visualizza solo su iOS e non su Android -->
 
     <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
     <Shell.SearchHandler>
@@ -15,12 +17,10 @@
                                     ShowsResults="true"
                                     ItemTemplate="{StaticResource RegioniSearchTemplate}"
                                     Regioni="{x:Static data:RegioniData.Regioni}"
-                                    SelectedItemNavigationTarget="{x:Type views:RegioniDetailPage}" />
+                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
     </Shell.SearchHandler>
 
-    <StackLayout>
-    
-        <!-- <Label Text="Regioni"
+    <!-- <Label Text="Regioni"
             FontSize="Large" HorizontalOptions="CenterAndExpand"
             HorizontalTextAlignment="Start"
             Padding="10"
@@ -28,14 +28,14 @@
             /> -->
 
         <!-- ItemsSource: Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
-            ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
-        <CollectionView x:Name="regioniCollectionView"
+            ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
+            SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
+    <CollectionView x:Name="regioniCollectionView"
                 ItemsSource="{x:Static data:RegioniData.Regioni}"
                 ItemTemplate="{StaticResource RegioniTemplate}"
-                SelectionMode="None"
+                SelectionMode="Single"
                 SelectionChanged="OnCollectionViewSelectionChanged"
                 EmptyView="Nessun elemento da visualizzare" >
-        </CollectionView>
-    </StackLayout>
+    </CollectionView>
 
 </ContentPage>
