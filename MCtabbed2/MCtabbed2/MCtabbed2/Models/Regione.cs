@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace MCtabbed2.Models
 {
@@ -6,6 +7,7 @@ namespace MCtabbed2.Models
     {
         public string Nome { get; set; }
         public ImageSource Immagine { get; set; }
+        public IList<Provincia> Province { get; set; }
 
     }
 }

@@ -2,27 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:data="clr-namespace:MCtabbed2.Data"
+             xmlns:controls="clr-namespace:MCtabbed2.Controls"
+             xmlns:views="clr-namespace:MCtabbed2.Views"
              x:Class="MCtabbed2.Views.RegioniPage"
-             Shell.NavBarIsVisible="False" 
+             Shell.NavBarIsVisible="True" 
              x:Name="ListaRegioni"
              Title="Regioni" >
+    
+    <!-- BUG: Il titolo della pagina (ovvero "regioni") si visualizza solo su iOS e non su Android -->
 
-    <StackLayout>
-        <Label Text="Regioni"
-               FontSize="Large" HorizontalOptions="CenterAndExpand"
-               HorizontalTextAlignment="Start"
-               Padding="10"
-               FontAttributes="Bold"
-               />
+    <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
+    <Shell.SearchHandler>
+        <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
+                                    ShowsResults="true"
+                                    ItemTemplate="{StaticResource RegioniSearchTemplate}"
+                                    Regioni="{x:Static data:RegioniData.Regioni}"
+                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
+    </Shell.SearchHandler>
+
+    <!-- <Label Text="Regioni"
+            FontSize="Large" HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Start"
+            Padding="10"
+            FontAttributes="Bold"
+            /> -->
 
         <!-- ItemsSource: Prende i dati da visualizzare dalla lista Regioni, nel file RegioniData
-             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) -->
-        <CollectionView x:Name="regioniCollectionView"
-                    ItemsSource="{x:Static data:RegioniData.Regioni}"
-                    ItemTemplate="{StaticResource RegioniTemplate}"
-                    SelectionMode="None"
-                    SelectionChanged="OnCollectionViewSelectionChanged"
-                    EmptyView="Nessun elemento da visualizzare" >
-        </CollectionView>
-    </StackLayout>    
+            ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
+            SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
+    <CollectionView x:Name="regioniCollectionView"
+                ItemsSource="{x:Static data:RegioniData.Regioni}"
+                ItemTemplate="{StaticResource RegioniTemplate}"
+                SelectionMode="Single"
+                SelectionChanged="OnCollectionViewSelectionChanged"
+                EmptyView="Nessun elemento da visualizzare" >
+    </CollectionView>
+
 </ContentPage>

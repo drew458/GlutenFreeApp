@@ -8,10 +8,26 @@ namespace MCtabbed2
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
+        // per capirne sulle "routes", guardare codice nell'esempio:
+        // https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/Xaminals
+
+
+        public Dictionary<string, Type> Routes { get; private set; } = new Dictionary<string, Type>();
+
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("regionidetails", typeof(RegioniDetailPage));
+            RegisterRoutes();
+        }
+
+        void RegisterRoutes()
+        {
+            Routes.Add("province", typeof(ProvincePage));
+
+            foreach (var item in Routes)
+            {
+                Routing.RegisterRoute(item.Key, item.Value);
+            }
         }
 
     }
