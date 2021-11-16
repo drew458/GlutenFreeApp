@@ -32,7 +32,7 @@
         </DataTemplate>
 
         <!-- Template per la ricerca di regioni e province -->
-        <DataTemplate x:Key="RegioniSearchTemplate">
+        <DataTemplate x:Key="RegioniProvinceSearchTemplate">
             <Grid Padding="10"
                   ColumnDefinitions="0.15*,0.85*">
                 <Image Source="{Binding Immagine}"

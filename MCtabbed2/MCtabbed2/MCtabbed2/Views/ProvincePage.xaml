@@ -8,13 +8,13 @@
              x:Name="ListaProvince" 
              Title="Province" 
              Shell.NavBarIsVisible="True" >
-
+    
 
     <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
     <Shell.SearchHandler>
-        <controls:ProvinceSearchHandler Placeholder="Cerca una regione..."
+        <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..."
                                     ShowsResults="true"
-                                    ItemTemplate="{StaticResource ProvinceSearchTemplate}"
+                                    ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
                                     Province="{x:Static data:ProvinceData.Province}"
                                     SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
     </Shell.SearchHandler>

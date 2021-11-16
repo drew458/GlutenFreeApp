@@ -15,7 +15,7 @@
     <Shell.SearchHandler>
         <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
                                     ShowsResults="true"
-                                    ItemTemplate="{StaticResource RegioniSearchTemplate}"
+                                    ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
                                     Regioni="{x:Static data:RegioniData.Regioni}"
                                     SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
     </Shell.SearchHandler>
