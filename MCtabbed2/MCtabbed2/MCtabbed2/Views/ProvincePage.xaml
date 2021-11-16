@@ -10,7 +10,7 @@
              Shell.NavBarIsVisible="True" >
     
 
-    <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
+    <!-- TODO: Rimpiazzare ProvinceData con elementi presi dal database -->
     <Shell.SearchHandler>
         <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..."
                                     ShowsResults="true"
@@ -26,12 +26,12 @@
             FontAttributes="Bold"
             /> -->
 
-    <!-- ItemsSource: Prende i dati da visualizzare dalla lista Province, nel file RegioniData
+    <!-- ItemsSource: 
             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
             SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
     <CollectionView x:Name="provinceCollectionView"
                 ItemsSource="{Binding Nome}"
-                ItemTemplate="{StaticResource RegioniTemplate}"
+                ItemTemplate="{StaticResource RegioniProvinceTemplate}"
                 EmptyView="Nessun elemento da visualizzare" >
     </CollectionView>
 </ContentPage>

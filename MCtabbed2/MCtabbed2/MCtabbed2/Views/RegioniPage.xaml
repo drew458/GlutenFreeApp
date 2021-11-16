@@ -32,7 +32,7 @@
             SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
     <CollectionView x:Name="regioniCollectionView"
                 ItemsSource="{x:Static data:RegioniData.Regioni}"
-                ItemTemplate="{StaticResource RegioniTemplate}"
+                ItemTemplate="{StaticResource RegioniProvinceTemplate}"
                 SelectionMode="Single"
                 SelectionChanged="OnCollectionViewSelectionChanged"
                 EmptyView="Nessun elemento da visualizzare" >

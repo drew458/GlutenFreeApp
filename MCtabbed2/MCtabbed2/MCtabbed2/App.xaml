@@ -13,7 +13,7 @@
         <x:String x:Key="IconList">&#xf0ca;</x:String>
 
         <!-- Template per la visualizzazione di una lista (regioni e province) -->
-        <DataTemplate x:Key="RegioniTemplate">
+        <DataTemplate x:Key="RegioniProvinceTemplate">
             <Grid Padding="10"
                   RowDefinitions="Auto,Auto"
                   ColumnDefinitions="Auto,Auto">

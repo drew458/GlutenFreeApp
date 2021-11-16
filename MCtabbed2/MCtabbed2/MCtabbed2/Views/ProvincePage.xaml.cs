@@ -7,16 +7,12 @@ using System.Collections.Generic;
 
 namespace MCtabbed2.Views
 {
-    [QueryProperty(nameof(Nome), "name")]
+    [QueryProperty(nameof(Nome), "nome")]
     public partial class ProvincePage : ContentPage
     {
-
         public string Nome
         {
-            set
-            {
-                LoadProvince(value);
-            }
+            set => LoadProvince(value);
         }
 
         public ProvincePage()
@@ -30,7 +26,7 @@ namespace MCtabbed2.Views
             {
                 Regione regione = RegioniData.Regioni.FirstOrDefault(r => r.Nome == nome);
                 IList<Provincia> province = regione.Province;
-                BindingContext = province;
+                provinceCollectionView.ItemsSource = province;
                 
             }
             catch (Exception)
