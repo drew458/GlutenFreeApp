@@ -12,7 +12,6 @@ namespace MCtabbed2.Views
             InitializeComponent();
             BindingContext = new RegioniViewModel();
         }
-
         /* async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string nomeRegione = (e.CurrentSelection.FirstOrDefault() as Regione).Nome;

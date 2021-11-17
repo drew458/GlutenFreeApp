@@ -39,7 +39,6 @@ namespace MCtabbed2.ViewModels
                 {
                     string nomeRegione = RegioneSelezionata.Nome;
                     await Shell.Current.GoToAsync($"province?nome={nomeRegione}");
-                    
                 });
             }
         }

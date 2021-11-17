@@ -27,7 +27,9 @@ namespace MCtabbed2.Views
                 Regione regione = RegioniData.Regioni.FirstOrDefault(r => r.Nome == nome);
                 IList<Provincia> province = regione.Province;
                 provinceCollectionView.ItemsSource = province;
-                
+                provinceSearchBar.ItemsSource = province;
+
+
             }
             catch (Exception)
             {

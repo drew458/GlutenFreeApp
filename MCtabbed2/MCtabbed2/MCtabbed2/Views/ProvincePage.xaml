@@ -12,11 +12,12 @@
 
     <!-- TODO: Rimpiazzare ProvinceData con elementi presi dal database -->
     <Shell.SearchHandler>
-        <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..."
-                                    ShowsResults="true"
-                                    ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
-                                    Province="{x:Static data:ProvinceData.Province}"
-                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
+        <controls:ProvinceSearchHandler x:Name="provinceSearchBar"
+                Placeholder="Cerca una provincia..."
+                ShowsResults="true"
+                ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
+                ItemsSource="{Binding Nome}"
+                SelectedItemNavigationTarget="{x:Type views:FalesiePage}" />
     </Shell.SearchHandler>
 
     <!-- <Label Text="Province"
