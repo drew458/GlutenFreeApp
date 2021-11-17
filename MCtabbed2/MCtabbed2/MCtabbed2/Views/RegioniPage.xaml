@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:data="clr-namespace:MCtabbed2.Data"
              xmlns:controls="clr-namespace:MCtabbed2.Controls"
-             xmlns:views="clr-namespace:MCtabbed2.Views"
+             xmlns:views="clr-namespace:MCtabbed2.Views" xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels" x:DataType="viewmodels:RegioniViewModel"
              x:Class="MCtabbed2.Views.RegioniPage"
              Shell.NavBarIsVisible="True" 
              x:Name="ListaRegioni"
@@ -31,10 +31,12 @@
             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
             SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
     <CollectionView x:Name="regioniCollectionView"
-                ItemsSource="{x:Static data:RegioniData.Regioni}"
+                ItemsSource="{Binding ListaRegioni}"
                 ItemTemplate="{StaticResource RegioniProvinceTemplate}"
                 SelectionMode="Single"
-                SelectionChanged="OnCollectionViewSelectionChanged"
+                SelectedItem="{Binding RegioneSelezionata, Mode=TwoWay}"
+                SelectionChangedCommand="{Binding RegioniSelectedCommand, Mode=TwoWay}"
+                VerticalScrollBarVisibility="Never"
                 EmptyView="Nessun elemento da visualizzare" >
     </CollectionView>
 

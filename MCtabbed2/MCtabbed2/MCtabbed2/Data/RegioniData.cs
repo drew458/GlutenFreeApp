@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using MCtabbed2.Models;
 using Xamarin.Forms;
 
@@ -6,12 +7,12 @@ namespace MCtabbed2.Data
 {
     class RegioniData
     {
-        public static IList<Regione> Regioni { get; private set; }
+        public static ObservableCollection<Regione> Regioni { get; private set; }
 
         // TODO: popolare la lista facendo binding da database
         static RegioniData()
         {
-            Regioni = new List<Regione>
+            Regioni = new ObservableCollection<Regione>
             {
                 new Regione
                 {
