@@ -20,10 +20,6 @@ namespace MCtabbed2.ViewModels
             get => listaRegioni;
             set
             {
-                if (value == listaRegioni)
-                {
-                    return;
-                }
                 listaRegioni = value;
                 OnPropertyChanged();
             }
@@ -46,6 +42,25 @@ namespace MCtabbed2.ViewModels
         public RegioniViewModel()
         {
             ListaRegioni = RegioniData.Regioni;
+        }
+
+        private Command refreshCommand;
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                if (refreshCommand == null)
+                {
+                    refreshCommand = new Command(Refresh);
+                }
+
+                return refreshCommand;
+            }
+        }
+
+        private void Refresh()
+        {
         }
     }
 }
