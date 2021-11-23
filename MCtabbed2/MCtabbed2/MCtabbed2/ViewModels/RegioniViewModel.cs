@@ -12,7 +12,7 @@ namespace MCtabbed2.ViewModels
 {
     class RegioniViewModel : BindableObject
     {
-        // vedere https://www.youtube.com/watch?v=QvOxaRlIOPQ
+        // vedere https://www.youtube.com/watch?v=71K4PVRLasI
 
         private ObservableCollection<Regione> listaRegioni;
         public ObservableCollection<Regione> ListaRegioni
@@ -25,18 +25,37 @@ namespace MCtabbed2.ViewModels
             }
         }
 
-        public Regione RegioneSelezionata { get; set; }
+        Regione previouslySelected;
+        Regione regioneSelezionata;
 
-        public ICommand RegioniSelectedCommand
+        public Regione RegioneSelezionata
         {
-            get
+            get => regioneSelezionata;
+            set
             {
-                return new Command(async () =>
+                if (value != null)
                 {
-                    string nomeRegione = RegioneSelezionata.Nome;
-                    await Shell.Current.GoToAsync($"province?nome={nomeRegione}");
-                });
+                    
+                    string nomeRegione = value.Nome;
+                    NavigaProvincia(nomeRegione);
+                    previouslySelected = value;
+                    value = null;
+                }
+
+                regioneSelezionata = value;
+                OnPropertyChanged();
             }
+        }
+
+        // TODO: usare async-await
+        private void NavigaProvincia(string nomeRegione)
+        {
+            if (nomeRegione == null)
+            {
+                return;
+            }
+
+            _ = Shell.Current.GoToAsync($"province?nome={nomeRegione}");
         }
 
         public RegioniViewModel()

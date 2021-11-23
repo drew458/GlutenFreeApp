@@ -12,7 +12,7 @@
              x:Name="ListaRegioni"
              Title="Regioni" >
     
-    <!-- BUG: Il titolo della pagina (ovvero "regioni") si visualizza solo su iOS e non su Android -->
+    <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
 
     <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
     <Shell.SearchHandler>
@@ -39,10 +39,8 @@
 
         <CollectionView ItemsSource="{Binding ListaRegioni}"
                 SelectionMode="Single"
-                SelectedItem="{Binding RegioneSelezionata, Mode=TwoWay}"
-                SelectionChangedCommand="{Binding RegioniSelectedCommand, Mode=TwoWay}"
-                VerticalScrollBarVisibility="Never"
-                EmptyView="Nessun elemento da visualizzare" >
+                SelectedItem="{Binding RegioneSelezionata, Mode=TwoWay}" 
+                VerticalScrollBarVisibility="Never" >
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Regione">
                     <Grid Padding="10" >
@@ -67,6 +65,11 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="Center" Text="Nessuna regione da visualizzare" />
+                </StackLayout>
+            </CollectionView.EmptyView>
         </CollectionView>
 
     </RefreshView>
