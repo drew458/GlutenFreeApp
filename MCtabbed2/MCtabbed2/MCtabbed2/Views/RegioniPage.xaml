@@ -14,13 +14,32 @@
     
     <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
 
-    <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database -->
+    <!-- TODO: Rimpiazzare RegioniData con elementi presi dal database
+               Navigazione verso la regione selezionata decisamente lenta-->
     <Shell.SearchHandler>
         <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
                                     ShowsResults="true"
-                                    ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
                                     Regioni="{x:Static data:RegioniData.Regioni}"
-                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" />
+                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" >
+            <controls:RegioniSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:Regione" >
+                    <Grid Padding="7">
+                        <Frame CornerRadius="20"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="0.15*,0.85*">
+                                <Image Source="{Binding Immagine}"
+                                    HeightRequest="40"
+                                    WidthRequest="40" />
+                                <Label Grid.Column="1" 
+                                    Text="{Binding Nome}" 
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </controls:RegioniSearchHandler.ItemTemplate>
+        </controls:RegioniSearchHandler>
     </Shell.SearchHandler>
 
     <!-- <Label Text="Regioni"
