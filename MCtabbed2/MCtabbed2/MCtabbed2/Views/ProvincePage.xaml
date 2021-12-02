@@ -16,9 +16,24 @@
         <controls:ProvinceSearchHandler x:Name="provinceSearchBar"
                 Placeholder="Cerca una provincia..."
                 ShowsResults="true"
-                ItemTemplate="{StaticResource RegioniProvinceSearchTemplate}"
                 ItemsSource="{Binding Nome}"
-                SelectedItemNavigationTarget="{x:Type views:FalesiePage}" />
+                SelectedItemNavigationTarget="{x:Type views:FalesiePage}" >
+            <controls:ProvinceSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:Provincia" >
+                    <Grid Padding="7">
+                        <Frame CornerRadius="20"
+                                   HasShadow="True">
+                            <Grid ColumnDefinitions="0.15*,0.85*">
+                                <Label Grid.Column="1" 
+                                        Text="{Binding Nome}" 
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </controls:ProvinceSearchHandler.ItemTemplate>
+        </controls:ProvinceSearchHandler>
     </Shell.SearchHandler>
 
     <!-- <Label Text="Province"

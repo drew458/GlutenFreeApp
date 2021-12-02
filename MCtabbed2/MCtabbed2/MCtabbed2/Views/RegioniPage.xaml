@@ -18,9 +18,9 @@
                Navigazione verso la regione selezionata decisamente lenta-->
     <Shell.SearchHandler>
         <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
-                                    ShowsResults="true"
-                                    Regioni="{x:Static data:RegioniData.Regioni}"
-                                    SelectedItemNavigationTarget="{x:Type views:ProvincePage}" >
+                ShowsResults="true"
+                Regioni="{x:Static data:RegioniData.Regioni}"
+                SelectedItemNavigationTarget="{x:Type views:ProvincePage}" >
             <controls:RegioniSearchHandler.ItemTemplate>
                 <DataTemplate x:DataType="models:Regione" >
                     <Grid Padding="7">

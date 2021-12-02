@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MCtabbed2.Controls
 {
-    class ProvinceSearchHandler : SearchHandler
+    public class ProvinceSearchHandler : SearchHandler
     {
         public IList<Provincia> Province { get; set; }
         public Type SelectedItemNavigationTarget { get; set; }
