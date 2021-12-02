@@ -6,6 +6,10 @@ namespace MCtabbed2.ViewModels
 {
     class ProvinceViewModel
     {
+        public ProvinceViewModel()
+        {
+
+        }
 
     }
 }
