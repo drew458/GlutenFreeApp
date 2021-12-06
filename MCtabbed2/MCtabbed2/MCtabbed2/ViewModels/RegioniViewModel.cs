@@ -1,10 +1,6 @@
 ﻿using MCtabbed2.Data;
 using MCtabbed2.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,6 +9,11 @@ namespace MCtabbed2.ViewModels
     class RegioniViewModel : BindableObject
     {
         // vedere https://www.youtube.com/watch?v=71K4PVRLasI
+
+        public RegioniViewModel()
+        {
+            ListaRegioni = RegioniData.Regioni;
+        }
 
         private ObservableCollection<Regione> listaRegioni;
         public ObservableCollection<Regione> ListaRegioni
@@ -23,10 +24,10 @@ namespace MCtabbed2.ViewModels
                 listaRegioni = value;
                 OnPropertyChanged();
             }
-        }
+        }        
 
-        Regione previouslySelected;
-        Regione regioneSelezionata;
+        private Regione previouslySelected;
+        private Regione regioneSelezionata;
 
         public Regione RegioneSelezionata
         {
@@ -58,11 +59,6 @@ namespace MCtabbed2.ViewModels
             _ = Shell.Current.GoToAsync($"province?nome={nomeRegione}");
         }
 
-        public RegioniViewModel()
-        {
-            ListaRegioni = RegioniData.Regioni;
-        }
-
         private Command refreshCommand;
 
         public ICommand RefreshCommand
@@ -78,6 +74,7 @@ namespace MCtabbed2.ViewModels
             }
         }
 
+        // TODO: implementare comando refresh
         private void Refresh()
         {
         }

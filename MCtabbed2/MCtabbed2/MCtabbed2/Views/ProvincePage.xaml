@@ -5,7 +5,9 @@
              xmlns:data="clr-namespace:MCtabbed2.Data"
              xmlns:models="clr-namespace:MCtabbed2.Models"
              xmlns:controls="clr-namespace:MCtabbed2.Controls"
-             xmlns:views="clr-namespace:MCtabbed2.Views"
+             xmlns:views="clr-namespace:MCtabbed2.Views" 
+             xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels" 
+             x:DataType="viewmodels:ProvinceViewModel"
              x:Name="ListaProvince" 
              Title="Province" 
              Shell.NavBarIsVisible="True" >
@@ -16,18 +18,18 @@
         <controls:ProvinceSearchHandler x:Name="provinceSearchBar"
                 Placeholder="Cerca una provincia..."
                 ShowsResults="true"
-                ItemsSource="{Binding Nome}"
+                ItemsSource="{Binding ListaProvince}"
                 SelectedItemNavigationTarget="{x:Type views:FalesiePage}" >
             <controls:ProvinceSearchHandler.ItemTemplate>
-                <DataTemplate x:DataType="models:Provincia" >
-                    <Grid Padding="7">
-                        <Frame CornerRadius="20"
-                                   HasShadow="True">
+                <DataTemplate x:DataType="models:Provincia">
+                    <Grid Padding="7" >
+                        <Frame CornerRadius="20" 
+                               HasShadow="True">
                             <Grid ColumnDefinitions="0.15*,0.85*">
                                 <Label Grid.Column="1" 
-                                        Text="{Binding Nome}" 
-                                        FontAttributes="Bold"
-                                        VerticalOptions="Center" />
+                                       Text="{Binding Nome}" 
+                                       FontAttributes="Bold" 
+                                       VerticalOptions="Center" />
                             </Grid>
                         </Frame>
                     </Grid>
@@ -47,17 +49,17 @@
             ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
             SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
     <CollectionView x:Name="provinceCollectionView"
-                ItemsSource="{Binding Nome}"
+                ItemsSource="{Binding ListaProvince}"
                 EmptyView="Nessun elemento da visualizzare" >
         <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:Provincia">
+            <DataTemplate>
                 <Grid Padding="10" >
                     <Frame CornerRadius="20"
                            HasShadow="True" >
                         <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
                             <Label Grid.Column="1" 
-                                Text="{Binding Nome}" 
+                                Text="{Binding ListaRegioni.Nome}" 
                                 FontAttributes="Bold"
                                 VerticalTextAlignment="Center"
                                 Padding="10"

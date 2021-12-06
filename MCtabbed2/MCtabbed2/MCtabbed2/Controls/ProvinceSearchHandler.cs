@@ -4,11 +4,13 @@ using Xamarin.Forms;
 using MCtabbed2.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using MCtabbed2.ViewModels;
 
 namespace MCtabbed2.Controls
 {
     public class ProvinceSearchHandler : SearchHandler
     {
+        private ProvinceViewModel provinceViewModel;
         public IList<Provincia> Province { get; set; }
         public Type SelectedItemNavigationTarget { get; set; }
 
@@ -22,6 +24,8 @@ namespace MCtabbed2.Controls
             }
             else
             {
+                Province = provinceViewModel.ProvinceToSearch;
+
                 ItemsSource = Province
                     .Where(provincia => provincia.Nome.ToLower().Contains(newValue.ToLower()))
                     .ToList<Provincia>();
