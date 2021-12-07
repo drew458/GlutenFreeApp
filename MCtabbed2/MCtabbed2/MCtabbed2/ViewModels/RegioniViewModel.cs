@@ -75,7 +75,7 @@ namespace MCtabbed2.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync($"{nameof(ProvincePage)}?nome={regione.Nome}");
+            await Shell.Current.GoToAsync($"{nameof(ProvincePage)}?{nameof(ProvinceViewModel.Nome)}={regione.Nome}");
         }
     }
 }

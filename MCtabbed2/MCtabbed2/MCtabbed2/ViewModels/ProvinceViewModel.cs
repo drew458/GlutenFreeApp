@@ -16,8 +16,8 @@ namespace MCtabbed2.ViewModels
         // per capire auto-property, guardare https://www.w3schools.com/cs/cs_properties.php
 
         // auto-property
-        public IList<Provincia> ListaProvince { get; private set; }
-        public IList<Provincia> ProvinceToSearch { get; private set; }
+        public IList<Provincia> ListaProvince { get; set; }
+        public IList<Provincia> ProvinceToSearch { get; set; }
 
         public string Nome
         {
@@ -37,7 +37,7 @@ namespace MCtabbed2.ViewModels
         {
             try
             {
-                var regione = await DataStore.GetItemAsync(nomeRegione);
+                Regione regione = await DataStore.GetItemAsync(nomeRegione);
                 IList<Provincia> province = regione.Province;
                 ListaProvince = province;
                 ProvinceToSearch = province;
