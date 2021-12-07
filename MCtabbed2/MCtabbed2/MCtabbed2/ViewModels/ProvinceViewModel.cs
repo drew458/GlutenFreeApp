@@ -3,13 +3,16 @@ using MCtabbed2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MCtabbed2.ViewModels
 {
-    [QueryProperty(nameof(Nome), "nome")]
-    public class ProvinceViewModel : BindableObject
+    [QueryProperty(nameof(Nome), nameof(Nome))]
+    public class ProvinceViewModel : BaseViewModel
     {
+        private string nomeRegione;
+
         // per capire auto-property, guardare https://www.w3schools.com/cs/cs_properties.php
 
         // auto-property
@@ -18,14 +21,23 @@ namespace MCtabbed2.ViewModels
 
         public string Nome
         {
-            set => LoadProvince(value);
+            get
+            {
+                return nomeRegione;
+            }
+
+            set
+            {
+                nomeRegione = value;
+                LoadProvince(value);
+            }
         }
 
-        private void LoadProvince(string nome)
+        public async void LoadProvince(string nomeRegione)
         {
             try
             {
-                Regione regione = RegioniData.Regioni.FirstOrDefault(r => r.Nome == nome);
+                var regione = await DataStore.GetItemAsync(nomeRegione);
                 IList<Provincia> province = regione.Province;
                 ListaProvince = province;
                 ProvinceToSearch = province;

@@ -53,13 +53,13 @@
                 EmptyView="Nessun elemento da visualizzare" >
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid Padding="10" >
+                <Grid Padding="10" x:DataType="models:Provincia">
                     <Frame CornerRadius="20"
                            HasShadow="True" >
                         <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
                             <Label Grid.Column="1" 
-                                Text="{Binding ListaRegioni.Nome}" 
+                                Text="{Binding Nome}" 
                                 FontAttributes="Bold"
                                 VerticalTextAlignment="Center"
                                 Padding="10"

@@ -1,8 +1,6 @@
 ﻿using MCtabbed2.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -728,7 +726,7 @@ namespace MCtabbed2.Services
 
         public async Task<bool> DeleteItemAsync(string nomeRegione)
         {
-            var vecchiaRegione = regioni.Where((Regione arg) => arg.Nome == nomeRegione).FirstOrDefault();
+            Regione vecchiaRegione = regioni.FirstOrDefault((Regione arg) => arg.Nome == nomeRegione);
             regioni.Remove(vecchiaRegione);
 
             return await Task.FromResult(true);
@@ -746,7 +744,7 @@ namespace MCtabbed2.Services
 
         public async Task<bool> UpdateItemAsync(Regione nuovaRegione)
         {
-            var vecchiaRegione = regioni.Where((Regione arg) => arg.Nome == nuovaRegione.Nome).FirstOrDefault();
+            Regione vecchiaRegione = regioni.FirstOrDefault((Regione arg) => arg.Nome == nuovaRegione.Nome);
             regioni.Remove(vecchiaRegione);
             regioni.Add(nuovaRegione);
 

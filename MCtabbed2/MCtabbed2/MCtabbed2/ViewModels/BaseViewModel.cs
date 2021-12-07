@@ -1,15 +1,17 @@
 ﻿using MCtabbed2.Models;
+using MCtabbed2.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MCtabbed2.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        // public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<Regione> DataStore => DependencyService.Get<IDataStore<Regione>>();
 
         bool isBusy = false;
         public bool IsBusy

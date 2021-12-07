@@ -1,4 +1,5 @@
-﻿using MCtabbed2.Views;
+﻿using MCtabbed2.Services;
+using MCtabbed2.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +13,7 @@ namespace MCtabbed2
         {
             InitializeComponent();
 
+            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

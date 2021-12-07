@@ -1,17 +1,24 @@
-﻿using System.Linq;
-using MCtabbed2.Models;
-using MCtabbed2.ViewModels;
+﻿using MCtabbed2.ViewModels;
 using Xamarin.Forms;
 
 namespace MCtabbed2.Views
 {
     public partial class RegioniPage : ContentPage
     {
+        RegioniViewModel _viewModel;
+
         public RegioniPage()
         {
             InitializeComponent();
-            BindingContext = new RegioniViewModel();
+            BindingContext = _viewModel = new RegioniViewModel();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
+        }
+
         /* async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string nomeRegione = (e.CurrentSelection.FirstOrDefault() as Regione).Nome;
