@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MCtabbed2.Views.ProvincePage"
-             xmlns:data="clr-namespace:MCtabbed2.Data"
              xmlns:models="clr-namespace:MCtabbed2.Models"
              xmlns:controls="clr-namespace:MCtabbed2.Controls"
              xmlns:views="clr-namespace:MCtabbed2.Views" 
-             xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels" 
-             x:DataType="viewmodels:ProvinceViewModel"
+             xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels"
              x:Name="ListaProvince" 
              Title="Province" 
              Shell.NavBarIsVisible="True" >
@@ -15,7 +13,7 @@
 
     <!-- TODO: Rimpiazzare ProvinceData con elementi presi dal database -->
     <Shell.SearchHandler>
-        <controls:ProvinceSearchHandler x:Name="provinceSearchBar"
+        <controls:ProvinceSearchHandler x:Name="provinceSearchBar" x:DataType="viewmodels:ProvinceViewModel"
                 Placeholder="Cerca una provincia..."
                 ShowsResults="true"
                 ItemsSource="{Binding ListaProvince}"
@@ -38,22 +36,13 @@
         </controls:ProvinceSearchHandler>
     </Shell.SearchHandler>
 
-    <!-- <Label Text="Province"
-            FontSize="Large" HorizontalOptions="CenterAndExpand"
-            HorizontalTextAlignment="Start"
-            Padding="10"
-            FontAttributes="Bold"
-            /> -->
-
-    <!-- ItemsSource: 
-            ItemTemplate: Prende il template per la visualizzazione da file App.xaml (DataTemplate) 
-            SelectionChanged: Scatena l'evento del tap su un elemento della lista -->
-    <CollectionView x:Name="provinceCollectionView"
+    
+    <CollectionView x:Name="provinceCollectionView"  x:DataType="viewmodels:ProvinceViewModel"
                 ItemsSource="{Binding ListaProvince}"
-                EmptyView="Nessun elemento da visualizzare" >
+                EmptyView="Impossibile caricare le province" >
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid Padding="10" x:DataType="models:Provincia">
+                <Grid Padding="5" x:DataType="models:Provincia">
                     <Frame CornerRadius="20"
                            HasShadow="True" >
                         <Grid RowDefinitions="Auto,Auto"
