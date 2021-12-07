@@ -1,21 +1,28 @@
 ﻿using MCtabbed2.Data;
 using MCtabbed2.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MCtabbed2.ViewModels
 {
-    class RegioniViewModel : BindableObject
+    public class RegioniViewModel : BaseViewModel
     {
         // vedere https://www.youtube.com/watch?v=71K4PVRLasI
 
+        private Item _selectedItem;
+        private ObservableCollection<Regione> listaRegioni;
+
+        public Command<Item> ItemTapped { get; }
+
         public RegioniViewModel()
         {
+            Title = "Regioni";
             ListaRegioni = RegioniData.Regioni;
+            ItemTapped = new Command<Item>(OnItemSelected);
         }
 
-        private ObservableCollection<Regione> listaRegioni;
         public ObservableCollection<Regione> ListaRegioni
         {
             get => listaRegioni;
@@ -24,7 +31,28 @@ namespace MCtabbed2.ViewModels
                 listaRegioni = value;
                 OnPropertyChanged();
             }
-        }        
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public Item SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+                OnItemSelected(value);
+            }
+        }
+
+        private void OnItemSelected(Item value)
+        {
+            throw new NotImplementedException();
+        }
 
         private Regione previouslySelected;
         private Regione regioneSelezionata;

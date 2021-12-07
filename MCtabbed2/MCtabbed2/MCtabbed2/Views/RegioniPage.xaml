@@ -42,24 +42,11 @@
         </controls:RegioniSearchHandler>
     </Shell.SearchHandler>
 
-    <!-- <Label Text="Regioni"
-            FontSize="Large" HorizontalOptions="CenterAndExpand"
-            HorizontalTextAlignment="Start"
-            Padding="10"
-            FontAttributes="Bold"
-            /> -->
-
-    <ContentPage.BindingContext>
-        <viewmodels:RegioniViewModel />
-    </ContentPage.BindingContext>
-
-    <RefreshView 
-        Command="{Binding RefreshCommand}" >
-
-        <CollectionView ItemsSource="{Binding ListaRegioni}"
-                SelectionMode="Single"
-                SelectedItem="{Binding RegioneSelezionata, Mode=TwoWay}" 
-                VerticalScrollBarVisibility="Never" >
+    <RefreshView x:DataType="viewmodels:RegioniViewModel" Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
+        <CollectionView x:Name="RegioniCollectionView"
+            ItemsSource="{Binding ListaRegioni}"
+            SelectionMode="None"
+            VerticalScrollBarVisibility="Never" >
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Regione">
                     <Grid Padding="10" >
@@ -69,16 +56,23 @@
                                 RowDefinitions="Auto,Auto"
                                 ColumnDefinitions="Auto,Auto" >
                                 <Image Grid.RowSpan="2" 
-                                Source="{Binding Immagine}" 
-                                Aspect="AspectFill"
-                                HeightRequest="50" 
-                                WidthRequest="60" />
+                                    Source="{Binding Immagine}" 
+                                    Aspect="AspectFill"
+                                    HeightRequest="50" 
+                                    WidthRequest="60" />
                                 <Label Grid.Column="1" 
-                                Text="{Binding Nome}" 
-                                FontAttributes="Bold"
-                                VerticalTextAlignment="Center"
-                                Padding="10"
-                                HeightRequest="50" />
+                                    Text="{Binding Nome}" 
+                                    FontAttributes="Bold"
+                                    VerticalTextAlignment="Center"
+                                    Padding="10"
+                                    HeightRequest="50" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProvinceViewModel}}, Path=ItemTapped}"
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
                     </Grid>
@@ -90,7 +84,6 @@
                 </StackLayout>
             </CollectionView.EmptyView>
         </CollectionView>
-
     </RefreshView>
     
 </ContentPage>
