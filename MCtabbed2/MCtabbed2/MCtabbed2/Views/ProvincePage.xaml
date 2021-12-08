@@ -6,7 +6,10 @@
              xmlns:controls="clr-namespace:MCtabbed2.Controls"
              xmlns:views="clr-namespace:MCtabbed2.Views" 
              xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels"
-             x:Name="ListaProvince" 
+             x:Name="ListaProvince"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}"
              Title="Province" 
              Shell.NavBarIsVisible="True" >
     
@@ -43,8 +46,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="5" x:DataType="models:Provincia">
-                    <Frame CornerRadius="20"
-                           HasShadow="True" >
+                    <Frame Style="{StaticResource RegioniCard}">
                         <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
                             <Label Grid.Column="1" 
