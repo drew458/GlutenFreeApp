@@ -13,9 +13,32 @@
         <x:String x:Key="IconList">&#xf0ca;</x:String>
 
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Primary">white</Color>
+            <Color x:Key="TextColor">#000000</Color>
+            <Color x:Key="TextColorDark">White</Color>
+
+
+            <Color x:Key="WindowBackgroundColor">#f2f2f7</Color>
+            <Color x:Key="WindowBackgroundColorDark">Black</Color>
+
+            <Color x:Key="CardBackground">White</Color>
+            <Color x:Key="CardBackgroundDark">#1C1C1E</Color>
+
+            <Style x:Key="RegioniRefreshView" TargetType="RefreshView">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="RegioniCard" TargetType="Frame">
+                <Setter Property="HasShadow" 
+                        Value="{OnPlatform Android=true, iOS=false, Default=true}"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Dark={StaticResource CardBackgroundDark},
+                    Light={StaticResource CardBackground}}"/>
+            </Style>
+
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">

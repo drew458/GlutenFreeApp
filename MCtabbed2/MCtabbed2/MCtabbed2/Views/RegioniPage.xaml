@@ -10,6 +10,9 @@
              x:Class="MCtabbed2.Views.RegioniPage"
              Shell.NavBarIsVisible="True" 
              x:Name="ListaRegioni"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}"
              Title="{Binding Title}" >
     
     <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
@@ -42,7 +45,10 @@
         </controls:RegioniSearchHandler>
     </Shell.SearchHandler>
 
-    <RefreshView x:DataType="viewmodels:RegioniViewModel" Command="{Binding LoadRegioniCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
+    <RefreshView x:DataType="viewmodels:RegioniViewModel" 
+                 Command="{Binding LoadRegioniCommand}" 
+                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                 Style="{StaticResource RegioniRefreshView}">
         <CollectionView x:Name="RegioniCollectionView"
             ItemsSource="{Binding ListaRegioni}"
             SelectionMode="None"
@@ -51,7 +57,8 @@
                 <DataTemplate>
                     <Grid Padding="3" x:DataType="models:Regione" >
                         <Frame CornerRadius="20"
-                               HasShadow="True" >
+                               HasShadow="True"
+                               Style="{StaticResource RegioniCard}">
                             <Grid
                                 RowDefinitions="Auto,Auto"
                                 ColumnDefinitions="Auto,Auto" >
