@@ -12,11 +12,24 @@ namespace MCtabbed2.ViewModels
     public class ProvinceViewModel : BaseViewModel
     {
         private string nomeRegione;
+        private IList<Provincia> listaProvince;
 
         // per capire auto-property, guardare https://www.w3schools.com/cs/cs_properties.php
 
         // auto-property
-        public IList<Provincia> ListaProvince { get; set; }
+        public IList<Provincia> ListaProvince
+        {
+            get
+            {
+                return listaProvince;
+            }
+
+            set
+            {
+                listaProvince = value;
+                OnPropertyChanged();
+            }
+        }
         public IList<Provincia> ProvinceToSearch { get; set; }
 
         public string Nome
