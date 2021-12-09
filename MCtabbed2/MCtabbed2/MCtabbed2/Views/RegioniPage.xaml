@@ -25,10 +25,9 @@
                 Regioni="{x:Static data:RegioniData.Regioni}"
                 SelectedItemNavigationTarget="{x:Type views:ProvincePage}" >
             <controls:RegioniSearchHandler.ItemTemplate>
-                <DataTemplate x:DataType="models:Regione" >
-                    <Grid Padding="7">
-                        <Frame CornerRadius="20"
-                               HasShadow="True">
+                <DataTemplate >
+                    <Grid Padding="3" x:DataType="models:Regione" >
+                        <Frame Style="{StaticResource RegioniCard}">
                             <Grid ColumnDefinitions="0.15*,0.85*">
                                 <Image Source="{Binding Immagine}"
                                     HeightRequest="40"
