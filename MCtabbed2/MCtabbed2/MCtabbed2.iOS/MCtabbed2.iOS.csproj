@@ -143,5 +143,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-60%403x~car.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-60%402x~car.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\EasyCragIconStart.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29%402x~ipad.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-20~ipad.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-20%402x~ipad.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29.png" />
   </ItemGroup>
 </Project>
