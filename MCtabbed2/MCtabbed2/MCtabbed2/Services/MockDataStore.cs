@@ -22,7 +22,7 @@ namespace MCtabbed2.Services
                     {
                         new Provincia
                         {
-                            Nome = "l'Aquila"
+                            Nome = "l'Aquila",
                         },
 
                         new Provincia
@@ -220,7 +220,17 @@ namespace MCtabbed2.Services
                     {
                         new Provincia
                         {
-                            Nome = "Frosinone"
+                            Nome = "Frosinone",
+                            Falesie = new List<Falesia>
+                            {
+                                new Falesia
+                                {
+                                    Nome = "Acuto (Placche di Pila Rocca)",
+                                    NumeroVie = 29,
+                                    VieConRipetizioni = 28,
+                                    NumeroRipetizioni = 731,
+                                }, 
+                            }
                         },
 
                         new Provincia
