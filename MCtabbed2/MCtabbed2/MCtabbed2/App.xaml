@@ -37,6 +37,20 @@
                     Light={StaticResource CardBackground}}"/>
             </Style>
 
+            <Style x:Key="SearchBar" TargetType="SearchBar">
+                <Setter Property="PlaceholderColor" 
+                        Value="{AppThemeBinding Dark={StaticResource TextColorDark}, 
+                        Light={StaticResource TextColor}}" ></Setter>
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark},
+                    Light={StaticResource WindowBackgroundColor}}"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextColorDark}, 
+                        Light={StaticResource TextColor}}"></Setter>
+                <Setter Property="CancelButtonColor" Value="{AppThemeBinding 
+                        Dark={StaticResource TextColorDark}, 
+                        Light={StaticResource TextColor}}"></Setter>
+            </Style>
+
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Black"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

@@ -1,10 +1,7 @@
-﻿using MCtabbed2.Controls;
-using MCtabbed2.Data;
-using MCtabbed2.Models;
+﻿using MCtabbed2.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MCtabbed2.ViewModels
@@ -14,7 +11,6 @@ namespace MCtabbed2.ViewModels
     {
         private string nomeRegione;
         private IList<Provincia> listaProvince;
-        public ProvinceSearchHandler ProvinceSearchHandler { get; set; }
 
         // per capire auto-property, guardare https://www.w3schools.com/cs/cs_properties.php
 
@@ -54,10 +50,6 @@ namespace MCtabbed2.ViewModels
                 Regione regione = await DataStore.GetItemAsync(nomeRegione);
                 IList<Provincia> province = regione.Province;
                 ListaProvince = province;
-                ProvinceSearchHandler = new ProvinceSearchHandler
-                {
-                    ProvinceToSearch = province
-                };
             }
             catch (Exception)
             {
