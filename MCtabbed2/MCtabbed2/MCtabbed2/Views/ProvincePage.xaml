@@ -14,7 +14,7 @@
              Shell.NavBarIsVisible="True" >
     
 
-    <Shell.SearchHandler>
+    <!-- <Shell.SearchHandler>
         <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..." x:DataType="viewmodels:ProvinceViewModel"
                 ShowsResults="true"
                 SelectedItemNavigationTarget="{x:Type views:FalesiePage}" >
@@ -33,28 +33,34 @@
                 </DataTemplate>
             </controls:ProvinceSearchHandler.ItemTemplate>
         </controls:ProvinceSearchHandler>
-    </Shell.SearchHandler>
+    </Shell.SearchHandler> -->
 
-    
-    <CollectionView x:DataType="viewmodels:ProvinceViewModel"
+    <StackLayout Padding="10,0,10,0" >
+        <SearchBar TextChanged="SearchBar_OnTextChanged"
+                   Placeholder="Cerca una provincia..."></SearchBar>
+        
+        <CollectionView x:Name="ProvinceCollectionView" x:DataType="viewmodels:ProvinceViewModel"
                 ItemsSource="{Binding ListaProvince}"
                 EmptyView="Impossibile caricare le province" >
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="5" x:DataType="models:Provincia">
-                    <Frame Style="{StaticResource RegioniCard}">
-                        <Grid RowDefinitions="Auto,Auto"
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5" x:DataType="models:Provincia">
+                        <Frame Style="{StaticResource RegioniCard}">
+                            <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
-                            <Label Grid.Column="1" 
+                                <Label Grid.Column="1" 
                                 Text="{Binding Nome}" 
                                 FontAttributes="Bold"
                                 VerticalTextAlignment="Center"
                                 Padding="10"
                                 HeightRequest="50" />
-                        </Grid>
-                    </Frame>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+    
+    
 </ContentPage>
