@@ -14,18 +14,14 @@
              Shell.NavBarIsVisible="True" >
     
 
-    <!-- TODO: Rimpiazzare ProvinceData con elementi presi dal database -->
     <Shell.SearchHandler>
-        <controls:ProvinceSearchHandler x:Name="provinceSearchBar" x:DataType="viewmodels:ProvinceViewModel"
-                Placeholder="Cerca una provincia..."
+        <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..." x:DataType="viewmodels:ProvinceViewModel"
                 ShowsResults="true"
-                ItemsSource="{Binding ListaProvince}"
                 SelectedItemNavigationTarget="{x:Type views:FalesiePage}" >
             <controls:ProvinceSearchHandler.ItemTemplate>
-                <DataTemplate x:DataType="models:Provincia">
-                    <Grid Padding="7" >
-                        <Frame CornerRadius="20" 
-                               HasShadow="True">
+                <DataTemplate >
+                    <Grid Padding="3" x:DataType="models:Provincia" >
+                        <Frame Style="{StaticResource RegioniCard}" >
                             <Grid ColumnDefinitions="0.15*,0.85*">
                                 <Label Grid.Column="1" 
                                        Text="{Binding Nome}" 
@@ -40,7 +36,7 @@
     </Shell.SearchHandler>
 
     
-    <CollectionView x:Name="provinceCollectionView"  x:DataType="viewmodels:ProvinceViewModel"
+    <CollectionView x:DataType="viewmodels:ProvinceViewModel"
                 ItemsSource="{Binding ListaProvince}"
                 EmptyView="Impossibile caricare le province" >
         <CollectionView.ItemTemplate>

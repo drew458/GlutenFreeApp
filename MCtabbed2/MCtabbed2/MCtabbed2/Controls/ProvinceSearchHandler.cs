@@ -4,14 +4,12 @@ using Xamarin.Forms;
 using MCtabbed2.Models;
 using System.Linq;
 using System.Threading.Tasks;
-using MCtabbed2.ViewModels;
 
 namespace MCtabbed2.Controls
 {
     public class ProvinceSearchHandler : SearchHandler
     {
-        private ProvinceViewModel provinceViewModel;
-        public IList<Provincia> Province { get; set; }
+        public IList<Provincia> ProvinceToSearch { get; set; }
         public Type SelectedItemNavigationTarget { get; set; }
 
         protected override void OnQueryChanged(string oldValue, string newValue)
@@ -24,11 +22,9 @@ namespace MCtabbed2.Controls
             }
             else
             {
-                Province = provinceViewModel.ProvinceToSearch;
-
-                ItemsSource = Province
+                ItemsSource = ProvinceToSearch
                     .Where(provincia => provincia.Nome.ToLower().Contains(newValue.ToLower()))
-                    .ToList<Provincia>();
+                    .ToList();
             }
         }
 
