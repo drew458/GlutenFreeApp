@@ -12,33 +12,12 @@
                         Light={StaticResource WindowBackgroundColor}}"
              Title="Province" 
              Shell.NavBarIsVisible="True" >
-    
-
-    <!-- <Shell.SearchHandler>
-        <controls:ProvinceSearchHandler Placeholder="Cerca una provincia..." x:DataType="viewmodels:ProvinceViewModel"
-                ShowsResults="true"
-                SelectedItemNavigationTarget="{x:Type views:FalesiePage}" >
-            <controls:ProvinceSearchHandler.ItemTemplate>
-                <DataTemplate >
-                    <Grid Padding="3" x:DataType="models:Provincia" >
-                        <Frame Style="{StaticResource RegioniCard}" >
-                            <Grid ColumnDefinitions="0.15*,0.85*">
-                                <Label Grid.Column="1" 
-                                       Text="{Binding Nome}" 
-                                       FontAttributes="Bold" 
-                                       VerticalOptions="Center" />
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </controls:ProvinceSearchHandler.ItemTemplate>
-        </controls:ProvinceSearchHandler>
-    </Shell.SearchHandler> -->
 
     <StackLayout Padding="10,0,10,0" >
         <SearchBar TextChanged="SearchBar_OnTextChanged"
-                   Placeholder="Cerca una provincia..."></SearchBar>
-        
+                   Placeholder="Cerca una provincia..."
+                   Style="{StaticResource SearchBar}" />
+
         <CollectionView x:Name="ProvinceCollectionView" x:DataType="viewmodels:ProvinceViewModel"
                 ItemsSource="{Binding ListaProvince}"
                 EmptyView="Impossibile caricare le province" >
@@ -49,11 +28,11 @@
                             <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
                                 <Label Grid.Column="1" 
-                                Text="{Binding Nome}" 
-                                FontAttributes="Bold"
-                                VerticalTextAlignment="Center"
-                                Padding="10"
-                                HeightRequest="50" />
+                                    Text="{Binding Nome}" 
+                                    FontAttributes="Bold"
+                                    VerticalTextAlignment="Center"
+                                    Padding="10"
+                                    HeightRequest="50" />
                             </Grid>
                         </Frame>
                     </Grid>

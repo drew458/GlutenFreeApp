@@ -56,24 +56,5 @@ namespace MCtabbed2.ViewModels
                 Console.WriteLine("Impossibile caricare la provincia");
             }
         }
-
-        /*public ICommand PerformSearch => new Command<string>((string query) =>
-        {
-            SearchResults = DataService.GetSearchResults(query);
-        });
-
-        private List<Provincia> searchResults = ListaProvince;
-        public List<Provincia> SearchResults
-        {
-            get
-            {
-                return searchResults;
-            }
-            set
-            {
-                searchResults = value;
-                OnPropertyChanged();
-            }
-        } */
     }
 }

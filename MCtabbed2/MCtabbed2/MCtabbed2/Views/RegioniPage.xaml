@@ -17,77 +17,55 @@
     
     <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
 
-    <!-- TODO: Implementare MVVM
-        Navigazione verso la regione selezionata decisamente lenta-->
-    <Shell.SearchHandler>
-        <controls:RegioniSearchHandler Placeholder="Cerca una regione..."
-                ShowsResults="true"
-                Regioni="{x:Static data:RegioniData.Regioni}"
-                SelectedItemNavigationTarget="{x:Type views:ProvincePage}" >
-            <controls:RegioniSearchHandler.ItemTemplate>
-                <DataTemplate >
-                    <Grid Padding="3" x:DataType="models:Regione" >
-                        <Frame Style="{StaticResource RegioniCard}">
-                            <Grid ColumnDefinitions="0.15*,0.85*">
-                                <Image Source="{Binding Immagine}"
-                                    HeightRequest="40"
-                                    WidthRequest="40" />
-                                <Label Grid.Column="1" 
-                                    Text="{Binding Nome}" 
-                                    FontAttributes="Bold"
-                                    VerticalOptions="Center" />
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </controls:RegioniSearchHandler.ItemTemplate>
-        </controls:RegioniSearchHandler>
-    </Shell.SearchHandler>
+    <StackLayout>
+        <SearchBar TextChanged="SearchBar_OnTextChanged"
+                   Placeholder="Cerca una regione..." 
+                   Style="{StaticResource SearchBar}"/>
 
-    <RefreshView x:DataType="viewmodels:RegioniViewModel" 
-                 Command="{Binding LoadRegioniCommand}" 
-                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
-                 Style="{StaticResource RegioniRefreshView}">
-        <CollectionView x:Name="RegioniCollectionView"
-            ItemsSource="{Binding ListaRegioni}"
-            SelectionMode="None"
-            VerticalScrollBarVisibility="Never" >
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="3" x:DataType="models:Regione" >
-                        <Frame Style="{StaticResource RegioniCard}">
-                            <Grid
-                                RowDefinitions="Auto,Auto"
-                                ColumnDefinitions="Auto,Auto" >
-                                <Image Grid.RowSpan="2" 
-                                    Source="{Binding Immagine}" 
-                                    Aspect="AspectFill"
-                                    HeightRequest="50" 
-                                    WidthRequest="60" />
-                                <Label Grid.Column="1" 
-                                    Text="{Binding Nome}" 
-                                    FontAttributes="Bold"
-                                    VerticalTextAlignment="Center"
-                                    Padding="10"
-                                    HeightRequest="50" />
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        NumberOfTapsRequired="1"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegioniViewModel}}, Path=RegioneTapped}"
-                                        CommandParameter="{Binding .}">
-                                    </TapGestureRecognizer>
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.EmptyView>
-                <StackLayout Padding="12">
-                    <Label HorizontalOptions="Center" Text="Nessuna regione da visualizzare" />
-                </StackLayout>
-            </CollectionView.EmptyView>
-        </CollectionView>
-    </RefreshView>
+        <RefreshView x:DataType="viewmodels:RegioniViewModel" 
+            Command="{Binding LoadRegioniCommand}" 
+            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            Style="{StaticResource RegioniRefreshView}">
+            <CollectionView x:Name="RegioniCollectionView"
+                ItemsSource="{Binding ListaRegioni}"
+                SelectionMode="None"
+                VerticalScrollBarVisibility="Never" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="3" x:DataType="models:Regione" >
+                            <Frame Style="{StaticResource RegioniCard}">
+                                <Grid RowDefinitions="Auto,Auto"
+                                    ColumnDefinitions="Auto,Auto" >
+                                    <Image Grid.RowSpan="2" 
+                                        Source="{Binding Immagine}" 
+                                        Aspect="AspectFill"
+                                        HeightRequest="50" 
+                                        WidthRequest="60" />
+                                    <Label Grid.Column="1" 
+                                        Text="{Binding Nome}" 
+                                        FontAttributes="Bold"
+                                        VerticalTextAlignment="Center"
+                                        Padding="10"
+                                        HeightRequest="50" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegioniViewModel}}, Path=RegioneTapped}"
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="12">
+                        <Label HorizontalOptions="Center" Text="Nessuna regione da visualizzare" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
     
 </ContentPage>
