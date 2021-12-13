@@ -10,9 +10,9 @@ namespace MCtabbed2.ViewModels
         //alcuni pezzi presi da
         // https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithMaps/WorkingWithMaps/WorkingWithMaps/ViewModels/PinItemsSourcePageViewModel.cs
 
-        private ObservableCollection<Location> _locations;
+        private ObservableCollection<PinMappa> _luoghi;
 
-        public IEnumerable Locations => _locations;
+        public IEnumerable Luoghi => _luoghi;
 
 
         public MapViewModel()
@@ -25,7 +25,7 @@ namespace MCtabbed2.ViewModels
             IEnumerable<Regione> regioni = await DataStore.GetItemsAsync();
             IList<Provincia> province = new List<Provincia>();
             IList<Falesia> falesie = new List<Falesia>();
-            _locations = new ObservableCollection<Location>();
+            _luoghi = new ObservableCollection<PinMappa>();
 
             foreach (Regione regione in regioni)
             {
@@ -38,7 +38,7 @@ namespace MCtabbed2.ViewModels
                         {
                             falesie.Add(falesia);
 
-                            _locations.Add(new Location(falesia.Indirizzo, falesia.Nome, falesia.Posizione));
+                            _luoghi.Add(new PinMappa(falesia.Indirizzo, falesia.Nome, falesia.Posizione));
                         }
                     }
                 }

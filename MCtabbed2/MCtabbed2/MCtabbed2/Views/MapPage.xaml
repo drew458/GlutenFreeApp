@@ -13,12 +13,12 @@
         <maps:Map x:Name="map" 
                 MapType="Hybrid" 
                 IsShowingUser="True"
-                ItemsSource="{Binding Locations}" >
+                ItemsSource="{Binding Luoghi}" >
             <maps:Map.ItemTemplate>
-                <DataTemplate x:DataType="models:Location" >
-                    <maps:Pin Position="{Binding Position}"
-                              Address="{Binding Address}"
-                              Label="{Binding Description}" />
+                <DataTemplate x:DataType="models:PinMappa" >
+                    <maps:Pin Position="{Binding Posizione}"
+                              Address="{Binding Indirizzo}"
+                              Label="{Binding Descrizione}" />
                 </DataTemplate>
             </maps:Map.ItemTemplate>
         </maps:Map>
