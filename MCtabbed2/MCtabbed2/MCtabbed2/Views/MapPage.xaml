@@ -2,29 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:models="clr-namespace:MCtabbed2.Models"
+             xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels" 
+             x:DataType="viewmodels:MapViewModel"
              x:Class="MCtabbed2.Views.MapPage"
-             Shell.NavBarIsVisible="False"
-             >
+             Shell.NavBarIsVisible="False" >
 
-    <!-- TODO: la posizione dell'utente sulla mappa non viene visualizzato -->
     <StackLayout>
+        <SearchBar></SearchBar>
         <maps:Map x:Name="map" 
                 MapType="Hybrid" 
-                IsShowingUser="True">
-            <maps:Map.Pins>
-                <maps:Pin Label="Configni"
-                        Address="Falesia di Configni"
-                        Type="Place">
-                    <maps:Pin.Position>
-                        <maps:Position>
-                            <x:Arguments>
-                                <x:Double>42.4214</x:Double>
-                                <x:Double>12.6423</x:Double>
-                            </x:Arguments>
-                        </maps:Position>
-                    </maps:Pin.Position>
-                </maps:Pin>
-            </maps:Map.Pins>
+                IsShowingUser="True"
+                ItemsSource="{Binding Locations}" >
+            <maps:Map.ItemTemplate>
+                <DataTemplate x:DataType="models:Location" >
+                    <maps:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding Description}" />
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
         </maps:Map>
     </StackLayout>
 </ContentPage>

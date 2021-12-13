@@ -1,7 +1,6 @@
 ﻿using MCtabbed2.Models;
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MCtabbed2.ViewModels
@@ -31,10 +30,7 @@ namespace MCtabbed2.ViewModels
 
         public string Nome
         {
-            get
-            {
-                return nomeRegione;
-            }
+            get => nomeRegione;
 
             set
             {
