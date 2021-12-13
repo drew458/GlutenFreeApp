@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace MCtabbed2.Services
 {
@@ -225,10 +226,12 @@ namespace MCtabbed2.Services
                             {
                                 new Falesia
                                 {
-                                    Nome = "Acuto (Placche di Pila Rocca)",
+                                    Nome = "Configni",
+                                    Indirizzo = "Falesia di Configni",
                                     NumeroVie = 29,
                                     VieConRipetizioni = 28,
                                     NumeroRipetizioni = 731,
+                                    Posizione = new Position(42.4214, 12.6423)
                                 }, 
                             }
                         },
