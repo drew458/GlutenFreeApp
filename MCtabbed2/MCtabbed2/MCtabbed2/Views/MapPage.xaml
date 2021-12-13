@@ -6,10 +6,13 @@
              xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels" 
              x:DataType="viewmodels:MapViewModel"
              x:Class="MCtabbed2.Views.MapPage"
+             Title="{Binding Title}"
              Shell.NavBarIsVisible="False" >
 
     <StackLayout>
-        <SearchBar></SearchBar>
+        <SearchBar Placeholder="Cerca una falesia...">
+            
+        </SearchBar>
         <maps:Map x:Name="map" 
                 MapType="Hybrid" 
                 IsShowingUser="True"

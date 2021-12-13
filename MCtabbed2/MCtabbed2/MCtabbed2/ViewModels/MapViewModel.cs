@@ -17,6 +17,7 @@ namespace MCtabbed2.ViewModels
 
         public MapViewModel()
         {
+            Title = "Falesie";
             LoadPins();
         }
 

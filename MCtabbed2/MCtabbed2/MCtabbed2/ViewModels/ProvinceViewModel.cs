@@ -39,6 +39,11 @@ namespace MCtabbed2.ViewModels
             }
         }
 
+        public ProvinceViewModel()
+        {
+            Title = "Province";
+        }
+
         public async void LoadProvince(string nomeRegione)
         {
             try
