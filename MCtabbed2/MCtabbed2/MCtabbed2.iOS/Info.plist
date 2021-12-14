@@ -45,5 +45,7 @@
 		<string>remote-notification</string>
 		<string>processing</string>
 	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>
