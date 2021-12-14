@@ -5,11 +5,15 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Android;
+using MCtabbed2.Helpers;
+using Xamarin.Forms;
+using Xamarin.Essentials;
+
+[assembly: Dependency(typeof(MCtabbed2.Droid.Environment))]
 
 namespace MCtabbed2.Droid
 {
     [Activity(Label = "MCtabbed2", Icon = "@mipmap/EasyCragAppIconMulti", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
-
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         const int RequestLocationId = 0;
@@ -62,6 +66,28 @@ namespace MCtabbed2.Droid
             else
             {
                 base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+    }
+
+    // guardare https://www.youtube.com/watch?v=GKJRR8_DSSs
+    public class Environment : IEnvironment
+    {
+        public void SetStatusBarColor(System.Drawing.Color color, bool darkStatusBarTint)
+        {
+            if (Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.Lollipop)
+                return;
+
+            var activity = Platform.CurrentActivity;
+            var window = activity.Window;
+            window.AddFlags(Android.Views.WindowManagerFlags.DrawsSystemBarBackgrounds);
+            window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
+            window.SetStatusBarColor(color.ToPlatformColor());
+
+            if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.M)
+            {
+                var flag = (Android.Views.StatusBarVisibility)Android.Views.SystemUiFlags.LightStatusBar;
+                window.DecorView.SystemUiVisibility = darkStatusBarTint ? flag : 0;
             }
         }
     }

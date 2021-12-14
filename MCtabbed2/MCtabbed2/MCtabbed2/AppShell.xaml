@@ -47,6 +47,15 @@
                                      Glyph="{StaticResource IconList}" />
             </ShellContent.Icon>
         </ShellContent>
+
+        <ShellContent Title="Impostazioni" 
+                      Route="Impostazioni" 
+                      ContentTemplate="{DataTemplate views:SettingsPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAS"
+                                     Glyph="{StaticResource IconSettings}" />
+            </ShellContent.Icon>
+        </ShellContent>
     </TabBar>
 
     <!--

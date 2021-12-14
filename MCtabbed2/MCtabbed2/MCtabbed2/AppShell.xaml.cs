@@ -11,23 +11,11 @@ namespace MCtabbed2
         // per capire le "routes", guardare codice nell'esempio:
         // https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/Xaminals
 
-
-        public Dictionary<string, Type> Routes { get; private set; } = new Dictionary<string, Type>();
-
         public AppShell()
         {
             InitializeComponent();
-            RegisterRoutes();
-        }
 
-        private void RegisterRoutes()
-        {
-            Routes.Add(nameof(ProvincePage), typeof(ProvincePage));
-
-            foreach (var item in Routes)
-            {
-                Routing.RegisterRoute(item.Key, item.Value);
-            }
+            Routing.RegisterRoute(nameof(ProvincePage), typeof(ProvincePage));
         }
 
     }

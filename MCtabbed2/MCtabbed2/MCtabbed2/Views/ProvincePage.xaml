@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MCtabbed2.Views.ProvincePage"
              xmlns:models="clr-namespace:MCtabbed2.Models"
-             xmlns:controls="clr-namespace:MCtabbed2.Controls"
              xmlns:views="clr-namespace:MCtabbed2.Views" 
              xmlns:viewmodels="clr-namespace:MCtabbed2.ViewModels"
              x:Name="ListaProvince"
@@ -28,11 +27,8 @@
                             <Grid RowDefinitions="Auto,Auto"
                               ColumnDefinitions="Auto" >
                                 <Label Grid.Column="1" 
-                                    Text="{Binding Nome}" 
-                                    FontAttributes="Bold"
-                                    VerticalTextAlignment="Center"
-                                    Padding="10"
-                                    HeightRequest="50" />
+                                    Text="{Binding Nome}"
+                                    Style="{StaticResource LabelRegioniCard}" />
                             </Grid>
                         </Frame>
                     </Grid>

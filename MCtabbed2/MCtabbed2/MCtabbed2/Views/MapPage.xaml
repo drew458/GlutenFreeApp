@@ -10,7 +10,8 @@
              Shell.NavBarIsVisible="False" >
 
     <StackLayout>
-        <SearchBar Placeholder="Cerca una falesia...">
+        <SearchBar Placeholder="Cerca una falesia..."
+                   Style="{StaticResource SearchBar}">
             
         </SearchBar>
         <maps:Map x:Name="map" 
