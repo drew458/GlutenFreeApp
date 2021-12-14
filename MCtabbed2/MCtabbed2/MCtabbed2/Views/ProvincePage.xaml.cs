@@ -1,11 +1,8 @@
 ﻿using Xamarin.Forms;
 using MCtabbed2.Models;
-using MCtabbed2.Data;
 using System.Linq;
-using System;
 using System.Collections.Generic;
 using MCtabbed2.ViewModels;
-using System.Collections;
 
 namespace MCtabbed2.Views
 {

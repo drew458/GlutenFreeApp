@@ -5,6 +5,8 @@
              Title="Impostazioni"
              BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark}, 
                                 Light={StaticResource WindowBackgroundColor}}" >
+
+    <!-- guardare https://www.youtube.com/watch?v=GKJRR8_DSSs -->
     
     <ContentPage.Resources>
         <ResourceDictionary>
