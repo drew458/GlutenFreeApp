@@ -11,7 +11,7 @@
 
     <StackLayout>
         <SearchBar Placeholder="Cerca una falesia..."
-                   Style="{StaticResource SearchBar}">
+                   Style="{StaticResource SearchBar}" >
             
         </SearchBar>
         <maps:Map x:Name="map" 
