@@ -1,10 +1,10 @@
 # MC-project
 
-Progetto per Mobile Computing da parte degli studenti [Gianluca Proietti](https://github.com/gianluca8079), [Filippo Musmeci](https://github.com/Fill94) e [Andrea Marini](https://github.com/drew458).
+Progetto per Mobile Computing da parte dello studente [Andrea Marini](https://github.com/drew458).
 
 ## Nome applicazione
 
-EasyCrag
+Studyful
 
 ## Descrizione
 
