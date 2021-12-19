@@ -194,5 +194,3 @@ FakesAssemblies/
 
 .vscode/settings.json
 MCtabbed2/MCtabbed2/MCtabbed2.Android/Resources/values/strings.xml
-MCtabbed2/RDSQuery/PyMySQL-1.0.2.dist-info
-MCtabbed2/RDSQuery/pymysql

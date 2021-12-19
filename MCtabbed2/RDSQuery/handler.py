@@ -1,5 +1,6 @@
 import pymysql
 import os
+import json
  
 # 1. Install pymysql to local directory
 # pip install -t $PWD pymysql
@@ -18,14 +19,17 @@ password = os.environ["PASSWORD"]
 database_name = os.environ["DBNAME"]
  
 #Connection
-connection = pymysql.connect(endpoint, user=username,
+connection = pymysql.connect(host=endpoint, user=username,
 	passwd=password, db=database_name)
  
 def lambda_handler(event, context):
 	cursor = connection.cursor()
 	cursor.execute('SELECT * from Falesie')
- 
 	rows = cursor.fetchall()
+	return {
+		'statusCode': 200,
+		'body': json.dumps(rows)
+		}
  
 	for row in rows:
 		print("{0} {1} {2}".format(row[0], row[1], row[2]))
