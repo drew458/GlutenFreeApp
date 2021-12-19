@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:GlutenFree.Models"
+             xmlns:views="clr-namespace:GlutenFree.Views" 
+             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels" 
+             x:DataType="viewmodels:RegioniViewModel"
+             x:Class="GlutenFree.Views.RegioniPage"
+             Shell.NavBarIsVisible="True" 
+             x:Name="ListaRegioni"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}"
+             Title="{Binding Title}" >
+    
+    <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
+
+    <StackLayout>
+        <SearchBar TextChanged="SearchBar_OnTextChanged"
+                   Placeholder="Cerca una regione..." 
+                   Style="{StaticResource SearchBar}"/>
+
+        <RefreshView x:DataType="viewmodels:RegioniViewModel" 
+            Command="{Binding LoadRegioniCommand}" 
+            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            Style="{StaticResource RegioniRefreshView}">
+            <CollectionView x:Name="RegioniCollectionView"
+                ItemsSource="{Binding ListaRegioni}"
+                SelectionMode="None"
+                VerticalScrollBarVisibility="Never" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="3" x:DataType="models:Regione" >
+                            <Frame Style="{StaticResource RegioniCard}">
+                                <Grid RowDefinitions="Auto,Auto"
+                                    ColumnDefinitions="Auto,Auto" >
+                                    <Image Grid.RowSpan="2" 
+                                        Source="{Binding Immagine}" 
+                                        Aspect="AspectFill"
+                                        HeightRequest="50" 
+                                        WidthRequest="60" />
+                                    <Label Grid.Column="1" 
+                                        Text="{Binding Nome}"
+                                        Style="{StaticResource LabelRegioniCard}" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegioniViewModel}}, Path=RegioneTapped}"
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="12">
+                        <Label HorizontalOptions="Center" Text="Nessuna regione da visualizzare" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+    
+</ContentPage>
