@@ -222,9 +222,9 @@ namespace GlutenFree.Services
                         new Provincia
                         {
                             Nome = "Frosinone",
-                            Falesie = new List<Ristorante>
+                            Falesie = new List<Restaurant>
                             {
-                                new Ristorante
+                                new Restaurant
                                 {
                                     Nome = "Configni",
                                     Indirizzo = "Falesia di Configni",

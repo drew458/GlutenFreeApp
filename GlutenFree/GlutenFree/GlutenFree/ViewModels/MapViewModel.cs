@@ -10,7 +10,7 @@ namespace GlutenFree.ViewModels
         //alcuni pezzi presi da
         // https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithMaps/WorkingWithMaps/WorkingWithMaps/ViewModels/PinItemsSourcePageViewModel.cs
 
-        private ObservableCollection<PinMappa> _luoghi;
+        private ObservableCollection<MapPin> _luoghi;
 
         public IEnumerable Luoghi => _luoghi;
 
@@ -25,8 +25,8 @@ namespace GlutenFree.ViewModels
         {
             IEnumerable<Regione> regioni = await DataStore.GetItemsAsync();
             IList<Provincia> province = new List<Provincia>();
-            IList<Ristorante> falesie = new List<Ristorante>();
-            _luoghi = new ObservableCollection<PinMappa>();
+            IList<Restaurant> falesie = new List<Restaurant>();
+            _luoghi = new ObservableCollection<MapPin>();
 
             foreach (Regione regione in regioni)
             {
@@ -35,11 +35,11 @@ namespace GlutenFree.ViewModels
                     province.Add(provincia);
                     if (provincia.Falesie != null)
                     {
-                        foreach (Ristorante falesia in provincia.Falesie)
+                        foreach (Restaurant falesia in provincia.Falesie)
                         {
                             falesie.Add(falesia);
 
-                            _luoghi.Add(new PinMappa(falesia.Indirizzo, falesia.Nome, falesia.Posizione));
+                            _luoghi.Add(new MapPin(falesia.Indirizzo, falesia.Nome, falesia.Posizione));
                         }
                     }
                 }
