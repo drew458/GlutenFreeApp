@@ -1,4 +1,5 @@
-﻿using GlutenFree.Models;
+﻿using GlutenFree.Shared.Models;
+using GlutenFree.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

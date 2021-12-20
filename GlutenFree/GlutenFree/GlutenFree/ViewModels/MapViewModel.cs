@@ -1,4 +1,5 @@
 ﻿using GlutenFree.Models;
+using GlutenFree.Shared.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

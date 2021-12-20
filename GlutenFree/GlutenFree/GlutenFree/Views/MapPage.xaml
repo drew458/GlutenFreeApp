@@ -24,7 +24,7 @@
                 IsShowingUser="True"
                 ItemsSource="{Binding Luoghi}" >
             <maps:Map.ItemTemplate>
-                <DataTemplate x:DataType="models:PinMappa" >
+                <DataTemplate x:DataType="models:MapPin" >
                     <maps:Pin Position="{Binding Posizione}"
                               Address="{Binding Indirizzo}"
                               Label="{Binding Descrizione}" />
