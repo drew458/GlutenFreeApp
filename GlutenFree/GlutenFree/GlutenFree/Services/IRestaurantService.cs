@@ -6,9 +6,9 @@ namespace GlutenFree.Services
 {
     public interface IRestaurantService
     {
-        Task AddRestaurant();
+        Task AddRestaurant(string name);
         Task<IEnumerable<Restaurant>> GetRestaurants();
         Task<Restaurant> GetRestaurant(int id);
-        Task DeleteRestaurant();
+        Task DeleteRestaurant(int id);
     }
 }

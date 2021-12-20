@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GlutenFree.ViewModels
 {
-    class FalesieViewModel
+    class RestaurantViewModel
     {
     }
 }
