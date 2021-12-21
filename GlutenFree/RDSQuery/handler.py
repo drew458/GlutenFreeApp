@@ -1,6 +1,7 @@
 import pymysql
+import logging
 import os
-import json
+import sys
  
 # 1. Install pymysql to local directory
 # pip install -t $PWD pymysql
@@ -11,6 +12,9 @@ import json
  
 # Lambda Permissions:
 # AWSLambdaVPCAccessExecutionRole
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
  
 #Configuration Values
 endpoint = os.environ["ENDPOINT"]
@@ -19,16 +23,36 @@ password = os.environ["PASSWORD"]
 database_name = os.environ["DBNAME"]
  
 #Connection
-connection = pymysql.connect(host=endpoint, user=username,
-	passwd=password, db=database_name)
+try:
+	connection = pymysql.connect(host=endpoint, user=username,
+		passwd=password, db=database_name)
+except pymysql.MySQLError as e:
+    logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
+    logger.error(e)
+    sys.exit()
+
+logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
+
  
 def lambda_handler(event, context):
+	"""
+    This function fetches content from MySQL RDS instance
+    """
+
+	item_count = 0
+
 	cursor = connection.cursor()
-	cursor.execute('SELECT * from Falesie')
-	rows = cursor.fetchall()
+	cursor.execute('SELECT * FROM falesiedb.Ristoranti')
+
+	for row in cursor:
+            item_count += 1
+            logger.info(row)
+            #print(row)
+
+	connection.commit();
+
 	return {
 		'statusCode': 200,
-		'body': json.dumps(rows)
 		}
  
 	for row in rows:
