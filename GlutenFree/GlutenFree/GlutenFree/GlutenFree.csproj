@@ -58,6 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2291" />  
@@ -69,6 +70,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\RestaurantPage.xaml.cs">
+      <DependentUpon>RestaurantPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ProvincePage.xaml.cs">
       <DependentUpon>ProvincePage.xaml</DependentUpon>
     </Compile>
@@ -78,7 +82,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\FalesiePage.xaml">
+    <EmbeddedResource Update="Views\RestaurantPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RegioniPage.xaml">
