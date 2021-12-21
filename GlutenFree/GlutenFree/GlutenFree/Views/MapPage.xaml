@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:models="clr-namespace:GlutenFree.Models"
+             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:DataType="viewmodels:MapViewModel"
+             x:Class="GlutenFree.Views.MapPage"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}"
+             Shell.NavBarIsVisible="False"
+             ios:Page.UseSafeArea="True" >
+
+    <StackLayout>
+        <SearchBar Placeholder="Cerca una falesia..."
+                   Style="{StaticResource SearchBar}" >
+            
+        </SearchBar>
+        <maps:Map x:Name="map" 
+                MapType="Hybrid" 
+                IsShowingUser="True"
+                ItemsSource="{Binding Luoghi}" >
+            <maps:Map.ItemTemplate>
+                <DataTemplate x:DataType="models:MapPin" >
+                    <maps:Pin Position="{Binding Posizione}"
+                              Address="{Binding Indirizzo}"
+                              Label="{Binding Descrizione}" />
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+    </StackLayout>
+</ContentPage>

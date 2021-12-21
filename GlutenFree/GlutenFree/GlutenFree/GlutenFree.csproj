@@ -1,0 +1,101 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\flag_abruzzo.png" />
+    <None Remove="Resources\Images\flag_basilicata.png" />
+    <None Remove="Resources\Images\flag_calabria.png" />
+    <None Remove="Resources\Images\flag_campania.png" />
+    <None Remove="Resources\Images\flag_emiliaromagna.png" />
+    <None Remove="Resources\Images\flag_friuli.png" />
+    <None Remove="Resources\Images\flag_lazio.png" />
+    <None Remove="Resources\Images\flag_liguria.png" />
+    <None Remove="Resources\Images\flag_lombardia.png" />
+    <None Remove="Resources\Images\flag_marche.png" />
+    <None Remove="Resources\Images\flag_molise.png" />
+    <None Remove="Resources\Images\flag_piemonte.png" />
+    <None Remove="Resources\Images\flag_puglia.png" />
+    <None Remove="Resources\Images\flag_sardegna.png" />
+    <None Remove="Resources\Images\flag_sicilia.png" />
+    <None Remove="Resources\Images\flag_toscana.png" />
+    <None Remove="Resources\Images\flag_trentino.png" />
+    <None Remove="Resources\Images\flag_umbria.png" />
+    <None Remove="Resources\Images\flag_valleaosta.png" />
+    <None Remove="Resources\Images\flag_veneto.png" />
+    <None Remove="Resources\Fonts\fa-brands-400.otf" />
+    <None Remove="Resources\Fonts\fa-regular-400.otf" />
+    <None Remove="Resources\Fonts\fa-solid-900.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\flag_abruzzo.png" />
+    <EmbeddedResource Include="Resources\Images\flag_basilicata.png" />
+    <EmbeddedResource Include="Resources\Images\flag_calabria.png" />
+    <EmbeddedResource Include="Resources\Images\flag_campania.png" />
+    <EmbeddedResource Include="Resources\Images\flag_emiliaromagna.png" />
+    <EmbeddedResource Include="Resources\Images\flag_friuli.png" />
+    <EmbeddedResource Include="Resources\Images\flag_lazio.png" />
+    <EmbeddedResource Include="Resources\Images\flag_liguria.png" />
+    <EmbeddedResource Include="Resources\Images\flag_lombardia.png" />
+    <EmbeddedResource Include="Resources\Images\flag_marche.png" />
+    <EmbeddedResource Include="Resources\Images\flag_molise.png" />
+    <EmbeddedResource Include="Resources\Images\flag_piemonte.png" />
+    <EmbeddedResource Include="Resources\Images\flag_puglia.png" />
+    <EmbeddedResource Include="Resources\Images\flag_sardegna.png" />
+    <EmbeddedResource Include="Resources\Images\flag_sicilia.png" />
+    <EmbeddedResource Include="Resources\Images\flag_toscana.png" />
+    <EmbeddedResource Include="Resources\Images\flag_trentino.png" />
+    <EmbeddedResource Include="Resources\Images\flag_umbria.png" />
+    <EmbeddedResource Include="Resources\Images\flag_valleaosta.png" />
+    <EmbeddedResource Include="Resources\Images\flag_veneto.png" />
+    <EmbeddedResource Include="Resources\Fonts\fa-brands-400.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-regular-400.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-solid-900.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />  
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2291" />  
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GlutenFree.Shared\GlutenFree.Shared\GlutenFree.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\RestaurantPage.xaml.cs">
+      <DependentUpon>RestaurantPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProvincePage.xaml.cs">
+      <DependentUpon>ProvincePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegioniPage.xaml.cs">
+      <DependentUpon>RegioniPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\RestaurantPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RegioniPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProvincePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
