@@ -48,42 +48,46 @@ def lambda_handler(event, context):
 	
 	print(event)
 
+	# getRestaurant
 	if event['rawPath'] == GET_RAW_PATH:
-		# getRestaurant
 		print("Starting request for getRestaurant...")
 
 		cursor = connection.cursor()
 		
 		try:
+			# Get restaurant with specific ID
 			restaurantId = event['queryStringParameters']['restaurantId']
 			print("param restaurantId=" + restaurantId)
 			cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' +restaurantId)
-			
+			result = cursor.fetchall()
+
 			item_count = 0
 			for row in cursor:
 				item_count += 1
 				logger.info(row)
 				# print(row)
 	
-			connection.commit();
 			return {
 				'statusCode': 200,
-				'restaurantId': restaurantId
+				'restaurantId': restaurantId,
+				'body': json.dumps(result)
 			}
 			
 		except KeyError:
+			# Get all restaurants
 			logger.info("No query string parameter 'restaurantId', fetching all the db...")
 			cursor.execute('SELECT * FROM falesiedb.Ristoranti')
-			
+			result = cursor.fetchall()
+
 			item_count = 0
 			for row in cursor:
 				item_count += 1
 				logger.info(row)
 				# print(row)
-			
-			connection.commit();
+						
 			return {
 				'statusCode': 200,
+				'body': json.dumps(result)
 			}
 
 	elif event['rawPath'] == POST_RAW_PATH:
@@ -107,10 +111,12 @@ def lambda_handler(event, context):
 
 		cursor = connection.cursor()
 		cursor.execute(command)
+		connection.commit()
 
 		return {
 			"statusCode": 200,
-			"restaurantId": restaurantId}
+			"restaurantId": restaurantId
+		}
 
 	elif event['rawPath'] == DELETE_RAW_PATH:
 		# createRestaurant
