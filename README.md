@@ -8,5 +8,5 @@ GlutenFree
 ## Descrizione
 Work in progress...
 
-## Preview
-(/resources/backend_overview.jpeg)
+## Backend Architecture
+![Backend Architecture](/resources/backend_overview.jpeg)
