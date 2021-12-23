@@ -1,5 +1,7 @@
 ﻿using GlutenFree.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GlutenFree.WebApi.Controllers
 {
@@ -11,6 +13,7 @@ namespace GlutenFree.WebApi.Controllers
         {
 
             public static List<Restaurant> Restaurants { get; } = new List<Restaurant>();
+
             // GET: api/Restaurant
             [HttpGet]
             public IEnumerable<Restaurant> Get()
@@ -36,7 +39,7 @@ namespace GlutenFree.WebApi.Controllers
             [HttpPut("{id}")]
             public void Put(int id, [FromBody] Restaurant value)
             {
-                var Restaurant = Restaurants.FirstOrDefault(c => c.Id == id);
+                var Restaurant = Restaurants.FirstOrDefault(r => r.Id == id);
                 if (Restaurant == null)
                     return;
 
@@ -47,7 +50,7 @@ namespace GlutenFree.WebApi.Controllers
             [HttpDelete("{id}")]
             public void Delete(int id)
             {
-                var Restaurant = Restaurants.FirstOrDefault(c => c.Id == id);
+                var Restaurant = Restaurants.FirstOrDefault(r => r.Id == id);
                 if (Restaurant == null)
                     return;
 

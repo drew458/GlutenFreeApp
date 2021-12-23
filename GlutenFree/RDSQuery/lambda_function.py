@@ -1,3 +1,4 @@
+import GetRestaurants
 import pymysql
 import logging
 import os
@@ -20,6 +21,9 @@ GET_RAW_PATH = "/getRestaurant"
 POST_RAW_PATH = "/createRestaurant"
 DELETE_RAW_PATH = "/deleteRestaurant"
 
+RESTAURANT_ID = "restaurantId"
+
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -29,98 +33,77 @@ username = os.environ["USERNAME"]
 password = os.environ["PASSWORD"]
 database_name = os.environ["DBNAME"]
 
-# Connection
+# Connection to db
 try:
-	connection = pymysql.connect(host=endpoint, user=username,
-								 passwd=password, db=database_name)
+    connection = pymysql.connect(host=endpoint, user=username,
+                                 passwd=password, db=database_name)
 except pymysql.MySQLError as e:
-	logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
-	logger.error(e)
-	sys.exit()
+    logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
+    logger.error(e)
+    sys.exit()
 
 logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 
 
 def lambda_handler(event, context):
-	"""
-	This function fetches content from MySQL RDS instance
-	"""
-	
-	print(event)
+    """
+    This function fetches content from MySQL RDS instance
+    """
 
-	# getRestaurant
-	if event['rawPath'] == GET_RAW_PATH:
-		print("Starting request for getRestaurant...")
+    print(event)
 
-		cursor = connection.cursor()
-		
-		try:
-			# Get restaurant with specific ID
-			restaurantId = event['queryStringParameters']['restaurantId']
-			print("param restaurantId=" + restaurantId)
-			cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' +restaurantId)
-			result = cursor.fetchall()
+    # /getRestaurant
+    if event['rawPath'] == GET_RAW_PATH:
+        logger.info("Starting request for getRestaurant...")
 
-			item_count = 0
-			for row in cursor:
-				item_count += 1
-				logger.info(row)
-				# print(row)
-	
-			return {
-				'statusCode': 200,
-				'restaurantId': restaurantId,
-				'body': json.dumps(result)
-			}
-			
-		except KeyError:
-			# Get all restaurants
-			logger.info("No query string parameter 'restaurantId', fetching all the db...")
-			cursor.execute('SELECT * FROM falesiedb.Ristoranti')
-			result = cursor.fetchall()
+        cursor = connection.cursor()
 
-			item_count = 0
-			for row in cursor:
-				item_count += 1
-				logger.info(row)
-				# print(row)
-						
-			return {
-				'statusCode': 200,
-				'body': json.dumps(result)
-			}
+        try:
+            event['queryStringParameters']
+            logger.info("Parameters found!")
 
-	elif event['rawPath'] == POST_RAW_PATH:
-		# createRestaurant
-		print("Starting request for createRestaurant...")
+            if RESTAURANT_ID in event['queryStringParameters']:
+                # Get restaurant with specific ID
+                return GetRestaurants.getRestaurantWithId(event, cursor, logger)
+            else:
+                raise KeyError("Wrong query string parameter!")
 
-		decodedBody = json.loads(event['body'])
-		name = decodedBody['name']
-		address = decodedBody['address']
-		city = decodedBody['city']
-		province = decodedBody['province']
-		region = decodedBody['region']
-		latitude = decodedBody['latitude']
-		longitude = decodedBody['longitude']
-		dishType = decodedBody['dishType']
-		specialMenu = decodedBody['specialMenu']
+        except KeyError:
+            # Get all restaurants
+            logger.info("No parameters! Fetching all the db...")
+            return GetRestaurants.getAllRestaurants(cursor, logger)
 
-		restaurantId = random.randint(10, 100000000)
-		command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
-		print(command)
+    # /createRestaurant
+    elif event['rawPath'] == POST_RAW_PATH:
+        print("Starting request for createRestaurant...")
 
-		cursor = connection.cursor()
-		cursor.execute(command)
-		connection.commit()
+        decodedBody = json.loads(event['body'])
+        name = decodedBody['name']
+        address = decodedBody['address']
+        city = decodedBody['city']
+        province = decodedBody['province']
+        region = decodedBody['region']
+        latitude = decodedBody['latitude']
+        longitude = decodedBody['longitude']
+        dishType = decodedBody['dishType']
+        specialMenu = decodedBody['specialMenu']
 
-		return {
-			"statusCode": 200,
-			"restaurantId": restaurantId
-		}
+        restaurantId = random.randint(10, 100000000)
+        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
+        print(command)
 
-	elif event['rawPath'] == DELETE_RAW_PATH:
-		# createRestaurant
-		print("Starting request for deleteRestaurant...")
+        cursor = connection.cursor()
+        cursor.getAllRestaurants(command)
+        connection.commit()
 
-	else:
-		return
+        return {
+            "statusCode": 200,
+            "restaurantId": restaurantId
+        }
+
+    # /createRestaurant
+    elif event['rawPath'] == DELETE_RAW_PATH:
+        print("Starting request for deleteRestaurant...")
+
+    else:
+        return

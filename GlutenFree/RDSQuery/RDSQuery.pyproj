@@ -22,7 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="handler.py" />
+    <Compile Include="GetAllRestaurants.py" />
+    <Compile Include="lambda_function.py" />
     <Compile Include="pymysql\charset.py" />
     <Compile Include="pymysql\connections.py" />
     <Compile Include="pymysql\constants\CLIENT.py" />
