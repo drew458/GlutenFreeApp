@@ -1,3 +1,4 @@
+import DeleteRestaurants
 import GetRestaurants
 import PostRestaurants
 import pymysql
@@ -102,6 +103,10 @@ def lambda_handler(event, context):
     # /createRestaurant
     elif event['rawPath'] == DELETE_RAW_PATH:
         print("Starting request for deleteRestaurant...")
+
+        cursor = connection.cursor()
+
+        return DeleteRestaurants.deleteRestaurant(event, connection, logger)
 
     else:
         return
