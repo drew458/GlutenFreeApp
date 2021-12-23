@@ -22,7 +22,13 @@ POST_RAW_PATH = "/createRestaurant"
 DELETE_RAW_PATH = "/deleteRestaurant"
 
 RESTAURANT_ID = "restaurantId"
-
+NAME = "name"
+CITY = "city"
+PROVINCE = "province"
+REGION = "region"
+LATITUDE = "latitude"
+LONGITUDE = "longitude"
+DISHTYPE = "dishType"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -65,8 +71,21 @@ def lambda_handler(event, context):
             if RESTAURANT_ID in event['queryStringParameters']:
                 # Get restaurant with specific ID
                 return GetRestaurants.getRestaurantWithId(event, cursor, logger)
+            elif CITY in event['queryStringParameters']:
+                # Get restaurants in a city
+                return GetRestaurants.getRestaurantWithCity(event, cursor, logger)
+            elif PROVINCE in event['queryStringParameters']:
+                # Get restaurants in a province
+                return GetRestaurants.getRestaurantWithProvince(event, cursor, logger)
+            elif REGION in event['queryStringParameters']:
+                # Get restaurants in a region
+                return GetRestaurants.getRestaurantWithRegion(event, cursor, logger)
+            elif DISHTYPE in event['queryStringParameters']:
+                # Get restaurants with a specific dish type
+                return GetRestaurants.getRestaurantWithDishType(event, cursor, logger)
             else:
-                raise KeyError("Wrong query string parameter!")
+                logger.error("ERROR! Wrong query parameters")
+                sys.exit()
 
         except KeyError:
             # Get all restaurants
@@ -89,7 +108,7 @@ def lambda_handler(event, context):
         specialMenu = decodedBody['specialMenu']
 
         restaurantId = random.randint(10, 100000000)
-        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
+        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + str(restaurantId) + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
         print(command)
 
         cursor = connection.cursor()
