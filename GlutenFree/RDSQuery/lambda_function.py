@@ -93,7 +93,7 @@ def lambda_handler(event, context):
         print(command)
 
         cursor = connection.cursor()
-        cursor.getAllRestaurants(command)
+        cursor.execute(command)
         connection.commit()
 
         return {
