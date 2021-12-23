@@ -7,6 +7,7 @@ def getAllRestaurants(cursor, logger):
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
 
@@ -23,6 +24,7 @@ def getRestaurantWithId(event, cursor, logger):
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
 
@@ -40,6 +42,7 @@ def getRestaurantWithCity(event, cursor, logger):
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
 
@@ -55,6 +58,7 @@ def getRestaurantWithProvince(event, cursor, logger):
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
 
@@ -70,6 +74,7 @@ def getRestaurantWithRegion(event, cursor, logger):
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
 
@@ -80,10 +85,11 @@ def getRestaurantWithDishType(event, cursor, logger):
     logger.info("Parameter dishType=" + dishType)
 
     query = 'SELECT * FROM falesiedb.Ristoranti WHERE TipoCucina=%s'
-    cursor.execute(query, (dishType, ))
+    cursor.execute(query, (dishType,))
     result = cursor.fetchall()
 
     return {
         'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }

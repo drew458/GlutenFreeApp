@@ -1,4 +1,5 @@
 import GetRestaurants
+import PostRestaurants
 import pymysql
 import logging
 import os
@@ -96,29 +97,7 @@ def lambda_handler(event, context):
     elif event['rawPath'] == POST_RAW_PATH:
         print("Starting request for createRestaurant...")
 
-        decodedBody = json.loads(event['body'])
-        name = decodedBody['name']
-        address = decodedBody['address']
-        city = decodedBody['city']
-        province = decodedBody['province']
-        region = decodedBody['region']
-        latitude = decodedBody['latitude']
-        longitude = decodedBody['longitude']
-        dishType = decodedBody['dishType']
-        specialMenu = decodedBody['specialMenu']
-
-        restaurantId = random.randint(10, 100000000)
-        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + str(restaurantId) + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
-        print(command)
-
-        cursor = connection.cursor()
-        cursor.execute(command)
-        connection.commit()
-
-        return {
-            "statusCode": 200,
-            "restaurantId": restaurantId
-        }
+        return PostRestaurants.postRestaurant(event, connection, logger)
 
     # /createRestaurant
     elif event['rawPath'] == DELETE_RAW_PATH:
