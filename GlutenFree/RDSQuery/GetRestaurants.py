@@ -93,3 +93,19 @@ def getRestaurantWithDishType(event, cursor, logger):
         "headers": {"Content-Type": "application/json"},
         'body': json.dumps(result)
     }
+
+
+def getRestaurantWithSpecialMenu(event, cursor, logger):
+    specialMenu = event['queryStringParameters']['specialMenu']
+
+    logger.info("Parameter specialMenu=" + specialMenu)
+
+    query = 'SELECT * FROM falesiedb.Ristoranti WHERE MenuAParte=%s'
+    cursor.execute(query, (specialMenu,))
+    result = cursor.fetchall()
+
+    return {
+        'statusCode': 200,
+        "headers": {"Content-Type": "application/json"},
+        'body': json.dumps(result)
+    }

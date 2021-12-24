@@ -31,6 +31,7 @@ REGION = "region"
 LATITUDE = "latitude"
 LONGITUDE = "longitude"
 DISHTYPE = "dishType"
+SPECIALMENU = "specialMenu"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -85,6 +86,9 @@ def lambda_handler(event, context):
             elif DISHTYPE in event['queryStringParameters']:
                 # Get restaurants with a specific dish type
                 return GetRestaurants.getRestaurantWithDishType(event, cursor, logger)
+            elif SPECIALMENU in event['queryStringParameters']:
+                # Get restaurants with a special menu
+                return GetRestaurants.getRestaurantWithSpecialMenu(event, cursor, logger)
             else:
                 logger.error("ERROR! Wrong query parameters")
                 sys.exit()
