@@ -55,6 +55,10 @@ namespace GlutenFree.Services
             Uri uri = new Uri(Constants.HTTPUrlCreate);
             try
             {
+                /* Add parameter Restaurant restaurant in the method parameters before using
+                 * string json = JsonSerializer.Serialize<Restaurant>(restaurant, serializerOptions);
+                 * StringContent content = new StringContent(json, Encoding.UTF8, "application/json"); */
+
                 HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri)
                 {
                     Content = JsonContent.Create(new
@@ -75,7 +79,11 @@ namespace GlutenFree.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(@"\tRistorante eliminato.");
+                    Debug.WriteLine(@"\tRistorante aggiunto.");
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
             catch (Exception ex)
@@ -97,6 +105,10 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine(@"\tRistorante eliminato.");
+                }
+                else
+                {
+                    throw new Exception();
                 }
 
             }
