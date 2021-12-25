@@ -145,7 +145,7 @@
 
                     <Label Margin="0,12,0,0"
                         Style="{DynamicResource LabelMediumCardTitle}"
-                        Text="Tema" />
+                        Text="{x:Static resources:AppResources.LabelThemeSettingsPage}" />
                     <Frame Style="{DynamicResource RegioniCard}">
                         <Grid ColumnDefinitions="*,Auto,Auto,Auto,*"
                             ColumnSpacing="10"
@@ -160,7 +160,7 @@
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                         <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSettings}, Color=#323130}" />
                                         <Label FontSize="Small"
-                                            Text="Sistema"
+                                            Text="{x:Static resources:AppResources.LabelSystemSettingsPage}"
                                             TextColor="#323130" />
                                     </StackLayout>
                                 </RadioButton.Content>
@@ -173,7 +173,7 @@
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                         <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSun}, Color=#323130}" />
                                         <Label FontSize="Small"
-                                            Text="Chiaro"
+                                            Text="{x:Static resources:AppResources.LabelLightSettingsPage}"
                                             TextColor="#323130" />
                                     </StackLayout>
                                 </RadioButton.Content>
@@ -186,7 +186,7 @@
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                         <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconMoon}, Color=#323130}" />
                                         <Label FontSize="Small"
-                                            Text="Scuro"
+                                            Text="{x:Static resources:AppResources.LabelDarkSettingsPage}"
                                             TextColor="#323130" />
                                     </StackLayout>
                                 </RadioButton.Content>

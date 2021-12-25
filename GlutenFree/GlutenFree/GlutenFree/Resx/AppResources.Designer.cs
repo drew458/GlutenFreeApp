@@ -61,6 +61,42 @@ namespace GlutenFree.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        internal static string LabelDarkSettingsPage {
+            get {
+                return ResourceManager.GetString("LabelDarkSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string LabelLightSettingsPage {
+            get {
+                return ResourceManager.GetString("LabelLightSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        internal static string LabelSystemSettingsPage {
+            get {
+                return ResourceManager.GetString("LabelSystemSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string LabelThemeSettingsPage {
+            get {
+                return ResourceManager.GetString("LabelThemeSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search for a restaurant....
         /// </summary>
         internal static string PlaceholderMap {

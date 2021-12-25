@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LabelDarkSettingsPage" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="LabelLightSettingsPage" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="LabelSystemSettingsPage" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="LabelThemeSettingsPage" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="PlaceholderMap" xml:space="preserve">
     <value>Search for a restaurant...</value>
   </data>
