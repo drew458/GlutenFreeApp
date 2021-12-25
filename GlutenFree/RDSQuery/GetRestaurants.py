@@ -34,22 +34,21 @@ def getRestaurantWithCity(event, cursor, logger):
 
     try:
         dishType = event['queryStringParameters']['dishType']
-        logger.info("Parameters city=" + city + "and dishType=" + dishType)
-        
         try:
             specialMenu = event['queryStringParameters']['specialMenu']
-            logger.info("Parameters city=" + city + "and dishType=" + dishType + "and specialMenu" + specialMenu)
+            logger.info("Parameters city=" + city + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
             query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + \
                     '" AND MenuAParte="' + specialMenu + '"'
         except KeyError:
+            logger.info("Parameters city=" + city + " and dishType=" + dishType)
             query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + '"'
 
     except KeyError:
         logger.info("Parameter city=" + city)
-
         query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '"'
 
+    print(query)
     cursor.execute(query)
     result = cursor.fetchall()
 
@@ -65,11 +64,27 @@ def getRestaurantWithCity(event, cursor, logger):
 def getRestaurantWithProvince(event, cursor, logger):
     province = event['queryStringParameters']['province']
 
-    logger.info("Parameter province=" + province)
+    try:
+        dishType = event['queryStringParameters']['dishType']
+        try:
+            specialMenu = event['queryStringParameters']['specialMenu']
+            logger.info("Parameters province=" + province + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia=%s'
-    cursor.execute(query, (province,))
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + \
+                    '" AND MenuAParte="' + specialMenu + '"'
+        except KeyError:
+            logger.info("Parameters province=" + province + " and dishType=" + dishType)
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + '"'
+
+    except KeyError:
+        logger.info("Parameter province=" + province)
+        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '"'
+
+    print(query)
+    cursor.execute(query)
     result = cursor.fetchall()
+
+    logger.info(result)
 
     return {
         'statusCode': 200,
@@ -81,11 +96,27 @@ def getRestaurantWithProvince(event, cursor, logger):
 def getRestaurantWithRegion(event, cursor, logger):
     region = event['queryStringParameters']['region']
 
-    logger.info("Parameter region=" + region)
+    try:
+        dishType = event['queryStringParameters']['dishType']
+        try:
+            specialMenu = event['queryStringParameters']['specialMenu']
+            logger.info("Parameters region=" + region + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione=%s'
-    cursor.execute(query, (region,))
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + \
+                    '" AND MenuAParte="' + specialMenu + '"'
+        except KeyError:
+            logger.info("Parameters region=" + region + " and dishType=" + dishType)
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + '"'
+
+    except KeyError:
+        logger.info("Parameter region=" + region)
+        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '"'
+
+    print(query)
+    cursor.execute(query)
     result = cursor.fetchall()
+
+    logger.info(result)
 
     return {
         'statusCode': 200,
