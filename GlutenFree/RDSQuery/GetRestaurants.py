@@ -32,9 +32,24 @@ def getRestaurantWithId(event, cursor, logger):
 def getRestaurantWithCity(event, cursor, logger):
     city = event['queryStringParameters']['city']
 
-    logger.info("Parameter city=" + city)
+    try:
+        dishType = event['queryStringParameters']['dishType']
+        logger.info("Parameters city=" + city + "and dishType=" + dishType)
+        
+        try:
+            specialMenu = event['queryStringParameters']['specialMenu']
+            logger.info("Parameters city=" + city + "and dishType=" + dishType + "and specialMenu" + specialMenu)
 
-    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '"'
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + \
+                    '" AND MenuAParte="' + specialMenu + '"'
+        except KeyError:
+            query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + '"'
+
+    except KeyError:
+        logger.info("Parameter city=" + city)
+
+        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '"'
+
     cursor.execute(query)
     result = cursor.fetchall()
 

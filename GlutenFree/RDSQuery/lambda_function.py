@@ -5,9 +5,6 @@ import pymysql
 import logging
 import os
 import sys
-import json
-import uuid
-import random
 
 # 1. Install pymysql to local directory
 # pip install -t $PWD pymysql
