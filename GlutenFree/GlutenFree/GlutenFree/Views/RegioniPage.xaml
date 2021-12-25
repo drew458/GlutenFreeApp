@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:GlutenFree.Models"
              xmlns:views="clr-namespace:GlutenFree.Views" 
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels" 
+             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFree.Resx"
              x:DataType="viewmodels:RegioniViewModel"
              x:Class="GlutenFree.Views.RegioniPage"
              Shell.NavBarIsVisible="True" 
@@ -17,7 +18,7 @@
 
     <StackLayout>
         <SearchBar TextChanged="SearchBar_OnTextChanged"
-                   Placeholder="Cerca una regione..." 
+                   Placeholder="{x:Static resources:AppResources.PlaceholderRegions}" 
                    Style="{StaticResource SearchBar}"/>
 
         <RefreshView x:DataType="viewmodels:RegioniViewModel" 
@@ -56,7 +57,7 @@
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
                     <StackLayout Padding="12">
-                        <Label HorizontalOptions="Center" Text="Nessuna regione da visualizzare" />
+                        <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.RegionsNotLoading}" />
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>

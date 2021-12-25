@@ -1,4 +1,5 @@
 ﻿using GlutenFree.Models;
+using GlutenFree.Resx;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -42,7 +43,7 @@ namespace GlutenFree.ViewModels
 
         public ProvinceViewModel()
         {
-            Title = "Province";
+            Title = AppResources.StringProvinces;
         }
 
         public async void LoadProvince(string nomeRegione)

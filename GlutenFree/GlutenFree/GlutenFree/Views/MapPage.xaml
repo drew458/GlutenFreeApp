@@ -4,6 +4,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:models="clr-namespace:GlutenFree.Models"
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFree.Resx"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:DataType="viewmodels:MapViewModel"
              x:Class="GlutenFree.Views.MapPage"
@@ -15,7 +16,7 @@
              ios:Page.UseSafeArea="True" >
 
     <StackLayout>
-        <SearchBar Placeholder="Cerca una falesia..."
+        <SearchBar Placeholder="{x:Static resources:AppResources.PlaceholderMap}"
                    Style="{StaticResource SearchBar}" >
             
         </SearchBar>

@@ -1,4 +1,5 @@
 ﻿using GlutenFree.Models;
+using GlutenFree.Resx;
 using GlutenFree.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -22,7 +23,7 @@ namespace GlutenFree.ViewModels
 
         public RegioniViewModel()
         {
-            Title = "Regioni";
+            Title = AppResources.StringRegions;
             ListaRegioni = new ObservableCollection<Regione>();
             
             LoadRegioniCommand = new Command(async () => await ExecuteLoadRegioniCommand());

@@ -1,4 +1,5 @@
 ﻿using GlutenFree.Models;
+using GlutenFree.Resx;
 using GlutenFree.Shared.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace GlutenFree.ViewModels
 
         public MapViewModel()
         {
-            Title = "Falesie";
+            Title = AppResources.StringMap;
             LoadPins();
         }
 

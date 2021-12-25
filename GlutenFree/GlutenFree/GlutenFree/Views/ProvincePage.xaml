@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GlutenFree.Views.ProvincePage"
              xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:views="clr-namespace:GlutenFree.Views" 
+             xmlns:views="clr-namespace:GlutenFree.Views"
+             xmlns:resources="clr-namespace:GlutenFree.Resx"
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
              x:Name="ListaProvince"
              BackgroundColor="{AppThemeBinding 
@@ -14,12 +15,11 @@
 
     <StackLayout Padding="10,0,10,0" >
         <SearchBar TextChanged="SearchBar_OnTextChanged"
-                   Placeholder="Cerca una provincia..."
+                   Placeholder="{x:Static resources:AppResources.PlaceholderProvinces}"
                    Style="{StaticResource SearchBar}" />
 
         <CollectionView x:Name="ProvinceCollectionView" x:DataType="viewmodels:ProvinceViewModel"
-                ItemsSource="{Binding ListaProvince}"
-                EmptyView="Impossibile caricare le province" >
+                ItemsSource="{Binding ListaProvince}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="5" x:DataType="models:Provincia">
@@ -34,6 +34,11 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.ProvincesNotLoading}" />
+                </StackLayout>
+            </CollectionView.EmptyView>
         </CollectionView>
     </StackLayout>
     

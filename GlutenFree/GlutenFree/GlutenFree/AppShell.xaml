@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:GlutenFree.Views"
+       xmlns:resources="clr-namespace:GlutenFree.Resx"
        x:Name="shell"
        x:Class="GlutenFree.AppShell">
 
@@ -30,7 +31,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Mappa"
+        <ShellContent Title="{x:Static resources:AppResources.StringMap}"
                       Route="Mappa" 
                       ContentTemplate="{DataTemplate views:MapPage}" >
             <ShellContent.Icon>
@@ -38,8 +39,8 @@
                                  Glyph="{StaticResource IconMap}" />
             </ShellContent.Icon>
         </ShellContent>
-        
-        <ShellContent Title="Regioni" 
+
+        <ShellContent Title="{x:Static resources:AppResources.StringRegions}" 
                       Route="Regioni" 
                       ContentTemplate="{DataTemplate views:RegioniPage}" >
             <ShellContent.Icon>
@@ -48,7 +49,7 @@
             </ShellContent.Icon>
         </ShellContent>
 
-        <ShellContent Title="Impostazioni" 
+        <ShellContent Title="{x:Static resources:AppResources.StringSettings}" 
                       Route="Impostazioni" 
                       ContentTemplate="{DataTemplate views:SettingsPage}" >
             <ShellContent.Icon>
