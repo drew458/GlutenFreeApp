@@ -1,10 +1,11 @@
 import json
 import random
-
-import pymysql
 import logging
 import os
 import sys
+
+import pymysql
+from pymysql.constants import CLIENT
 
 # 1. Install pymysql to local directory
 # pip install -t $PWD pymysql
@@ -42,7 +43,7 @@ database_name = os.environ["DBNAME"]
 # Connection to db
 try:
     connection = pymysql.connect(host=endpoint, user=username,
-                                 passwd=password, db=database_name)
+                                 passwd=password, db=database_name, client_flag=CLIENT.MULTI_STATEMENTS)
 except pymysql.MySQLError as e:
     logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
     logger.error(e)
@@ -243,16 +244,67 @@ def lambda_handler(event, context):
         region = decodedBody['region']
         latitude = decodedBody['latitude']
         longitude = decodedBody['longitude']
-        dishType = decodedBody['dishType']
         specialMenu = decodedBody['specialMenu']
 
-        restaurantId = random.randint(10, 100000000)
-        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + str(
-            restaurantId) + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
-        print(command)
+        print(decodedBody)
 
+        randomNumber = random.randint(10, 9999999)
+
+        restaurantId = str(randomNumber + 1)
+        imageFKId = str(randomNumber + 2)
+        imageId = str(randomNumber + 3)
+        tipoCucinaFKId = str(randomNumber + 4)
+        tipoCucinaId = str(randomNumber + 5)
+
+        try:
+            tertiaryDishType = decodedBody['tertiaryDishType']
+
+            try:
+                secondaryDishType = decodedBody['secondaryDishType']
+
+                try:
+                    primaryDishType = decodedBody['primaryDishType']
+                    logger.info("All tertiaryDishType, secondaryDishType and primaryDishType found")
+
+                    query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                except KeyError:
+                    raise KeyError
+            except KeyError:
+                raise KeyError
+
+        except KeyError:
+            try:
+                secondaryDishType = decodedBody['secondaryDishType']
+
+                try:
+                    primaryDishType = decodedBody['primaryDishType']
+                    logger.info("Both secondaryDishType and primaryDishType found")
+
+                    query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                                                                      "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                except KeyError:
+                    raise KeyError
+
+            except KeyError:
+                try:
+                    primaryDishType = decodedBody['primaryDishType']
+                    logger.info("Only primaryDishType found")
+
+                    query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                except KeyError:
+                    logger.info("No dishType inserted!")
+
+        print(query)
         cursor = connection.cursor()
-        cursor.execute(command)
+        cursor.execute(query)
         connection.commit()
 
         return {
