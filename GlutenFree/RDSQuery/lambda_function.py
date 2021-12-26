@@ -74,15 +74,6 @@ def lambda_handler(event, context):
                 logger.info("Parameter restaurantId=" + restaurantId)
 
                 cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
-                result = cursor.fetchall()
-
-                logger.info(result)
-
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
 
             elif CITY in event['queryStringParameters']:
                 # Get restaurants in a city
@@ -107,15 +98,6 @@ def lambda_handler(event, context):
 
                 print(query)
                 cursor.execute(query)
-                result = cursor.fetchall()
-
-                logger.info(result)
-
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
 
             elif PROVINCE in event['queryStringParameters']:
                 # Get restaurants in a province
@@ -140,15 +122,6 @@ def lambda_handler(event, context):
 
                 print(query)
                 cursor.execute(query)
-                result = cursor.fetchall()
-
-                logger.info(result)
-
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
 
             elif REGION in event['queryStringParameters']:
                 # Get restaurants in a region
@@ -173,15 +146,6 @@ def lambda_handler(event, context):
 
                 print(query)
                 cursor.execute(query)
-                result = cursor.fetchall()
-
-                logger.info(result)
-
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
 
             elif DISHTYPE in event['queryStringParameters']:
                 # Get restaurants with a specific dish type
@@ -193,12 +157,6 @@ def lambda_handler(event, context):
                 cursor.execute(query, (dishType,))
                 result = cursor.fetchall()
 
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
-
             elif SPECIALMENU in event['queryStringParameters']:
                 # Get restaurants with a special menu
                 specialMenu = event['queryStringParameters']['specialMenu']
@@ -207,13 +165,6 @@ def lambda_handler(event, context):
 
                 query = 'SELECT * FROM falesiedb.Ristoranti WHERE MenuAParte=%s'
                 cursor.execute(query, (specialMenu,))
-                result = cursor.fetchall()
-
-                return {
-                    'statusCode': 200,
-                    "headers": {"Content-Type": "application/json"},
-                    'body': json.dumps(result)
-                }
 
             else:
                 logger.error("ERROR! Wrong query parameters")
@@ -224,13 +175,14 @@ def lambda_handler(event, context):
             logger.info("No parameters! Fetching all the db...")
 
             cursor.execute('SELECT * FROM falesiedb.Ristoranti')
-            result = cursor.fetchall()
 
-            return {
-                'statusCode': 200,
-                "headers": {"Content-Type": "application/json"},
-                'body': json.dumps(result)
-            }
+        result = cursor.fetchall()
+        logger.info(result)
+        return {
+            'statusCode': 200,
+            "headers": {"Content-Type": "application/json"},
+            'body': json.dumps(result)
+        }
 
     # /createRestaurant
     elif event['rawPath'] == POST_RAW_PATH:
@@ -307,9 +259,14 @@ def lambda_handler(event, context):
         cursor.execute(query)
         connection.commit()
 
+        response = {
+            "restaurantId": restaurantId
+        }
+
         return {
             "statusCode": 200,
-            "body": {'restaurantId:': restaurantId}
+            "headers": {"Content-Type": "application/json"},
+            "body": json.dumps(response)
         }
 
     # /deleteRestaurant
