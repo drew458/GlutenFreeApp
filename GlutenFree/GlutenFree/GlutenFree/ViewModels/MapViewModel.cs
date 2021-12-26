@@ -27,7 +27,7 @@ namespace GlutenFree.ViewModels
         {
             IEnumerable<Regione> regioni = await DataStore.GetItemsAsync();
             IList<Provincia> province = new List<Provincia>();
-            IList<Restaurant> falesie = new List<Restaurant>();
+            IList<Restaurant> ristoranti = new List<Restaurant>();
             _luoghi = new ObservableCollection<MapPin>();
 
             foreach (Regione regione in regioni)
@@ -35,13 +35,13 @@ namespace GlutenFree.ViewModels
                 foreach (Provincia provincia in regione.Province)
                 {
                     province.Add(provincia);
-                    if (provincia.Falesie != null)
+                    if (provincia.Ristoranti != null)
                     {
-                        foreach (Restaurant falesia in provincia.Falesie)
+                        foreach (Restaurant ristorante in provincia.Ristoranti)
                         {
-                            falesie.Add(falesia);
+                            ristoranti.Add(ristorante);
 
-                            _luoghi.Add(new MapPin(falesia.Indirizzo, falesia.Nome, falesia.Posizione));
+                            _luoghi.Add(new MapPin(ristorante.Indirizzo, ristorante.Nome, ristorante.Posizione));
                         }
                     }
                 }

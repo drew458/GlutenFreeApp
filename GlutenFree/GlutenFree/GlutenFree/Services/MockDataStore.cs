@@ -223,15 +223,12 @@ namespace GlutenFree.Services
                         new Provincia
                         {
                             Nome = "Frosinone",
-                            Falesie = new List<Restaurant>
+                            Ristoranti = new List<Restaurant>
                             {
                                 new Restaurant
                                 {
                                     Nome = "Configni",
                                     Indirizzo = "Falesia di Configni",
-                                    NumeroVie = 29,
-                                    VieConRipetizioni = 28,
-                                    NumeroRipetizioni = 731,
                                     Posizione = new Position(42.4214, 12.6423)
                                 }, 
                             }

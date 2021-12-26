@@ -29,11 +29,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>La posizione viene usata per visualizzare le falesie nelle vicinanze</string>
+	<string>La posizione viene usata per visualizzare i ristoranti nelle vicinanze</string>
 	<key>NSLocationUsageDescription</key>
-	<string>La posizione viene usata per visualizzare le falesie nelle vicinanze</string>
+	<string>La posizione viene usata per visualizzare i ristoranti nelle vicinanze</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>La posizione viene usata per visualizzare le falesie nelle vicinanze</string>
+	<string>La posizione viene usata per visualizzare i ristoranti nelle vicinanze</string>
 	<key>CFBundleName</key>
 	<string>EasyCrag</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
