@@ -309,24 +309,40 @@ def lambda_handler(event, context):
 
         return {
             "statusCode": 200,
+            "body": {'restaurantId:': restaurantId}
         }
 
     # /deleteRestaurant
     elif event['rawPath'] == DELETE_RAW_PATH:
         print("Starting request for deleteRestaurant...")
 
+        # Get restaurant with specific ID
         restaurantId = event['queryStringParameters']['restaurantId']
-
         logger.info("Parameter restaurantId=" + restaurantId)
 
-        query = ('DELETE FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
-
         cursor = connection.cursor()
+        cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
+        result = cursor.fetchall()
+
+        logger.info(result)
+
+        resultList = result[0]
+
+        imageId = resultList[8]
+        dishTypeId = resultList[10]
+
+        logger.info("ImageId:" + str(imageId))
+        logger.info("IdTipoCucina:" + str(dishTypeId))
+
+        query = ("DELETE FROM falesiedb.Ristoranti WHERE ID=" + str(
+            restaurantId) + "; DELETE FROM falesiedb.Immagini WHERE ImageId=" + str(
+            imageId) + "; DELETE FROM falesiedb.TipologieCucina WHERE IdTipoCucina=" + str(dishTypeId))
+
         cursor.execute(query)
         connection.commit()
 
         return {
-            'statusCode': 200,
+            'statusCode': 200
         }
 
     else:
