@@ -1,9 +1,6 @@
 import json
 import random
 
-import DeleteRestaurants
-import GetRestaurants
-import PostRestaurants
 import pymysql
 import logging
 import os
@@ -58,7 +55,6 @@ def lambda_handler(event, context):
     """
     This function fetches content from MySQL RDS instance
     """
-
     print(event)
 
     # /getRestaurant
@@ -226,7 +222,15 @@ def lambda_handler(event, context):
         except KeyError:
             # Get all restaurants
             logger.info("No parameters! Fetching all the db...")
-            return GetRestaurants.getAllRestaurants(cursor, logger)
+
+            cursor.execute('SELECT * FROM falesiedb.Ristoranti')
+            result = cursor.fetchall()
+
+            return {
+                'statusCode': 200,
+                "headers": {"Content-Type": "application/json"},
+                'body': json.dumps(result)
+            }
 
     # /createRestaurant
     elif event['rawPath'] == POST_RAW_PATH:
@@ -259,8 +263,6 @@ def lambda_handler(event, context):
     # /deleteRestaurant
     elif event['rawPath'] == DELETE_RAW_PATH:
         print("Starting request for deleteRestaurant...")
-
-        cursor = connection.cursor()
 
         restaurantId = event['queryStringParameters']['restaurantId']
 
