@@ -1,3 +1,6 @@
+import json
+import random
+
 import DeleteRestaurants
 import GetRestaurants
 import PostRestaurants
@@ -70,22 +73,152 @@ def lambda_handler(event, context):
 
             if RESTAURANT_ID in event['queryStringParameters']:
                 # Get restaurant with specific ID
-                return GetRestaurants.getRestaurantWithId(event, cursor, logger)
+                restaurantId = event['queryStringParameters']['restaurantId']
+
+                logger.info("Parameter restaurantId=" + restaurantId)
+
+                cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
+                result = cursor.fetchall()
+
+                logger.info(result)
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             elif CITY in event['queryStringParameters']:
                 # Get restaurants in a city
-                return GetRestaurants.getRestaurantWithCity(event, cursor, logger)
+                city = event['queryStringParameters']['city']
+
+                try:
+                    dishType = event['queryStringParameters']['dishType']
+                    try:
+                        specialMenu = event['queryStringParameters']['specialMenu']
+                        logger.info(
+                            "Parameters city=" + city + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + \
+                                '" AND MenuAParte="' + specialMenu + '"'
+                    except KeyError:
+                        logger.info("Parameters city=" + city + " and dishType=" + dishType)
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + '"'
+
+                except KeyError:
+                    logger.info("Parameter city=" + city)
+                    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '"'
+
+                print(query)
+                cursor.execute(query)
+                result = cursor.fetchall()
+
+                logger.info(result)
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             elif PROVINCE in event['queryStringParameters']:
                 # Get restaurants in a province
-                return GetRestaurants.getRestaurantWithProvince(event, cursor, logger)
+                province = event['queryStringParameters']['province']
+
+                try:
+                    dishType = event['queryStringParameters']['dishType']
+                    try:
+                        specialMenu = event['queryStringParameters']['specialMenu']
+                        logger.info(
+                            "Parameters province=" + province + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + \
+                                '" AND MenuAParte="' + specialMenu + '"'
+                    except KeyError:
+                        logger.info("Parameters province=" + province + " and dishType=" + dishType)
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + '"'
+
+                except KeyError:
+                    logger.info("Parameter province=" + province)
+                    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '"'
+
+                print(query)
+                cursor.execute(query)
+                result = cursor.fetchall()
+
+                logger.info(result)
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             elif REGION in event['queryStringParameters']:
                 # Get restaurants in a region
-                return GetRestaurants.getRestaurantWithRegion(event, cursor, logger)
+                region = event['queryStringParameters']['region']
+
+                try:
+                    dishType = event['queryStringParameters']['dishType']
+                    try:
+                        specialMenu = event['queryStringParameters']['specialMenu']
+                        logger.info(
+                            "Parameters region=" + region + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + \
+                                '" AND MenuAParte="' + specialMenu + '"'
+                    except KeyError:
+                        logger.info("Parameters region=" + region + " and dishType=" + dishType)
+                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + '"'
+
+                except KeyError:
+                    logger.info("Parameter region=" + region)
+                    query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '"'
+
+                print(query)
+                cursor.execute(query)
+                result = cursor.fetchall()
+
+                logger.info(result)
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             elif DISHTYPE in event['queryStringParameters']:
                 # Get restaurants with a specific dish type
-                return GetRestaurants.getRestaurantWithDishType(event, cursor, logger)
+                dishType = event['queryStringParameters']['dishType']
+
+                logger.info("Parameter dishType=" + dishType)
+
+                query = 'SELECT * FROM falesiedb.Ristoranti WHERE TipoCucina=%s'
+                cursor.execute(query, (dishType,))
+                result = cursor.fetchall()
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             elif SPECIALMENU in event['queryStringParameters']:
                 # Get restaurants with a special menu
-                return GetRestaurants.getRestaurantWithSpecialMenu(event, cursor, logger)
+                specialMenu = event['queryStringParameters']['specialMenu']
+
+                logger.info("Parameter specialMenu=" + specialMenu)
+
+                query = 'SELECT * FROM falesiedb.Ristoranti WHERE MenuAParte=%s'
+                cursor.execute(query, (specialMenu,))
+                result = cursor.fetchall()
+
+                return {
+                    'statusCode': 200,
+                    "headers": {"Content-Type": "application/json"},
+                    'body': json.dumps(result)
+                }
+
             else:
                 logger.error("ERROR! Wrong query parameters")
                 sys.exit()
@@ -99,15 +232,49 @@ def lambda_handler(event, context):
     elif event['rawPath'] == POST_RAW_PATH:
         print("Starting request for createRestaurant...")
 
-        return PostRestaurants.postRestaurant(event, connection, logger)
+        decodedBody = json.loads(event['body'])
+        name = decodedBody['name']
+        address = decodedBody['address']
+        city = decodedBody['city']
+        province = decodedBody['province']
+        region = decodedBody['region']
+        latitude = decodedBody['latitude']
+        longitude = decodedBody['longitude']
+        dishType = decodedBody['dishType']
+        specialMenu = decodedBody['specialMenu']
 
-    # /createRestaurant
+        restaurantId = random.randint(10, 100000000)
+        command = "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`) VALUES ('" + str(
+            restaurantId) + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + dishType + "', '" + specialMenu + "');"
+        print(command)
+
+        cursor = connection.cursor()
+        cursor.execute(command)
+        connection.commit()
+
+        return {
+            "statusCode": 200,
+        }
+
+    # /deleteRestaurant
     elif event['rawPath'] == DELETE_RAW_PATH:
         print("Starting request for deleteRestaurant...")
 
         cursor = connection.cursor()
 
-        return DeleteRestaurants.deleteRestaurant(event, connection, logger)
+        restaurantId = event['queryStringParameters']['restaurantId']
+
+        logger.info("Parameter restaurantId=" + restaurantId)
+
+        query = ('DELETE FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
+
+        cursor = connection.cursor()
+        cursor.execute(query)
+        connection.commit()
+
+        return {
+            'statusCode': 200,
+        }
 
     else:
         return
