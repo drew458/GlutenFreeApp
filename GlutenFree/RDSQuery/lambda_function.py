@@ -63,8 +63,7 @@ def lambda_handler(event, context):
 
         cursor = connection.cursor()
 
-        try:
-            event['queryStringParameters']
+        if event['rawQueryString']:
             logger.info("Parameters found!")
 
             if RESTAURANT_ID in event['queryStringParameters']:
@@ -219,7 +218,7 @@ def lambda_handler(event, context):
                 logger.error("ERROR! Wrong query parameters")
                 sys.exit()
 
-        except KeyError:
+        else:
             # Get all restaurants
             logger.info("No parameters! Fetching all the db...")
 
