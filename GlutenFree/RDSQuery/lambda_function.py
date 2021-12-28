@@ -86,11 +86,12 @@ def lambda_handler(event, context):
                         logger.info(
                             "Parameters city=" + city + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + \
-                                '" AND MenuAParte="' + specialMenu + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                                'WHERE Citta="' + city + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters city=" + city + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Citta="' + city + '" AND TipoCucina="' + dishType + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                                'WHERE Citta="' + city + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
                     logger.info("Parameter city=" + city)
@@ -110,11 +111,12 @@ def lambda_handler(event, context):
                         logger.info(
                             "Parameters province=" + province + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + \
-                                '" AND MenuAParte="' + specialMenu + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                                'WHERE Provincia="' + province + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters province=" + province + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Provincia="' + province + '" AND TipoCucina="' + dishType + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                                'WHERE Provincia="' + province + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
                     logger.info("Parameter province=" + province)
@@ -134,11 +136,12 @@ def lambda_handler(event, context):
                         logger.info(
                             "Parameters region=" + region + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + \
-                                '" AND MenuAParte="' + specialMenu + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                                'WHERE Regione="' + region + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters region=" + region + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti WHERE Regione="' + region + '" AND TipoCucina="' + dishType + '"'
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina' \
+                                ' WHERE Regione="' + region + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
                     logger.info("Parameter region=" + region)
@@ -153,9 +156,8 @@ def lambda_handler(event, context):
 
                 logger.info("Parameter dishType=" + dishType)
 
-                query = 'SELECT * FROM falesiedb.Ristoranti WHERE TipoCucina=%s'
+                query = 'SELECT * FROM falesiedb.Ristoranti WHERE Principale=%s'
                 cursor.execute(query, (dishType,))
-                result = cursor.fetchall()
 
             elif SPECIALMENU in event['queryStringParameters']:
                 # Get restaurants with a special menu
@@ -260,7 +262,9 @@ def lambda_handler(event, context):
         connection.commit()
 
         response = {
-            "restaurantId": restaurantId
+            "restaurantId": restaurantId,
+            "imageId": imageId,
+            "tipoCucinaId": tipoCucinaId
         }
 
         return {
