@@ -15,7 +15,7 @@ namespace GlutenFree.WebService
         static string bucketName = Constants.Strings.bucketName;
         static string key = $"key-{Guid.NewGuid().ToString("n").Substring(0, 8)}";
 
-        AmazonS3Client s3Client = ClientService.CreateS3Client();
+        static AmazonS3Client s3Client = ClientService.CreateS3Client();
         TransferUtility transferUtility = new TransferUtility(s3Client);
 
         static void CreateBucket(IAmazonS3 s3)
@@ -158,7 +158,7 @@ namespace GlutenFree.WebService
 
         public async Task<string> UploadImage(Image image)
         {
-            var location = image
+            var location = image;
             using (var stream = formFile.OpenReadStream())
             {
                 var putRequest = new PutObjectRequest
@@ -169,7 +169,7 @@ namespace GlutenFree.WebService
                     AutoCloseStream = true,
                     ContentType = formFile.ContentType
                 };
-                var response = await _s3Client.PutObjectAsync(putRequest);
+                var response = await s3Client.PutObjectAsync(putRequest);
                 return location;
             }
     }

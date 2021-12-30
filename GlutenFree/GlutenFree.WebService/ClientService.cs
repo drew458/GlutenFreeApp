@@ -3,7 +3,7 @@ using Amazon.Runtime;
 using Amazon.S3;
 using GlutenFree.WebService.Constants;
 
-namespace GlutenFree.WebService.ImageStorage
+namespace GlutenFree.WebService
 {
     public class ClientService
     {
@@ -12,7 +12,7 @@ namespace GlutenFree.WebService.ImageStorage
 
         static readonly AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
-        public AmazonS3Client CreateS3Client()
+        public static AmazonS3Client CreateS3Client()
         {
             AmazonS3Client s3Client = new AmazonS3Client(credentials, RegionEndpoint.EUCentral1);
             return s3Client;
