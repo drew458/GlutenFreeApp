@@ -221,8 +221,8 @@ def lambda_handler(event, context):
                     logger.info("All tertiaryDishType, secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
-                                                                                                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
+                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     raise KeyError
@@ -238,8 +238,8 @@ def lambda_handler(event, context):
                     logger.info("Both secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
-                                                                                                                                                                                                                                                                                                                                      "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
+                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     raise KeyError
@@ -250,8 +250,8 @@ def lambda_handler(event, context):
                     logger.info("Only primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
-                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
+                             "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     logger.info("No dishType inserted!")
@@ -296,14 +296,21 @@ def lambda_handler(event, context):
         logger.info("IdTipoCucina:" + str(dishTypeId))
 
         query = ("DELETE FROM falesiedb.Ristoranti WHERE ID=" + str(
-            restaurantId) + "; DELETE FROM falesiedb.Immagini WHERE ImageId=" + str(
-            imageId) + "; DELETE FROM falesiedb.TipologieCucina WHERE IdTipoCucina=" + str(dishTypeId))
+            restaurantId) + "; DELETE FROM falesiedb.Immagini WHERE ImageId=" +
+                 str(imageId) + "; DELETE FROM falesiedb.TipologieCucina WHERE IdTipoCucina=" + str(dishTypeId))
 
         cursor.execute(query)
         connection.commit()
 
+        response = {
+            "Deleted restaurantId": restaurantId,
+            "Deleted imageId": imageId,
+            "Deleted tipoCucinaId": dishTypeId
+        }
+
         return {
-            'statusCode': 200
+            'statusCode': 200,
+            "body": json.dumps(response)
         }
 
     else:
