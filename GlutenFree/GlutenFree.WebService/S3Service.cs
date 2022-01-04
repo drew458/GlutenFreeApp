@@ -5,10 +5,11 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace GlutenFree.WebService
 {
-    internal class S3Service : IAWSS3Service
+    public class S3Service : IAWSS3Service
     {
         // bucket names in Amazon S3 must be globally unique and lowercase
         //static string bucketName = $"bucket-{Guid.NewGuid().ToString("n").Substring(0, 8)}";
@@ -53,7 +54,7 @@ namespace GlutenFree.WebService
             Task<PutObjectResponse> res = s3.PutObjectAsync(req);
             Task.WaitAll(res);
 
-            if (res.IsCompletedSuccessfully)
+            if (res.IsCompleted)
             {
                 Console.WriteLine("Created object '{0}' in bucket '{1}'", key, bucketName);
             }
@@ -76,7 +77,7 @@ namespace GlutenFree.WebService
             Task<GetObjectResponse> res = s3.GetObjectAsync(req);
             Task.WaitAll(res);
 
-            if (res.IsCompletedSuccessfully)
+            if (res.IsCompleted)
             {
                 using (var reader = new StreamReader(res.Result.ResponseStream))
                 {
@@ -130,7 +131,7 @@ namespace GlutenFree.WebService
             Task<DeleteObjectResponse> res = s3.DeleteObjectAsync(req);
             Task.WaitAll(res);
 
-            if (res.IsCompletedSuccessfully)
+            if (res.IsCompleted)
             {
                 Console.WriteLine("Deleted object '{0}' from bucket '{1}'", key, bucketName);
             }
@@ -150,32 +151,39 @@ namespace GlutenFree.WebService
             Task<DeleteBucketResponse> res = s3.DeleteBucketAsync(req);
             Task.WaitAll(res);
 
-            if (res.IsCompletedSuccessfully)
+            if (res.IsCompleted)
             {
                 Console.WriteLine("Deleted bucket - '{0}'", bucketName);
             }
         }
 
-        public async Task<string> UploadImage(Image image)
+        public async Task<bool> UploadImage(Image image, string name)
         {
-            var location = image;
-            using (var stream = formFile.OpenReadStream())
+            MemoryStream m = new MemoryStream();
+            image.Save(m, image.RawFormat);
+
+            var putRequest = new PutObjectRequest
             {
-                var putRequest = new PutObjectRequest
-                {
-                    Key = location,
-                    BucketName = "upload-test-berv",
-                    InputStream = stream,
-                    AutoCloseStream = true,
-                    ContentType = formFile.ContentType
-                };
-                var response = await s3Client.PutObjectAsync(putRequest);
-                return location;
+                Key = name,
+                BucketName = bucketName,
+                InputStream = m,
+            };
+
+            var response = await s3Client.PutObjectAsync(putRequest);
+            if (response.HttpStatusCode.Equals(System.Net.HttpStatusCode.OK))
+            {
+                return true;
             }
-    }
+            else
+            {
+                return false;
+            }
+            
+        }
 
         public Task<string> GetImage()
         {
             throw new NotImplementedException();
         }
     }
+}
