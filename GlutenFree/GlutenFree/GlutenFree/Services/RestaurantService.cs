@@ -1,4 +1,4 @@
-﻿using GlutenFree.Shared.Models;
+﻿using GlutenFree.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,7 @@ namespace GlutenFree.Services
     public class RestaurantService : IRestaurantService
     {
         SQLiteAsyncConnection db;
+        Random rnd = new Random();
 
         async Task Init()
         {
@@ -25,9 +26,12 @@ namespace GlutenFree.Services
             await db.CreateTableAsync<Restaurant>();
         }
 
-        public Task<IEnumerable<Restaurant>> RefreshRestaurantsAsync()
+        public async Task<IEnumerable<Restaurant>> RefreshRestaurantsAsync()
         {
-            throw new NotImplementedException();
+            await Init();
+
+            var restaurant = await db.Table<Restaurant>().ToListAsync();
+            return restaurant;
         }
 
         public async Task<IEnumerable<Restaurant>> GetRestaurantsAsync()
@@ -38,9 +42,33 @@ namespace GlutenFree.Services
             return restaurant;
         }
 
-        public Task AddRestaurantAsync(string name, string address, string city, string province, string region, double latitude, double longitude, string dishType, int specialMenu)
+        public async Task AddRestaurantAsync(string name, string address, string city, string province, string region, double latitude, double longitude, string dishType, bool specialMenu)
         {
-            throw new NotImplementedException();
+            await Init();
+            var generatedRandomInt = rnd.Next(10, 9999999);
+            var restaurant = new Restaurant()
+            {
+                Id = generatedRandomInt,
+                Nome = name,
+                Indirizzo = address,
+                Città = city,
+                Provincia = new Provincia()
+                {
+                    Nome = province
+                },
+                Regione = new Models.Regione()
+                {
+                    Nome = region
+                },
+                Latitudine = latitude,
+                Longitudine = longitude,
+                TipoCucina = dishType,
+                MenuAParte = specialMenu,
+                ImageId = generatedRandomInt + 3
+
+            };
+
+            var id = await db.InsertAsync(restaurant);
         }
 
         public async Task<Restaurant> GetRestaurantAsync(int id)
@@ -48,7 +76,7 @@ namespace GlutenFree.Services
             await Init();
 
             var restaurant = await db.Table<Restaurant>()
-                .FirstOrDefaultAsync(c => c.Id == id);
+                .FirstOrDefaultAsync(r => r.Id == id);
 
             return restaurant;
         }
@@ -60,9 +88,12 @@ namespace GlutenFree.Services
             await db.DeleteAsync<Restaurant>(id);
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncName(string name)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncName(string name)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Nome.Equals(name));
+            return restaurants;
         }
 
         public Task<IEnumerable<Restaurant>> GetRestaurantAsyncCity(string city)
