@@ -221,16 +221,7 @@ namespace GlutenFree.Services
                     {
                         new Provincia
                         {
-                            Nome = "Frosinone",
-                            Ristoranti = new List<Restaurant>
-                            {
-                                new Restaurant
-                                {
-                                    Nome = "Configni",
-                                    Indirizzo = "Falesia di Configni",
-                                    Posizione = new Position(42.4214, 12.6423)
-                                }, 
-                            }
+                            Nome = "Frosinone"
                         },
 
                         new Provincia
@@ -245,7 +236,52 @@ namespace GlutenFree.Services
 
                         new Provincia
                         {
-                            Nome = "Roma"
+                            Nome = "Roma",
+                            Ristoranti = new List<Ristorante>
+                            {
+                                new Ristorante
+                                {
+                                    Nome="Zenzero Biorestaurant",
+                                    Indirizzo="Via Mar dei Sargassi 68",
+                                    Città="Roma",
+                                    Provincia = new Provincia()
+                                    {
+                                        Nome = "Roma"
+                                    },
+                                    Regione = new Regione()
+                                    {
+                                        Nome="Lazio"
+                                    },
+                                    Latitudine=41.941984280954166,
+                                    Longitudine=12.471496285720992,
+                                    TipoCucina= new TipologieCucina
+                                    {
+                                        IdTipoCucina=740671,
+                                    },
+                                    ImageId=9029470,
+                                },
+                                new Ristorante
+                                {
+                                    Nome="Etienne",
+                                    Indirizzo="Via Scirrè 18",
+                                    Città="Roma",
+                                    Provincia = new Provincia()
+                                    {
+                                        Nome = "Roma"
+                                    },
+                                    Regione = new Regione()
+                                    {
+                                        Nome="Lazio"
+                                    },
+                                    Latitudine=41.93000418001416,
+                                    Longitudine=12.523370795508573,
+                                    TipoCucina= new TipologieCucina
+                                    {
+                                        IdTipoCucina=361825,
+                                    },
+                                    ImageId=544194,
+                                },
+                            }
                         },
 
                         new Provincia
