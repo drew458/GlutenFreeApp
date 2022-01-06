@@ -29,7 +29,7 @@ namespace GlutenFree.WebService
             Task<PutBucketResponse> res = s3.PutBucketAsync(req);
             Task.WaitAll(res);
 
-            if (res.IsCompletedSuccessfully)
+            if (res.IsCompleted)
             {
                 Console.WriteLine("New S3 bucket created: {0}", bucketName);
             }
@@ -181,9 +181,32 @@ namespace GlutenFree.WebService
             
         }
 
-        public Task<string> GetImage()
+        public async Task<Image> GetImage(string name)
         {
-            throw new NotImplementedException();
+            //string responseBody;
+
+            GetObjectRequest request = new GetObjectRequest
+            {
+                BucketName = bucketName,
+                Key = name
+            };
+            using (GetObjectResponse response = await s3Client.GetObjectAsync(request))
+            /*using (StreamReader reader = new StreamReader(responseStream))
+            {
+                string title = response.Metadata["x-amz-meta-title"]; // Assume you have "title" as medata added to the object.
+                string contentType = response.Headers["Content-Type"];
+                Console.WriteLine("Object metadata, Title: {0}", title);
+                Console.WriteLine("Content type: {0}", contentType);
+
+                responseBody = reader.ReadToEnd(); // Now you process the response body.
+            } */
+            
+            using (Stream responseStream = response.ResponseStream) 
+            {
+                Image downloadedImage = Image.FromStream(responseStream);
+                return downloadedImage;
+            }
+            
         }
     }
 }
