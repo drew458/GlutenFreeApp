@@ -26,14 +26,6 @@ namespace GlutenFree.Services
             await db.CreateTableAsync<Restaurant>();
         }
 
-        public async Task<IEnumerable<Restaurant>> RefreshRestaurantsAsync()
-        {
-            await Init();
-
-            var restaurant = await db.Table<Restaurant>().ToListAsync();
-            return restaurant;
-        }
-
         public async Task<IEnumerable<Restaurant>> GetRestaurantsAsync()
         {
             await Init();
