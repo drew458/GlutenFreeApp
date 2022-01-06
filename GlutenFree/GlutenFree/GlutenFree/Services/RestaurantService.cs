@@ -11,7 +11,7 @@ namespace GlutenFree.Services
     public class RestaurantService : IRestaurantService
     {
         SQLiteAsyncConnection db;
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
 
         async Task Init()
         {
@@ -92,63 +92,117 @@ namespace GlutenFree.Services
         {
             await Init();
             List<Restaurant> restaurants = await db.Table<Restaurant>()
-                .Where(r => r.Nome.Equals(name));
+                .Where(r => r.Nome.Equals(name))
+                .ToListAsync();
             return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncCity(string city)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCity(string city)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Città.Equals(city))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvince(string province)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvince(string province)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Provincia.Equals(province))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegion(string region)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegion(string region)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Regione.Equals(region))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncDishType(string dishType)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncDishType(string dishType)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncSpecialMenu(int specialMenu)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncSpecialMenu(bool specialMenu)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.MenuAParte.Equals(specialMenu))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishType(string city, string dishType)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishType(string city, string dishType)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Città.Equals(city))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, int specialMenu)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, bool specialMenu)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Città.Equals(city))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .Where(r => r.MenuAParte.Equals(specialMenu))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Provincia.Equals(province))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, bool specialMenu)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Provincia.Equals(province))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .Where(r => r.MenuAParte.Equals(specialMenu))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishType(string region, string dishType)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishType(string region, string dishType)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Regione.Equals(region))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .ToListAsync();
+            return restaurants;
         }
 
-        public Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
+        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, bool specialMenu)
         {
-            throw new NotImplementedException();
+            await Init();
+            List<Restaurant> restaurants = await db.Table<Restaurant>()
+                .Where(r => r.Regione.Equals(region))
+                .Where(r => r.TipoCucina.Equals(dishType))
+                .Where(r => r.MenuAParte.Equals(specialMenu))
+                .ToListAsync();
+            return restaurants;
         }
     }
 }
