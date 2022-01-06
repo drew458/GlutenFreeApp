@@ -259,6 +259,7 @@ namespace GlutenFree.Services
                                         IdTipoCucina=740671,
                                     },
                                     ImageId=9029470,
+                                    Posizione = new Position(41.941984280954166, 12.471496285720992)
                                 },
                                 new Ristorante
                                 {
@@ -280,6 +281,7 @@ namespace GlutenFree.Services
                                         IdTipoCucina=361825,
                                     },
                                     ImageId=544194,
+                                    Posizione = new Position(41.93000418001416, 12.523370795508573)
                                 },
                             }
                         },
