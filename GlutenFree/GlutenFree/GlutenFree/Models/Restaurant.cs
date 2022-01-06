@@ -1,7 +1,6 @@
-﻿using GlutenFree.Models;
-using Xamarin.Forms.Maps;
+﻿using Xamarin.Forms.Maps;
 
-namespace GlutenFree.Shared.Models
+namespace GlutenFree.Models
 {
     public class Restaurant
     {
@@ -13,8 +12,8 @@ namespace GlutenFree.Shared.Models
         public Regione Regione { get; set; }
         public double Latitudine { get; set; }
         public double Longitudine { get; set; }
-        public string TipoCucina { get; set; }
-        public bool MenuAParte { get; set; }
+        public TipologieCucina TipoCucina { get; set; }
+        public int MenuAParte { get; set; }
         public int ImageId { get; set; }
         public Position Posizione { get; set; }
     }
