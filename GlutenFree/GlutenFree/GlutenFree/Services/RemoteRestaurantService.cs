@@ -1,5 +1,5 @@
 ﻿using GlutenFree.Resources;
-using GlutenFree.Shared.Models;
+using GlutenFree.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

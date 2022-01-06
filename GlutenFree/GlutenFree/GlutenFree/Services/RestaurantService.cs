@@ -1,4 +1,4 @@
-﻿using GlutenFree.Shared.Models;
+﻿using GlutenFree.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;

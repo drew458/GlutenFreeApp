@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using GlutenFree.Shared.Models;
 
 namespace GlutenFree.Models
 {

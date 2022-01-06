@@ -72,10 +72,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\GlutenFree.Shared\GlutenFree.Shared\GlutenFree.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\RestaurantPage.xaml.cs">
       <DependentUpon>RestaurantPage.xaml</DependentUpon>
     </Compile>
