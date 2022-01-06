@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 
 namespace GlutenFree.Services
 {
-    public interface IProvinceService
+    public interface IRegioniProvinceService
     {
+        Task<IEnumerable<Regione>> GetRegioniAsync();
         Task<IEnumerable<Provincia>> GetProvinceAsync();
+        Task<Regione> GetRegioneAsync(string nome);
         Task<Provincia> GetProvinciaAsync(string nome);
     }
 }
