@@ -158,10 +158,10 @@
                                 Value="System">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSettings}, Color=#323130}" />
-                                        <Label FontSize="Small"
+                                        <Image  Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSettings}, Color=#323130}" />
+                                        <!-- <Label FontSize="Small"
                                             Text="{x:Static resources:AppResources.LabelSystemSettingsPage}"
-                                            TextColor="#323130" />
+                                            TextColor="#323130" /> -->
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
@@ -171,10 +171,10 @@
                                 Value="Light">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSun}, Color=#323130}" />
-                                        <Label FontSize="Small"
+                                        <Image  Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSun}, Color=#323130}" />
+                                        <!-- <Label FontSize="Small"
                                             Text="{x:Static resources:AppResources.LabelLightSettingsPage}"
-                                            TextColor="#323130" />
+                                            TextColor="#323130" /> -->
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
@@ -184,10 +184,10 @@
                                 Value="Dark">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image Scale="0.75" Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconMoon}, Color=#323130}" />
-                                        <Label FontSize="Small"
+                                        <Image Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconMoon}, Color=#323130}" />
+                                        <!-- <Label FontSize="Small"
                                             Text="{x:Static resources:AppResources.LabelDarkSettingsPage}"
-                                            TextColor="#323130" />
+                                            TextColor="#323130" /> -->
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
