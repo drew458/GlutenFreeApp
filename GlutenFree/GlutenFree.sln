@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFree.iOS", "GlutenFre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlutenFree", "GlutenFree\GlutenFree\GlutenFree.csproj", "{003BCB3B-4E66-476D-9359-DAC559875FCA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{578B6992-575C-4114-B2A8-88C7BF04DBE5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFree.WebService", "GlutenFree.WebService\GlutenFree.WebService.csproj", "{B8DFCF78-C78C-4A5B-91BA-F28687AA08A8}"
 EndProject
 Global
@@ -92,9 +90,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B8DFCF78-C78C-4A5B-91BA-F28687AA08A8} = {578B6992-575C-4114-B2A8-88C7BF04DBE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA2AEFB1-BB3A-4C39-BA53-B76216B5B06B}
