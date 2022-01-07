@@ -138,11 +138,20 @@
   <data name="PlaceholderRegions" xml:space="preserve">
     <value>Search for a region...</value>
   </data>
+  <data name="PlaceholderRestaurants" xml:space="preserve">
+    <value>Search for a restaurant...</value>
+  </data>
   <data name="ProvincesNotLoading" xml:space="preserve">
     <value>No province to show</value>
   </data>
   <data name="RegionsNotLoading" xml:space="preserve">
     <value>No region to show</value>
+  </data>
+  <data name="RestaurantsNotLoading" xml:space="preserve">
+    <value>No restaurant to show</value>
+  </data>
+  <data name="RestaurantsPageTitle" xml:space="preserve">
+    <value>Restaurants</value>
   </data>
   <data name="StringMap" xml:space="preserve">
     <value>Map</value>

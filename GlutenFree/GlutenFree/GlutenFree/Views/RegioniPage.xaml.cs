@@ -27,14 +27,14 @@ namespace GlutenFree.Views
             RegioniCollectionView.ItemsSource = GetList(e.NewTextValue);
         }
 
-        private IEnumerable<Regione> GetList(string nomeProvincia = null)
+        private IEnumerable<Regione> GetList(string nomeRegione = null)
         {
             RegioniViewModel _container = BindingContext as RegioniViewModel;
             IList<Regione> regioni = _container.ListaRegioni;
 
-            return string.IsNullOrEmpty(nomeProvincia) ? regioni : regioni
-                .Where(p => p.Nome.ToLower()
-                .StartsWith(nomeProvincia.ToLower()));
+            return string.IsNullOrEmpty(nomeRegione) ? regioni : regioni
+                .Where(r => r.Nome.ToLower()
+                .StartsWith(nomeRegione.ToLower()));
         }
     }
 }

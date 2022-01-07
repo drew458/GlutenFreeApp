@@ -237,9 +237,9 @@ namespace GlutenFree.Services
                         new Provincia
                         {
                             Nome = "Roma",
-                            Ristoranti = new List<Ristorante>
+                            Ristoranti = new List<Restaurant>
                             {
-                                new Ristorante
+                                new Restaurant
                                 {
                                     Nome="Zenzero Biorestaurant",
                                     Indirizzo="Via Mar dei Sargassi 68",
@@ -261,7 +261,7 @@ namespace GlutenFree.Services
                                     ImageId=9029470,
                                     Posizione = new Position(41.941984280954166, 12.471496285720992)
                                 },
-                                new Ristorante
+                                new Restaurant
                                 {
                                     Nome="Etienne",
                                     Indirizzo="Via Scirrè 18",

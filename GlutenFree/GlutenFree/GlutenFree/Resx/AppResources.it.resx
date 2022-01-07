@@ -138,11 +138,20 @@
   <data name="PlaceholderRegions" xml:space="preserve">
     <value>Cerca una regione...</value>
   </data>
+  <data name="PlaceholderRestaurants" xml:space="preserve">
+    <value>Cerca un ristorante...</value>
+  </data>
   <data name="ProvincesNotLoading" xml:space="preserve">
     <value>Nessuna provincia da visualizzare</value>
   </data>
   <data name="RegionsNotLoading" xml:space="preserve">
     <value>Nessuna regione da visualizzare</value>
+  </data>
+  <data name="RestaurantsNotLoading" xml:space="preserve">
+    <value>Nessun ristorante da visualizzare</value>
+  </data>
+  <data name="RestaurantsPageTitle" xml:space="preserve">
+    <value>Ristoranti</value>
   </data>
   <data name="StringMap" xml:space="preserve">
     <value>Mappa</value>
