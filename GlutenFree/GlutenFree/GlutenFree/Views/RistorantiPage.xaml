@@ -11,10 +11,10 @@
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}" >
+    <!-- Placeholder="{x:Static resources:AppResources.PlaceholderRestaurants}" -->
 
     <StackLayout>
-        <SearchBar TextChanged="SearchBar_OnTextChanged"
-                   Placeholder="{x:Static resources:AppResources.PlaceholderRestaurants}" 
+        <SearchBar TextChanged="SearchBar_OnTextChanged" 
                    Style="{StaticResource SearchBar}"/>
 
         <RefreshView x:DataType="viewmodels:RistorantiViewModel" 
@@ -31,11 +31,6 @@
                             <Frame Style="{StaticResource RistorantiCard}">
                                 <Grid RowDefinitions="Auto,Auto"
                                     ColumnDefinitions="Auto,Auto" >
-                                    <Image Grid.RowSpan="2" 
-                                        Source="{Binding Immagine}" 
-                                        Aspect="AspectFill"
-                                        HeightRequest="50" 
-                                        WidthRequest="60" />
                                     <Label Grid.Column="1" 
                                         Text="{Binding Nome}"
                                         Style="{StaticResource LabelRistorantiCard}" />
@@ -51,11 +46,11 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
+                <!-- <CollectionView.EmptyView>
                     <StackLayout Padding="12">
                         <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.RestaurantsNotLoading}" />
                     </StackLayout>
-                </CollectionView.EmptyView>
+                </CollectionView.EmptyView> -->
             </CollectionView>
         </RefreshView>
     </StackLayout>

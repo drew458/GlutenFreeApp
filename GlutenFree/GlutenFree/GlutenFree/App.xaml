@@ -15,6 +15,9 @@
         <!-- Icona Unicode per le impostazioni -->
         <x:String x:Key="IconSettings">&#xf013;</x:String>
 
+        <!-- Icona Unicode per le impostazioni -->
+        <x:String x:Key="IconRestaurants">&#xf2e7;</x:String>
+
         <!-- Icona Unicode per il sole (schermata impostazioni) -->
         <x:String x:Key="IconSun">&#xf185;</x:String>
         

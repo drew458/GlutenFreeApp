@@ -14,4 +14,4 @@ using Xamarin.Forms.Xaml;
 // app. See the discussion of UltimateResourceFallbackLocation in the
 // documentation for additional information:
 // https://docs.microsoft.com/dotnet/api/system.resources.neutralresourceslanguageattribute
-[assembly: NeutralResourcesLanguage("en-US")]
+[assembly: NeutralResourcesLanguage("it-IT")]

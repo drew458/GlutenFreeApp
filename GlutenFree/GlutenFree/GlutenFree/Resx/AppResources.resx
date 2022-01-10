@@ -150,9 +150,6 @@
   <data name="RestaurantsNotLoading" xml:space="preserve">
     <value>No restaurant to show</value>
   </data>
-  <data name="RestaurantsPageTitle" xml:space="preserve">
-    <value>Restaurants</value>
-  </data>
   <data name="StringMap" xml:space="preserve">
     <value>Map</value>
   </data>
@@ -161,6 +158,9 @@
   </data>
   <data name="StringRegions" xml:space="preserve">
     <value>Regions</value>
+  </data>
+  <data name="StringRestaurants" xml:space="preserve">
+    <value>Restaurants</value>
   </data>
   <data name="StringSettings" xml:space="preserve">
     <value>Settings</value>

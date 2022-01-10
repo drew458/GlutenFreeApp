@@ -21,7 +21,7 @@ namespace GlutenFree.ViewModels
 
         public RistorantiViewModel()
         {
-            //Title = AppResources.RestaurantsPageTitle;
+            Title = AppResources.RestaurantsPageTitle;
             ListaRistoranti = new ObservableCollection<Restaurant>();
 
             remoteDbService = new RemoteRestaurantService();

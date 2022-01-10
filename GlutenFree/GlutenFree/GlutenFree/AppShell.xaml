@@ -49,6 +49,16 @@
             </ShellContent.Icon>
         </ShellContent>
 
+        <!-- Title="{x:Static resources:AppResources.RestaurantsPageTitle}" -->
+        <ShellContent Title="Ristoranti" 
+                      Route="Ristoranti" 
+                      ContentTemplate="{DataTemplate views:RistorantiPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAS"
+                                     Glyph="{StaticResource IconRestaurants}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
         <ShellContent Title="{x:Static resources:AppResources.StringSettings}" 
                       Route="Impostazioni" 
                       ContentTemplate="{DataTemplate views:SettingsPage}" >
