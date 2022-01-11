@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace GlutenFree.Services
 {
@@ -23,7 +24,7 @@ namespace GlutenFree.Services
             client = new HttpClient();
             serializerOptions = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                //PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
         }
@@ -35,11 +36,12 @@ namespace GlutenFree.Services
             Uri uri = new Uri(Constants.HTTPUrlGet);
             try
             {
-                HttpResponseMessage response = await client.GetAsync(uri);
+                var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    //Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonConvert.DeserializeObject<List<Restaurant>>(content);
                 }
             }
             catch (Exception ex)
@@ -105,7 +107,7 @@ namespace GlutenFree.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(@"\tRestaurant eliminato.");
+                    Debug.WriteLine(@"\tRistorante eliminato.");
                 }
                 else
                 {
@@ -132,7 +134,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurant = JsonSerializer.Deserialize<Restaurant>(content, serializerOptions);
+                    Restaurant = System.Text.Json.JsonSerializer.Deserialize<Restaurant>(content, serializerOptions);
                 }
 
             }
@@ -159,7 +161,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -187,7 +189,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -215,7 +217,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -243,7 +245,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -271,7 +273,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -299,7 +301,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -327,7 +329,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -357,7 +359,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -385,7 +387,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -415,7 +417,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -444,7 +446,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
@@ -474,7 +476,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
                 }
 
             }
