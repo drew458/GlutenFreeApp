@@ -37,11 +37,11 @@
             <Color x:Key="CardBackgroundDark">#1C1C1E</Color>
 
             <Style x:Key="RegioniRefreshView" TargetType="RefreshView">
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <!-- <Setter Property="BackgroundColor" Value="Green"/> -->
             </Style>
 
             <Style x:Key="RistorantiRefreshView" TargetType="RefreshView">
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <!-- <Setter Property="BackgroundColor" Value="Green"/> -->
             </Style>
 
             <Style x:Key="BaseLabel" TargetType="Label">
