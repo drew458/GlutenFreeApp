@@ -124,6 +124,15 @@ namespace GlutenFree.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search for a restaurant....
+        /// </summary>
+        internal static string PlaceholderRestaurants {
+            get {
+                return ResourceManager.GetString("PlaceholderRestaurants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No province to show.
         /// </summary>
         internal static string ProvincesNotLoading {
@@ -138,6 +147,15 @@ namespace GlutenFree.Resx {
         internal static string RegionsNotLoading {
             get {
                 return ResourceManager.GetString("RegionsNotLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No restaurant to show.
+        /// </summary>
+        internal static string RestaurantsNotLoading {
+            get {
+                return ResourceManager.GetString("RestaurantsNotLoading", resourceCulture);
             }
         }
         
@@ -165,6 +183,15 @@ namespace GlutenFree.Resx {
         internal static string StringRegions {
             get {
                 return ResourceManager.GetString("StringRegions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restaurants.
+        /// </summary>
+        internal static string StringRestaurants {
+            get {
+                return ResourceManager.GetString("StringRestaurants", resourceCulture);
             }
         }
         
