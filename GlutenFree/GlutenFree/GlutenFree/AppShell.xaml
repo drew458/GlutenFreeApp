@@ -40,22 +40,21 @@
             </ShellContent.Icon>
         </ShellContent>
 
+        <ShellContent Title="{x:Static resources:AppResources.StringRestaurants}"
+                      Route="Ristoranti" 
+                      ContentTemplate="{DataTemplate views:RistorantiPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FAS"
+                                     Glyph="{StaticResource IconRestaurants}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
         <ShellContent Title="{x:Static resources:AppResources.StringRegions}" 
                       Route="Regioni" 
                       ContentTemplate="{DataTemplate views:RegioniPage}" >
             <ShellContent.Icon>
                 <FontImageSource FontFamily="FAS"
                                      Glyph="{StaticResource IconList}" />
-            </ShellContent.Icon>
-        </ShellContent>
-
-        <!-- Title="{x:Static resources:AppResources.RestaurantsPageTitle}" -->
-        <ShellContent Title="Ristoranti" 
-                      Route="Ristoranti" 
-                      ContentTemplate="{DataTemplate views:RistorantiPage}" >
-            <ShellContent.Icon>
-                <FontImageSource FontFamily="FAS"
-                                     Glyph="{StaticResource IconRestaurants}" />
             </ShellContent.Icon>
         </ShellContent>
 
