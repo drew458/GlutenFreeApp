@@ -1,11 +1,3 @@
-# MC-project
+# GlutenFreeApp
 
-Progetto per Mobile Computing da parte dello studente [Andrea Marini](https://github.com/drew458).
-
-## Nome applicazione
-
-Studyful
-
-## Descrizione
-
-Work in progress...
+Carefully selected gluten free restaurants in Italy ready to be explored 🍔🥗 
