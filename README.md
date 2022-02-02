@@ -9,3 +9,5 @@ Studyful
 ## Descrizione
 
 Work in progress...
+## Backend Architecture
+![Backend Architecture](/resources/backend_overview.jpeg)
