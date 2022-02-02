@@ -42,8 +42,9 @@ database_name = os.environ["DBNAME"]
 
 # Connection to db
 try:
-    connection = pymysql.connect(host=endpoint, user=username,
-                                 passwd=password, db=database_name, client_flag=CLIENT.MULTI_STATEMENTS)
+    connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name,
+                                 client_flag=CLIENT.MULTI_STATEMENTS, charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
 except pymysql.MySQLError as e:
     logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
     logger.error(e)
@@ -178,12 +179,29 @@ def lambda_handler(event, context):
 
             cursor.execute('SELECT * FROM falesiedb.Ristoranti')
 
+        # result = cursor.fetchall()
+        # logger.info(result)
+        # firstObject = result[0]
+        # logger.info(firstObject[0])
+        # resultDict = {"Id": firstObject[0], "Nome": firstObject[1], "Indirizzo": firstObject[2],
+        #              "Città": firstObject[3],
+        #              "Provincia": firstObject[4], "Regione": firstObject[5], "Latitudine": firstObject[6],
+        #              "Longitudine": firstObject[7],
+        #              "TipoCucina": firstObject[8], "MenuAParte": firstObject[9], "ImageId": firstObject[10]
+        #              }
+        # logger.info(resultDict)
+        # return {
+        #    'statusCode': 200,
+        #    "headers": {"Content-Type": "application/json"},
+        #    'body': json.dumps(resultDict)
+        # }
+
         result = cursor.fetchall()
         logger.info(result)
         return {
             'statusCode': 200,
             "headers": {"Content-Type": "application/json"},
-            'body': json.dumps(result)
+            'body': json.dumps(result[0])
         }
 
     # /createRestaurant
@@ -221,8 +239,8 @@ def lambda_handler(event, context):
                     logger.info("All tertiaryDishType, secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
-                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     raise KeyError
@@ -238,8 +256,8 @@ def lambda_handler(event, context):
                     logger.info("Both secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
-                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                                                                      "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     raise KeyError
@@ -250,8 +268,8 @@ def lambda_handler(event, context):
                     logger.info("Only primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
-                             "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
+                                                                                                                             "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
+                                                                                                                                                                                                                                                                                              "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
                             restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
                 except KeyError:
                     logger.info("No dishType inserted!")
