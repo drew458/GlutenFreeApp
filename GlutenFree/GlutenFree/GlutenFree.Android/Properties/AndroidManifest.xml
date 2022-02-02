@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.GlutenFree" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+	<application android:label="GlutenFree.Android" android:theme="@style/MainTheme" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+	</application>
+	<!-- requires API 26 or greater
+	<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+		<background android:drawable="@color/ic_launcher_background" />
+		<foreground android:drawable="@mipmap/ic_launcher_foreground" />
+	</adaptive-icon> -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>

@@ -194,3 +194,7 @@ FakesAssemblies/
 
 .vscode/settings.json
 MCtabbed2/MCtabbed2/MCtabbed2.Android/Resources/values/strings.xml
+GlutenFree/RDSQuery/.idea/
+GlutenFree/RDSQuery/Requests/
+GlutenFree/GlutenFree/GlutenFree/Resources/Constants.cs
+GlutenFree/GlutenFree.WebService/Constants/Strings.cs
