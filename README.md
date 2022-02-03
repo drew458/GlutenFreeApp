@@ -12,4 +12,4 @@ Carefully selected gluten free restaurants in Italy ready to be explored ğŸ”ğŸ¥
 * Nation-wide search
 
 ## Backend Architecture
-![Backend Architecture](/resources/backend_overview.jpeg)
+![Backend Architecture](/resources/GlutenFreeApp-arch.png)
