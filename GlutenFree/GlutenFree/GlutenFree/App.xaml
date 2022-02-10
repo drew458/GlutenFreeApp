@@ -101,6 +101,17 @@
                         Light={StaticResource TextColor}}"></Setter>
             </Style>
 
+            <Style x:Key="Entry" TargetType="Entry">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextColorDark}, 
+                        Light={StaticResource TextColor}}" />
+                <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark},
+                    Light={StaticResource WindowBackgroundColor}}"/>
+                <Setter Property="PlaceholderColor" 
+                        Value="{AppThemeBinding Dark={StaticResource TextColorDark}, 
+                        Light={StaticResource TextColor}}" ></Setter>
+            </Style>
+
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="Black"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

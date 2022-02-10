@@ -5,9 +5,9 @@
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
              xmlns:resources="clr-namespace:GlutenFree.Resx"
              x:DataType="viewmodels:RistorantiViewModel"
-             Shell.NavBarIsVisible="True"
              x:Name="ListaRistoranti"
              x:Class="GlutenFree.Views.RistorantiPage"
+             Shell.NavBarIsVisible="True"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 

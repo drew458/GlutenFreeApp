@@ -6,12 +6,6 @@
        x:Name="shell"
        x:Class="GlutenFree.AppShell">
 
-    <!--
-        The overall app visual hierarchy is defined here, along with navigation.
-    
-        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
-    -->
-
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -30,9 +24,13 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    
+    <ShellContent Title="{x:Static resources:AppResources.StringLogin}"
+        ContentTemplate="{DataTemplate views:LoginPage}"/>
+
     <TabBar>
         <ShellContent Title="{x:Static resources:AppResources.StringMap}"
-                      Route="Mappa" 
+                      Route="MapPage" 
                       ContentTemplate="{DataTemplate views:MapPage}" >
             <ShellContent.Icon>
                 <FontImageSource FontFamily="FAR"
@@ -72,9 +70,5 @@
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <!-- <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
-    </TabBar> -->
-
 
 </Shell>

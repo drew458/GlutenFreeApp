@@ -150,6 +150,9 @@
   <data name="RestaurantsNotLoading" xml:space="preserve">
     <value>Nessun ristorante da visualizzare</value>
   </data>
+  <data name="StringLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="StringMap" xml:space="preserve">
     <value>Mappa</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="StringRegions" xml:space="preserve">
     <value>Regioni</value>
+  </data>
+  <data name="StringRegistration" xml:space="preserve">
+    <value>Registrazione</value>
   </data>
   <data name="StringRestaurants" xml:space="preserve">
     <value>Ristoranti</value>

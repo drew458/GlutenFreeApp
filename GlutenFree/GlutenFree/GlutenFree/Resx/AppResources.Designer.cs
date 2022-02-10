@@ -160,6 +160,15 @@ namespace GlutenFree.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        internal static string StringLogin {
+            get {
+                return ResourceManager.GetString("StringLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map.
         /// </summary>
         internal static string StringMap {
@@ -183,6 +192,15 @@ namespace GlutenFree.Resx {
         internal static string StringRegions {
             get {
                 return ResourceManager.GetString("StringRegions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string StringRegistration {
+            get {
+                return ResourceManager.GetString("StringRegistration", resourceCulture);
             }
         }
         
