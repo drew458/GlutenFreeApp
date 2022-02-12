@@ -8,7 +8,7 @@ namespace GlutenFree.Login
     {
         public static string Encrypt(string email, string password)
         {
-            using var encryptionAlgorithm = SHA512.Create();
+            using var encryptionAlgorithm = SHA256.Create();
 
             byte[] input = Encoding.ASCII.GetBytes(email + password);
 
