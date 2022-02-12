@@ -18,6 +18,9 @@ namespace GlutenFree.Login
                 using (var dbQuery = new MySqlCommand(String.Format("SELECT * FROM {0} WHERE em='{1}'", tableName, email), dbConnection))
                 using (var reader = await dbQuery.ExecuteReaderAsync())
                 while (await reader.ReadAsync()) {
+                    Console.WriteLine("Entered the email and password check stage...");
+                    Console.WriteLine("Email on the db: " + reader.GetString(userEmail) + ", email passed from API: " + email);
+                    Console.WriteLine("Password on the db: " + reader.GetString(userPassword) + ", password passed from API: " + EncryptionService.Encrypt(email, password));
                     if (reader.GetString(userEmail).Equals(email) && reader.GetString(userPassword).Equals(EncryptionService.Encrypt(email, password)))
                         return Codes.GenericSuccess;
                     else

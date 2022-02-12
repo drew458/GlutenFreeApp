@@ -10,9 +10,9 @@ namespace GlutenFree.Login
         static public String tableName = "UserLogin";
 
         //That is, column number 0 of the UserLogin table and so on...
-        static public int userId = 0;
-        static public int userEmail = 1;
-        static public int userPassword = 2;
+        static public string userId = "id";
+        static public string userEmail = "em";
+        static public string userPassword = "pwd";
 
         static public string DbConnectionString
         {
@@ -23,7 +23,7 @@ namespace GlutenFree.Login
                     string host = Environment.GetEnvironmentVariable("HOST");
                     string name = Environment.GetEnvironmentVariable("NAME");
                     string passwd = Environment.GetEnvironmentVariable("PASSWD");
-                    string port = Environment.GetEnvironmentVariable("PORT");
+                    string port = Environment.GetEnvironmentVariable("PORT"); 
 
                     string connectionString = String.Format("Server={0};User ID={1};Password={2};Database={3}",
                                        host, name, passwd, databaseName);
