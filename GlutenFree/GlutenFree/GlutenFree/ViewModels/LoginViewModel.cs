@@ -1,6 +1,8 @@
-﻿using GlutenFree.Resx;
+﻿using GlutenFree.Resources;
+using GlutenFree.Resx;
 using GlutenFree.Views;
 using System;
+using System.Net.Http;
 using Xamarin.Forms;
 
 namespace GlutenFree.ViewModels
@@ -9,6 +11,28 @@ namespace GlutenFree.ViewModels
     {
         public Command LoginButtonTapped { get; }
         public Command RegistrationButtonTapped { get; }
+
+        static readonly HttpClient client = new HttpClient();
+
+        string _emailEntry;
+        string _passwordEntry;
+        public string EmailEntry
+        {
+            get { return _emailEntry; }
+            set
+            {
+                SetProperty(ref _emailEntry, value);
+            }    
+        }
+
+        public string PasswordEntry
+        {
+            get { return _passwordEntry; }
+            set
+            {
+                SetProperty(ref _passwordEntry, value);
+            }
+        }
 
         public LoginViewModel()
         {
@@ -24,7 +48,32 @@ namespace GlutenFree.ViewModels
 
         private async void OnLoginButtonTapped()
         {
-            await Shell.Current.GoToAsync($"//{nameof(MapPage)}");
+            Exception loginFailedException;
+            string apiUrl = Constants.APIUserLogin + "&em=" + EmailEntry.ToLower() + "&pwd=" + PasswordEntry;
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch
+                {
+                    loginFailedException = new Exception(response.StatusCode.ToString());
+                    throw loginFailedException;
+                }
+                
+                await Shell.Current.GoToAsync($"//{nameof(MapPage)}");
+
+                //string responseBody = await response.Content.ReadAsStringAsync();
+                // Above three lines can be replaced with new helper method below
+                // string responseBody = await client.GetStringAsync(uri);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Login error: " + e.Message);
+            }
         }
 
         private async void OnRegistrationButtonTapped(object obj)

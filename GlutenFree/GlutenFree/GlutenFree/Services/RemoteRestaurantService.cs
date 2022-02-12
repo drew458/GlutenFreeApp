@@ -34,7 +34,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            Uri uri = new Uri(Constants.HTTPUrlGet);
+            Uri uri = new Uri(Constants.APIRestaurantsGet);
             try
             {
                 var response = await httpClient.GetAsync(uri);
@@ -54,7 +54,7 @@ namespace GlutenFree.Services
 
         public async Task AddRestaurantAsync(string name, string address, string city, string province, string region, double latitude, double longitude, string dishType, int specialMenu)
         {
-            Uri uri = new Uri(Constants.HTTPUrlCreate);
+            Uri uri = new Uri(Constants.APIRestaurantsCreate);
 
             try
             {
@@ -97,7 +97,7 @@ namespace GlutenFree.Services
 
         public async Task DeleteRestaurantAsync(int id)
         {
-            string query = Constants.HTTPUrlDelete + "/id={0}";
+            string query = Constants.APIRestaurantsDelete + "/id={0}";
 
             Uri uri = new Uri(string.Format(query, id));
 
@@ -123,7 +123,7 @@ namespace GlutenFree.Services
 
         public async Task<Restaurant> GetRestaurantAsync(int id)
         {
-            string query = Constants.HTTPUrlGet + "/id={0}";
+            string query = Constants.APIRestaurantsGet + "/id={0}";
 
             Uri uri = new Uri(string.Format(query, id));
 
@@ -150,7 +150,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/name={0}";
+            string query = Constants.APIRestaurantsGet + "/name={0}";
 
             Uri uri = new Uri(string.Format(query, name));
 
@@ -178,7 +178,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/city={0}";
+            string query = Constants.APIRestaurantsGet + "/city={0}";
 
             Uri uri = new Uri(string.Format(query, city));
 
@@ -206,7 +206,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/province={0}";
+            string query = Constants.APIRestaurantsGet + "/province={0}";
 
             Uri uri = new Uri(string.Format(query, province));
 
@@ -234,7 +234,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/region={0}";
+            string query = Constants.APIRestaurantsGet + "/region={0}";
 
             Uri uri = new Uri(string.Format(query, region));
 
@@ -262,7 +262,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/dishType={0}";
+            string query = Constants.APIRestaurantsGet + "/dishType={0}";
 
             Uri uri = new Uri(string.Format(query, dishType));
 
@@ -290,7 +290,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/specialMenu={0}";
+            string query = Constants.APIRestaurantsGet + "/specialMenu={0}";
 
             Uri uri = new Uri(string.Format(query, specialMenu));
 
@@ -318,7 +318,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/city={0}&dishType={1}";
+            string query = Constants.APIRestaurantsGet + "/city={0}&dishType={1}";
 
             Uri uri = new Uri(string.Format(query, city, dishType));
 
@@ -348,7 +348,7 @@ namespace GlutenFree.Services
 
             object[] parameters = { city, dishType, specialMenu };
 
-            string query = Constants.HTTPUrlGet + "/city={0}&dishType={1}&specialMenu={2}";
+            string query = Constants.APIRestaurantsGet + "/city={0}&dishType={1}&specialMenu={2}";
 
             Uri uri = new Uri(string.Format(query, parameters));
 
@@ -376,7 +376,7 @@ namespace GlutenFree.Services
         {
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/province={0}&dishType={1}";
+            string query = Constants.APIRestaurantsGet + "/province={0}&dishType={1}";
 
             Uri uri = new Uri(string.Format(query, province, dishType));
 
@@ -406,7 +406,7 @@ namespace GlutenFree.Services
 
             object[] parameters = { province, dishType, specialMenu };
 
-            string query = Constants.HTTPUrlGet + "/province={0}&dishType={1}&specialMenu={2}";
+            string query = Constants.APIRestaurantsGet + "/province={0}&dishType={1}&specialMenu={2}";
 
             Uri uri = new Uri(string.Format(query, parameters));
 
@@ -435,7 +435,7 @@ namespace GlutenFree.Services
 
             Restaurants = new List<Restaurant>();
 
-            string query = Constants.HTTPUrlGet + "/region={0}&dishType={1}";
+            string query = Constants.APIRestaurantsGet + "/region={0}&dishType={1}";
 
             Uri uri = new Uri(string.Format(query, region, dishType));
 
@@ -465,7 +465,7 @@ namespace GlutenFree.Services
 
             object[] parameters = { region, dishType, specialMenu };
 
-            string query = Constants.HTTPUrlGet + "/region={0}&dishType={1}&specialMenu={2}";
+            string query = Constants.APIRestaurantsGet + "/region={0}&dishType={1}&specialMenu={2}";
 
             Uri uri = new Uri(string.Format(query, parameters));
 

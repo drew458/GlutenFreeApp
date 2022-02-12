@@ -14,11 +14,12 @@
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand" >
         <Label Text="Username:" Style="{StaticResource BaseLabel}"/>
-        <Entry Placeholder="Username" 
-               Style="{StaticResource Entry}"/>
+        <Entry x:Name="emailEntry" Placeholder="Username" 
+            Style="{StaticResource Entry}" Text="{Binding EmailEntry}"/>
         <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
-        <Entry IsPassword="True" Placeholder="Password"
-               Style="{StaticResource Entry}" />
+        <Entry x:Name="usernameEntry" IsPassword="True" 
+               Placeholder="Password" Style="{StaticResource Entry}" 
+               Text="{Binding PasswordEntry}" />
         <Button Text="Login" 
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LoginViewModel}}, Path=LoginButtonTapped}" />
         <Label Text="Register" HorizontalOptions="Center" Style="{StaticResource BaseLabel}" >
