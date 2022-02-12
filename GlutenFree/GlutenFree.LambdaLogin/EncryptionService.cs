@@ -1,15 +1,16 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GlutenFree.Login
 {
     public static class EncryptionService
     {
-        public static string Encrypt(string user, string password)
+        public static string Encrypt(string email, string password)
         {
             using var encryptionAlgorithm = SHA512.Create();
 
-            byte[] input = Encoding.ASCII.GetBytes(user + password);
+            byte[] input = Encoding.ASCII.GetBytes(email + password);
 
             byte[] result = encryptionAlgorithm.ComputeHash(input);
 
