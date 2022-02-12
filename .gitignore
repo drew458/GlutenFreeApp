@@ -199,3 +199,4 @@ GlutenFree/RDSQuery/Requests/
 GlutenFree/GlutenFree/GlutenFree/Resources/Constants.cs
 GlutenFree/GlutenFree.WebService/Constants/Strings.cs
 GlutenFree/GlutenFree.LambdaLogin/dbSec.txt
+GlutenFree/GlutenFree.LambdaLogin/aws-lambda-tools-defaults.json
