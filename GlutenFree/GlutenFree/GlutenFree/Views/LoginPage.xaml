@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels" 
+             xmlns:resources="clr-namespace:GlutenFree.Resx"
              x:DataType="viewmodels:LoginViewModel"
              x:Class="GlutenFree.Views.LoginPage"
              Shell.NavBarIsVisible="True"
@@ -13,8 +14,8 @@
 
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand" >
-        <Label Text="Username:" Style="{StaticResource BaseLabel}"/>
-        <Entry x:Name="emailEntry" Placeholder="Username" 
+        <Label Text="Email:" Style="{StaticResource BaseLabel}"/>
+        <Entry x:Name="emailEntry" Placeholder="Email" 
             Style="{StaticResource Entry}" Text="{Binding EmailEntry}"/>
         <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
         <Entry x:Name="usernameEntry" IsPassword="True" 
@@ -22,7 +23,8 @@
                Text="{Binding PasswordEntry}" />
         <Button Text="Login" 
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LoginViewModel}}, Path=LoginButtonTapped}" />
-        <Label Text="Register" HorizontalOptions="Center" Style="{StaticResource BaseLabel}" >
+        <Label Text="{x:Static resources:AppResources.StringRegistration}" HorizontalOptions="Center" 
+               Style="{StaticResource BaseLabel}" Padding="20" >
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LoginViewModel}}, Path=RegistrationButtonTapped}" />
             </Label.GestureRecognizers>

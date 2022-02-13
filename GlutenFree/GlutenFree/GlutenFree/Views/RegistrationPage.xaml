@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels" 
+             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFree.Resx"
              x:DataType="viewmodels:RegistrationViewModel"
              x:Class="GlutenFree.Views.RegistrationPage"
              Shell.NavBarIsVisible="True"
@@ -13,7 +14,7 @@
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
         <Label Text="Email:" Style="{StaticResource BaseLabel}" />
-        <Entry Text="{Binding EmailEntry}" Placeholder="Email address" Style="{StaticResource Entry}"/>
+        <Entry Text="{Binding EmailEntry}" Placeholder="Email" Style="{StaticResource Entry}"/>
         <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
         <Entry Text="{Binding PasswordEntry}"
             IsPassword="True" Placeholder="Password" 
@@ -22,8 +23,9 @@
         <Entry Text="{Binding RepeatedPasswordEntry}" 
             IsPassword="True" 
             Placeholder="Confirm Password" Style="{StaticResource Entry}"/>
-        <Button Text="Register" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegistrationViewModel}}, Path=RegistrationButtonTapped}"
-                    CommandParameter="{Binding .}"/>
+        <Button Text="{x:Static resources:AppResources.StringRegistration}" 
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegistrationViewModel}}, Path=RegistrationButtonTapped}"
+                CommandParameter="{Binding .}" />
     </StackLayout>
 
 </ContentPage>
