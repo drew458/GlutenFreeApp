@@ -12,6 +12,7 @@ namespace GlutenFree
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<Helpers.IMessageService, Helpers.MessageService>();
             MainPage = new AppShell();
         }
 

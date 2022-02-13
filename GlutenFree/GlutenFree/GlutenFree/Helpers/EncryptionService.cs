@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GlutenFree.Helpers
 {
-    public static class InAppEncryption
+    public static class EncryptionService
     {
         public static string Encrypt(string email, string password)
         {
