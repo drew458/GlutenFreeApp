@@ -12,7 +12,7 @@ namespace GlutenFree.ViewModels
         public Command LoginButtonTapped { get; }
         public Command RegistrationButtonTapped { get; }
 
-        static readonly HttpClient client = new HttpClient();
+        private HttpClient client;
 
         string _emailEntry;
         string _passwordEntry;
@@ -39,6 +39,7 @@ namespace GlutenFree.ViewModels
             Title = AppResources.StringLogin;
             LoginButtonTapped = new Command(OnLoginButtonTapped);
             RegistrationButtonTapped = new Command(OnRegistrationButtonTapped);
+            client = new HttpClient();
         }
 
         public void OnAppearing()
@@ -58,7 +59,7 @@ namespace GlutenFree.ViewModels
                 {
                     response.EnsureSuccessStatusCode();
                 }
-                catch
+                catch (Exception)
                 {
                     loginFailedException = new Exception(response.StatusCode.ToString());
                     throw loginFailedException;
@@ -70,7 +71,7 @@ namespace GlutenFree.ViewModels
                 // Above three lines can be replaced with new helper method below
                 // string responseBody = await client.GetStringAsync(uri);
             }
-            catch (Exception e)
+            catch (HttpRequestException e)
             {
                 Console.WriteLine("Login error: " + e.Message);
             }

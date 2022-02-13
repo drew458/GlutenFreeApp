@@ -8,6 +8,7 @@ namespace GlutenFree.Views
     public partial class RegistrationPage : ContentPage
     {
         RegistrationViewModel _viewModel;
+
         public RegistrationPage()
         {
             InitializeComponent();
