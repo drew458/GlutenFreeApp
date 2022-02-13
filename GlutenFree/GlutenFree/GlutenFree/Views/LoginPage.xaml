@@ -7,6 +7,7 @@
              x:Class="GlutenFree.Views.LoginPage"
              Shell.NavBarIsVisible="True"
              Shell.TabBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 

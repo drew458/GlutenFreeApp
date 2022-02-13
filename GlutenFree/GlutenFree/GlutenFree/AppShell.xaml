@@ -26,7 +26,7 @@
 
     
     <ShellContent Title="{x:Static resources:AppResources.StringLogin}"
-        ContentTemplate="{DataTemplate views:LoginPage}"/>
+        ContentTemplate="{DataTemplate views:LoginPage}" FlyoutItemIsVisible="False" />
 
     <TabBar>
         <ShellContent Title="{x:Static resources:AppResources.StringMap}"
