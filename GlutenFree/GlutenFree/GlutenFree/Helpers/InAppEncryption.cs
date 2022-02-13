@@ -2,13 +2,13 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace GlutenFree.Login
+namespace GlutenFree.Helpers
 {
-    public static class EncryptionService
+    public static class InAppEncryption
     {
         public static string Encrypt(string email, string password)
         {
-            using var encryptionAlgorithm = SHA256.Create();
+            var encryptionAlgorithm = SHA256.Create();
 
             byte[] input = Encoding.ASCII.GetBytes(email + password);
 

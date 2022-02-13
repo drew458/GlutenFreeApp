@@ -2,7 +2,7 @@
 
 namespace GlutenFree.Helpers
 {
-    public static class TheTheme
+    public static class AppTheme
     {
         // guardare https://www.youtube.com/watch?v=4w8TQ8njd3w
 

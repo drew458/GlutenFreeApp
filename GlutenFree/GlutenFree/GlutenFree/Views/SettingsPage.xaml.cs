@@ -56,7 +56,7 @@ namespace GlutenFree.Views
                     break;
             }
 
-            TheTheme.SetTheme();
+            AppTheme.SetTheme();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using GlutenFree.Resources;
+﻿using GlutenFree.Helpers;
+using GlutenFree.Resources;
 using GlutenFree.Resx;
 using GlutenFree.Views;
 using System;
@@ -50,7 +51,8 @@ namespace GlutenFree.ViewModels
         private async void OnLoginButtonTapped()
         {
             Exception loginFailedException;
-            string apiUrl = Constants.APIUserLogin + "&em=" + EmailEntry.ToLower() + "&pwd=" + PasswordEntry;
+            var hashedPassword = InAppEncryption.Encrypt(EmailEntry.ToLower(), PasswordEntry);
+            string apiUrl = Constants.APIUserLogin + "&em=" + EmailEntry.ToLower() + "&pwd=" + hashedPassword;
 
             try
             {

@@ -1,10 +1,6 @@
-﻿using GlutenFree.Helpers;
-using GlutenFree.Services;
-using GlutenFree.Views;
-using System;
+﻿using GlutenFree.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace GlutenFree
 {
@@ -26,13 +22,13 @@ namespace GlutenFree
 
         protected override void OnSleep()
         {
-            TheTheme.SetTheme();
+            Helpers.AppTheme.SetTheme();
             RequestedThemeChanged -= App_RequestedThemeChanged;
         }
 
         protected override void OnResume()
         {
-            TheTheme.SetTheme();
+            Helpers.AppTheme.SetTheme();
             RequestedThemeChanged += App_RequestedThemeChanged;
         }
 
@@ -40,7 +36,7 @@ namespace GlutenFree
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                TheTheme.SetTheme();
+                Helpers.AppTheme.SetTheme();
             });
         }
     }

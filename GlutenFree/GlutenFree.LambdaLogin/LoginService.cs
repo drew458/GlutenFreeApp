@@ -20,8 +20,8 @@ namespace GlutenFree.Login
                 while (await reader.ReadAsync()) {
                     Console.WriteLine("Entered the email and password check stage...");
                     Console.WriteLine("Email on the db: " + reader.GetString(userEmail) + ", email passed from API: " + email);
-                    Console.WriteLine("Password on the db: " + reader.GetString(userPassword) + ", password passed from API: " + EncryptionService.Encrypt(email, password));
-                    if (reader.GetString(userEmail).Equals(email) && reader.GetString(userPassword).Equals(EncryptionService.Encrypt(email, password)))
+                        Console.WriteLine("Password on the db: " + reader.GetString(userPassword) + ", password passed from API: " + password);
+                    if (reader.GetString(userEmail).Equals(email) && reader.GetString(userPassword).Equals(password))
                         return Codes.GenericSuccess;
                     else
                         return Codes.LoginUserPasswordError;
@@ -54,7 +54,7 @@ namespace GlutenFree.Login
                 {
                     dbQuery.Parameters.AddWithValue("id", randomGenerator.Next(10, 9999999));
                     dbQuery.Parameters.AddWithValue("em", email);
-                    dbQuery.Parameters.AddWithValue("pwd", EncryptionService.Encrypt(email, password));
+                    dbQuery.Parameters.AddWithValue("pwd", password);
 
                     await dbQuery.ExecuteNonQueryAsync();
                 }
