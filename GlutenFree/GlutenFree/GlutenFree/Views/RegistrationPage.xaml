@@ -26,6 +26,8 @@
         <Button Text="{x:Static resources:AppResources.StringRegistration}" 
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegistrationViewModel}}, Path=RegistrationButtonTapped}"
                 CommandParameter="{Binding .}" />
+        <ActivityIndicator IsRunning="{Binding ActivityIndicatorSpinning}"
+                           Color="Black" />
     </StackLayout>
 
 </ContentPage>

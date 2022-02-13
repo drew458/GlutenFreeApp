@@ -16,13 +16,15 @@
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand" >
         <Label Text="Email:" Style="{StaticResource BaseLabel}"/>
-        <Entry x:Name="emailEntry" Placeholder="Email" 
-            Style="{StaticResource Entry}" Text="{Binding EmailEntry}"/>
+        <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email"
+               IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
+               ClearButtonVisibility="WhileEditing" Style="{StaticResource Entry}"
+               Text="{Binding EmailEntry}"/>
         <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
-        <Entry x:Name="usernameEntry" IsPassword="True" 
-               Placeholder="Password" Style="{StaticResource Entry}" 
+        <Entry x:Name="usernameEntry" IsPassword="True" IsSpellCheckEnabled="False"
+               Placeholder="Password" Style="{StaticResource Entry}" IsTextPredictionEnabled="False" 
                Text="{Binding PasswordEntry}" />
-        <Button Text="Login" 
+        <Button Text="Login"
                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LoginViewModel}}, Path=LoginButtonTapped}" />
         <Label Text="{x:Static resources:AppResources.StringRegistration}" HorizontalOptions="Center" 
                Style="{StaticResource BaseLabel}" Padding="20" >
@@ -30,6 +32,8 @@
                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:LoginViewModel}}, Path=RegistrationButtonTapped}" />
             </Label.GestureRecognizers>
         </Label>
+        <ActivityIndicator IsRunning="{Binding ActivityIndicatorSpinning}"
+                           Color="Black" />
     </StackLayout>
 
 </ContentPage>

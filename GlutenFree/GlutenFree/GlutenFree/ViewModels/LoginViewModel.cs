@@ -4,6 +4,7 @@ using GlutenFree.Resx;
 using GlutenFree.Views;
 using System;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace GlutenFree.ViewModels
@@ -12,11 +13,12 @@ namespace GlutenFree.ViewModels
     {
         public Command LoginButtonTapped { get; }
         public Command RegistrationButtonTapped { get; }
-        private HttpClient client;
+        private readonly HttpClient client;
         private readonly IMessageService _messageService;
 
         string _emailEntry;
         string _passwordEntry;
+        bool _activityIndicatorSpinning;
         public string EmailEntry
         {
             get { return _emailEntry; }
@@ -25,13 +27,20 @@ namespace GlutenFree.ViewModels
                 SetProperty(ref _emailEntry, value);
             }    
         }
-
         public string PasswordEntry
         {
             get { return _passwordEntry; }
             set
             {
                 SetProperty(ref _passwordEntry, value);
+            }
+        }
+        public bool ActivityIndicatorSpinning
+        {
+            get { return _activityIndicatorSpinning; }
+            set
+            {
+                SetProperty(ref _activityIndicatorSpinning, value);
             }
         }
 
@@ -41,7 +50,7 @@ namespace GlutenFree.ViewModels
             LoginButtonTapped = new Command(OnLoginButtonTapped);
             RegistrationButtonTapped = new Command(OnRegistrationButtonTapped);
             this.client = new HttpClient();
-            this._messageService = DependencyService.Get<Helpers.IMessageService>();
+            this._messageService = DependencyService.Get<IMessageService>();
         }
 
         public void OnAppearing()
@@ -51,9 +60,13 @@ namespace GlutenFree.ViewModels
 
         private async void OnLoginButtonTapped()
         {
-            Exception loginFailedException;
-            var hashedPassword = EncryptionService.Encrypt(EmailEntry.ToLower(), PasswordEntry);
-            string apiUrl = Constants.APIUserLogin + "&em=" + EmailEntry.ToLower() + "&pwd=" + hashedPassword;
+            ActivityIndicatorSpinning = true;
+
+            //remove whitespaces
+            string polishedEmail = Regex.Replace(EmailEntry, @"\s+", "");
+
+            var hashedPassword = EncryptionService.Encrypt(polishedEmail.ToLower(), PasswordEntry);
+            string apiUrl = Constants.APIUserLogin + "&em=" + polishedEmail.ToLower() + "&pwd=" + hashedPassword;
 
             try
             {
@@ -64,8 +77,7 @@ namespace GlutenFree.ViewModels
                 }
                 catch (Exception)
                 {
-                    loginFailedException = new Exception(response.StatusCode.ToString());
-                    throw loginFailedException;
+                    throw new Exception();
                 }
                 
                 await Shell.Current.GoToAsync($"//{nameof(MapPage)}");
@@ -74,12 +86,12 @@ namespace GlutenFree.ViewModels
                 // Above three lines can be replaced with new helper method below
                 // string responseBody = await client.GetStringAsync(uri);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                await _messageService.ShowAsync("Login error", "Wrong email or password", "OK");
+                ActivityIndicatorSpinning = false;
+                await _messageService.ShowPopUpAsync("Login error", "Wrong email or password", "OK");
                 EmailEntry = null;
                 PasswordEntry = null;
-                Console.WriteLine("Login error: " + e.Message);
             }
         }
 

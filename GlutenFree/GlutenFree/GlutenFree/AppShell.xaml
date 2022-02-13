@@ -4,7 +4,11 @@
        xmlns:views="clr-namespace:GlutenFree.Views"
        xmlns:resources="clr-namespace:GlutenFree.Resx"
        x:Name="shell"
-       x:Class="GlutenFree.AppShell">
+       x:Class="GlutenFree.AppShell"
+       Shell.NavBarHasShadow="True"
+       BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -25,8 +29,7 @@
     </Shell.Resources>
 
     
-    <ShellContent Title="{x:Static resources:AppResources.StringLogin}"
-        ContentTemplate="{DataTemplate views:LoginPage}" FlyoutItemIsVisible="False" />
+    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" FlyoutItemIsVisible="False" />
 
     <TabBar>
         <ShellContent Title="{x:Static resources:AppResources.StringMap}"

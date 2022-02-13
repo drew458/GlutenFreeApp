@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:views="clr-namespace:GlutenFree.Views" 
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
              xmlns:resources="clr-namespace:GlutenFree.Resx"
              x:DataType="viewmodels:RegioniViewModel"
