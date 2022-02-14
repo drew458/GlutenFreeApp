@@ -1,4 +1,6 @@
 ﻿using GlutenFree.Services;
+using GlutenFree.Views;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -31,6 +33,12 @@ namespace GlutenFree
         {
             Helpers.AppTheme.SetTheme();
             RequestedThemeChanged += App_RequestedThemeChanged;
+            
+            var expiryDate = Preferences.Get("expiry_date", DateTime.Now.Subtract(TimeSpan.FromDays(3)));
+            if (DateTime.Compare(expiryDate, DateTime.Now) > 0)
+            {
+                Shell.Current.GoToAsync($"//{nameof(MapPage)}");
+            }
         }
 
         private void App_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)

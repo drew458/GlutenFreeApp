@@ -3,8 +3,10 @@ using GlutenFree.Resources;
 using GlutenFree.Resx;
 using GlutenFree.Views;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GlutenFree.ViewModels
@@ -69,27 +71,28 @@ namespace GlutenFree.ViewModels
         private async void OnRegistrationButtonTapped(object obj)
         {
             ActivityIndicatorSpinning = true;
-            var hashedPassword = EncryptionService.Encrypt(EmailEntry.ToLower(), PasswordEntry);
 
-            // Checks if the password contains at least one character
-            if(PasswordEntry.Contains("?") || PasswordEntry.Contains("!") || PasswordEntry.Contains("&") ||
-                PasswordEntry.Contains("$") || PasswordEntry.Contains("=") || PasswordEntry.Contains("_") ||
-                PasswordEntry.Contains("^") || PasswordEntry.Contains("@") || PasswordEntry.Contains("%") ||
-                PasswordEntry.Contains("'") || PasswordEntry.Contains("(") || PasswordEntry.Contains(")") ||
-                PasswordEntry.Contains("*") || PasswordEntry.Contains("+") || PasswordEntry.Contains(",") ||
-                PasswordEntry.Contains(".") || PasswordEntry.Contains("/") || PasswordEntry.Contains(":") ||
-                PasswordEntry.Contains(";") || PasswordEntry.Contains("<") || PasswordEntry.Contains(">") ||
-                PasswordEntry.Contains("[") || PasswordEntry.Contains("]") )
+            if (!EmailEntry.Contains("@"))
             {
-                // Checks if the password match the reapeated password
+                ActivityIndicatorSpinning = false;
+                await _messageService.ShowPopUpAsync("Registration error", "Email not valid", "OK");
+                PasswordEntry = null;
+            }
+
+            // Check if the password meets the requirements (special character, number, uppercase)
+            if (EmailPasswordCheckService.CheckPassword(PasswordEntry))
+            {
+                // Check if the password match the reapeated password
                 if (PasswordEntry.Equals(RepeatedPasswordEntry))
                 {
                     try
                     {
-                        //remove whitespaces
-                        string polishedEmail = Regex.Replace(EmailEntry, @"\s+", "");
+                        var sanitizedEmail = EmailPasswordCheckService.SanitizeEmail(EmailEntry);
+                        var hashedPassword = EncryptionService.Encrypt(sanitizedEmail, PasswordEntry);
 
-                        string apiUrl = Constants.APIUserRegistration + "&em=" + polishedEmail.ToLower() + "&pwd=" + hashedPassword;
+                        string apiUrl = Constants.APIUserRegistration + "&em=" + 
+                             sanitizedEmail + "&pwd=" + hashedPassword;
+                        
                         HttpResponseMessage response = await client.GetAsync(apiUrl);
                         try
                         {
@@ -104,25 +107,29 @@ namespace GlutenFree.ViewModels
                     {
                         ActivityIndicatorSpinning = false;
                         await _messageService.ShowPopUpAsync("Login error", "Wrong email or password", "OK");
-                        EmailEntry = null;
                         PasswordEntry = null;
+                        RepeatedPasswordEntry = null;
                     }
 
+                    // SUCCESS!
+                    var expiryDate = DateTime.Now.AddDays(30);
+                    Preferences.Set("expiry_date", expiryDate);
                     await Shell.Current.GoToAsync($"//{nameof(MapPage)}");
                 }
                 else
                 {
                     await _messageService.ShowPopUpAsync("Registration error", "Password inserted does not match", "OK");
-                    EmailEntry = null;
                     PasswordEntry = null;
+                    RepeatedPasswordEntry = null;
                 }
             }
             else
             {
-                await _messageService.ShowPopUpAsync("Registration error", "Password must cointain at least on special character", 
-                    "OK");
-                EmailEntry = null;
+                ActivityIndicatorSpinning = false;
+                await _messageService.ShowPopUpAsync("Registration error", 
+                    "Password must cointain at least on special character, a number and an upper case letter", "OK");
                 PasswordEntry = null;
+                RepeatedPasswordEntry = null;
             }
         }
     }

@@ -14,9 +14,11 @@
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
         <Label Text="Email:" Style="{StaticResource BaseLabel}" />
-        <Entry Text="{Binding EmailEntry}" Placeholder="Email" Style="{StaticResource Entry}"/>
+        <Entry Text="{Binding EmailEntry}" Placeholder="Email" Style="{StaticResource Entry}"
+               Keyboard="Email" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
+               ClearButtonVisibility="WhileEditing" />
         <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
-        <Entry Text="{Binding PasswordEntry}"
+        <Entry Text="{Binding PasswordEntry}" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
             IsPassword="True" Placeholder="Password" 
             Style="{StaticResource Entry}" />
         <Label Text="Confirm Password:" Style="{StaticResource BaseLabel}"/>
