@@ -40,7 +40,7 @@ namespace GlutenFree.Services
             var generatedRandomInt = rnd.Next(10, 9999999);
             var restaurant = new Restaurant()
             {
-                Id = generatedRandomInt,
+                ID = generatedRandomInt,
                 Nome = name,
                 Indirizzo = address,
                 Città = city,
@@ -71,7 +71,7 @@ namespace GlutenFree.Services
             await Init();
 
             var restaurant = await db.Table<Restaurant>()
-                .FirstOrDefaultAsync(r => r.Id == id);
+                .FirstOrDefaultAsync(r => r.ID == id);
 
             return restaurant;
         }
