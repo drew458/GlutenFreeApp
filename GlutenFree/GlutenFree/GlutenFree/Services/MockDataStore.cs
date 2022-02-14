@@ -243,7 +243,7 @@ namespace GlutenFree.Services
                                 {
                                     Nome="Zenzero Biorestaurant",
                                     Indirizzo="Via Mar dei Sargassi 68",
-                                    Città="Roma",
+                                    Citta="Roma",
                                     Provincia = new Provincia()
                                     {
                                         Nome = "Roma"
@@ -265,7 +265,7 @@ namespace GlutenFree.Services
                                 {
                                     Nome="Etienne",
                                     Indirizzo="Via Scirrè 18",
-                                    Città="Roma",
+                                    Citta="Roma",
                                     Provincia = new Provincia()
                                     {
                                         Nome = "Roma"

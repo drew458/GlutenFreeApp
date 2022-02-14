@@ -11,7 +11,7 @@ namespace GlutenFree.ViewModels
 {
     public class RistorantiViewModel : BaseViewModel
     {
-        public ObservableCollection<Restaurant> ListaRistoranti { get; }
+        public ObservableCollection<RestaurantFromQuery> ListaRistoranti { get; }
         public Restaurant _ristoranteSelezionato;
 
         private RemoteRestaurantService remoteDbService;
@@ -22,7 +22,7 @@ namespace GlutenFree.ViewModels
         public RistorantiViewModel()
         {
             Title = AppResources.StringRestaurants;
-            ListaRistoranti = new ObservableCollection<Restaurant>();
+            ListaRistoranti = new ObservableCollection<RestaurantFromQuery>();
 
             remoteDbService = new RemoteRestaurantService();
 

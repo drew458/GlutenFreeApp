@@ -12,11 +12,11 @@ namespace GlutenFree.Services
 {
     internal class RemoteRestaurantService : IRestaurantService
     {
-        HttpClient httpClient;
-        JsonSerializerOptions serializerOptions;
+        readonly HttpClient httpClient;
+        readonly JsonSerializerOptions serializerOptions;
 
-        public List<Restaurant> Restaurants { get; private set; }
-        public Restaurant Restaurant { get; private set; }
+        public List<RestaurantFromQuery> Restaurants { get; private set; }
+        public RestaurantFromQuery Restaurant { get; private set; }
 
         public RemoteRestaurantService()
         {
@@ -26,13 +26,14 @@ namespace GlutenFree.Services
                 //PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 //WriteIndented = true
                 //ReferenceHandler = ReferenceHandler.Preserve,
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             };
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantsAsync()
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantsAsync()
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             Uri uri = new Uri(Constants.APIRestaurantsGet);
             try
@@ -41,7 +42,9 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    //Restaurants = await response.Content.ReadFromJsonAsync<List<Restaurant>>();
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
+                    Console.WriteLine(Restaurants);
                 }
             }
             catch (Exception ex)
@@ -121,7 +124,7 @@ namespace GlutenFree.Services
             }
         }
 
-        public async Task<Restaurant> GetRestaurantAsync(int id)
+        public async Task<RestaurantFromQuery> GetRestaurantAsync(int id)
         {
             string query = Constants.APIRestaurantsGet + "/id={0}";
 
@@ -134,7 +137,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurant = JsonSerializer.Deserialize<Restaurant>(content, serializerOptions);
+                    Restaurant = JsonSerializer.Deserialize<RestaurantFromQuery>(content, serializerOptions);
                 }
 
             }
@@ -146,9 +149,9 @@ namespace GlutenFree.Services
             return Restaurant;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncName(string name)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncName(string name)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/name={0}";
 
@@ -161,7 +164,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -174,9 +177,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCity(string city)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncCity(string city)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/city={0}";
 
@@ -189,7 +192,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -202,9 +205,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvince(string province)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncProvince(string province)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/province={0}";
 
@@ -217,7 +220,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -230,9 +233,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegion(string region)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncRegion(string region)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/region={0}";
 
@@ -245,7 +248,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -258,9 +261,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncDishType(string dishType)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncDishType(string dishType)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/dishType={0}";
 
@@ -273,7 +276,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -286,9 +289,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncSpecialMenu(int specialMenu)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncSpecialMenu(int specialMenu)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/specialMenu={0}";
 
@@ -301,7 +304,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -314,9 +317,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishType(string city, string dishType)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncCityDishType(string city, string dishType)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/city={0}&dishType={1}";
 
@@ -329,7 +332,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -342,9 +345,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, int specialMenu)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, int specialMenu)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             object[] parameters = { city, dishType, specialMenu };
 
@@ -359,7 +362,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -372,9 +375,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/province={0}&dishType={1}";
 
@@ -387,7 +390,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -400,9 +403,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             object[] parameters = { province, dishType, specialMenu };
 
@@ -417,7 +420,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -430,10 +433,10 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishType(string region, string dishType)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncRegionDishType(string region, string dishType)
         {
 
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             string query = Constants.APIRestaurantsGet + "/region={0}&dishType={1}";
 
@@ -446,7 +449,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }
@@ -459,9 +462,9 @@ namespace GlutenFree.Services
             return Restaurants;
         }
 
-        public async Task<IEnumerable<Restaurant>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
+        public async Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
         {
-            Restaurants = new List<Restaurant>();
+            Restaurants = new List<RestaurantFromQuery>();
 
             object[] parameters = { region, dishType, specialMenu };
 
@@ -476,7 +479,7 @@ namespace GlutenFree.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Restaurants = JsonSerializer.Deserialize<List<Restaurant>>(content, serializerOptions);
+                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                 }
 
             }

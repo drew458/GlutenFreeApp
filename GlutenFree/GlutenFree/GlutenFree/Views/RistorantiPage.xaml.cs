@@ -29,10 +29,10 @@ namespace GlutenFree.Views
             RistorantiCollectionView.ItemsSource = GetList(e.NewTextValue);
         }
 
-        private IEnumerable<Restaurant> GetList(string nomeRistorante = null)
+        private IEnumerable<RestaurantFromQuery> GetList(string nomeRistorante = null)
         {
             RistorantiViewModel _container = BindingContext as RistorantiViewModel;
-            IList<Restaurant> ristoranti = _container.ListaRistoranti;
+            IList<RestaurantFromQuery> ristoranti = _container.ListaRistoranti;
 
             return string.IsNullOrEmpty(nomeRistorante) ? ristoranti : ristoranti
                 .Where(r => r.Nome.ToLower()

@@ -8,7 +8,7 @@ using Xamarin.Essentials;
 
 namespace GlutenFree.Services
 {
-    public class RestaurantService : IRestaurantService
+    public class RestaurantService
     {
         SQLiteAsyncConnection db;
         readonly Random rnd = new Random();
@@ -43,7 +43,7 @@ namespace GlutenFree.Services
                 ID = generatedRandomInt,
                 Nome = name,
                 Indirizzo = address,
-                Città = city,
+                Citta = city,
                 Provincia = new Provincia()
                 {
                     Nome = province
@@ -96,7 +96,7 @@ namespace GlutenFree.Services
         {
             await Init();
             List<Restaurant> restaurants = await db.Table<Restaurant>()
-                .Where(r => r.Città.Equals(city))
+                .Where(r => r.Citta.Equals(city))
                 .ToListAsync();
             return restaurants;
         }
@@ -141,7 +141,7 @@ namespace GlutenFree.Services
         {
             await Init();
             List<Restaurant> restaurants = await db.Table<Restaurant>()
-                .Where(r => r.Città.Equals(city))
+                .Where(r => r.Citta.Equals(city))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .ToListAsync();
             return restaurants;
@@ -151,7 +151,7 @@ namespace GlutenFree.Services
         {
             await Init();
             List<Restaurant> restaurants = await db.Table<Restaurant>()
-                .Where(r => r.Città.Equals(city))
+                .Where(r => r.Citta.Equals(city))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
