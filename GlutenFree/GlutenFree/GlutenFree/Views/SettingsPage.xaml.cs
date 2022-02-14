@@ -1,4 +1,5 @@
 ﻿using GlutenFree.Helpers;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -56,7 +57,13 @@ namespace GlutenFree.Views
                     break;
             }
 
-            AppTheme.SetTheme();
+            Helpers.AppTheme.SetTheme();
+        }
+
+        private void Button_Clicked(object sender, System.EventArgs e)
+        {
+            Preferences.Remove("expiry_date");
+            Application.Current.MainPage = new AppShell();
         }
     }
 }
