@@ -41,9 +41,9 @@ namespace GlutenFree.Services
                 var response = await httpClient.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    //Restaurants = await response.Content.ReadFromJsonAsync<List<Restaurant>>();
-                    Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
+                    //var content = await response.Content.ReadAsStringAsync();
+                    Restaurants = await response.Content.ReadFromJsonAsync<List<RestaurantFromQuery>>(serializerOptions);
+                    //Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
                     Console.WriteLine(Restaurants);
                 }
             }

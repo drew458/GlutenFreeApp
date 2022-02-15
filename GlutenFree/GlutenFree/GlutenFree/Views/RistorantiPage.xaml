@@ -28,7 +28,7 @@
                 VerticalScrollBarVisibility="Never" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="3" x:DataType="models:Restaurant" >
+                        <Grid Padding="5" x:DataType="models:RestaurantFromQuery" >
                             <Frame Style="{StaticResource RistorantiCard}">
                                 <Grid RowDefinitions="Auto,Auto"
                                     ColumnDefinitions="Auto,Auto" >
