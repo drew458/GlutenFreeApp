@@ -1,6 +1,7 @@
 ﻿using GlutenFree.Models;
 using GlutenFree.Resx;
 using GlutenFree.Services;
+using GlutenFree.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -33,6 +34,7 @@ namespace GlutenFree.ViewModels
         private async Task ExecuteLoadRistorantiCommand()
         {
             IsBusy = true;
+            LocalRestaurantService localDb = await LocalRestaurantService.Instance;
 
             try
             {
@@ -41,6 +43,10 @@ namespace GlutenFree.ViewModels
                 foreach (var ristorante in ristoranti)
                 {
                     ListaRistoranti.Add(ristorante);
+                    Provincia prov = ristorante.Provincia;
+                    await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta, ristorante.Provincia.Nome,
+                        ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine, 
+                        ristorante.TipoCucina.IdTipoCucina, ristorante.MenuAParte, ristorante.ImageId);
                 }
             }
             catch (Exception ex)
@@ -76,7 +82,8 @@ namespace GlutenFree.ViewModels
                 return;
             }
 
-            //await Shell.Current.GoToAsync($"{nameof(ProvincePage)}?{nameof(ProvinceViewModel.Nome)}={ristorante.Nome}");
+            await Shell.Current.GoToAsync($"{nameof(RestaurantPage)}?{nameof(RestaurantViewModel.ID)}={nameof(ristorante.ID)}" +
+                $"&{nameof(RestaurantViewModel.Nome)}={ristorante.Nome}");
         }
     }
 }

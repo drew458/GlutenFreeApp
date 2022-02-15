@@ -11,12 +11,11 @@ namespace GlutenFree.Services
     public class LocalRestaurantService
     {
         static SQLiteAsyncConnection Database;
-        readonly Random rnd = new Random();
 
         public static readonly AsyncLazy<LocalRestaurantService> Instance = new AsyncLazy<LocalRestaurantService>(async () =>
         {
             var instance = new LocalRestaurantService();
-            CreateTableResult result = await Database.CreateTableAsync<Restaurant>();
+            CreateTableResult result = await Database.CreateTableAsync<RestaurantFromQuery>();
             return instance;
         });
 
@@ -29,35 +28,26 @@ namespace GlutenFree.Services
             return Database.Table<Restaurant>().ToListAsync();
         }
 
-        public Task AddRestaurantAsync(string name, string address, string city, string province, string region, double latitude, double longitude, string dishType, int specialMenu)
+        public Task AddRestaurantAsync(int id,string name, string address, string city, string province, string region, 
+            double latitude, double longitude, int dishType, int specialMenu, int imageId)
         {
-            var generatedRandomInt = rnd.Next(10, 9999999);
-            var restaurant = new Restaurant()
+            var restaurant = new RestaurantFromQuery()
             {
-                ID = generatedRandomInt,
+                ID = id,
                 Nome = name,
                 Indirizzo = address,
                 Citta = city,
-                Provincia = new Provincia()
-                {
-                    Nome = province
-                },
-                Regione = new Models.Regione()
-                {
-                    Nome = region
-                },
+                Provincia = province,
+                Regione = region,
                 Latitudine = latitude,
                 Longitudine = longitude,
-                TipoCucina = new TipologieCucina
-                {
-                    Principale=dishType
-                },
+                IdTipoCucina = dishType,
                 MenuAParte = specialMenu,
-                ImageId = generatedRandomInt + 3
+                ImageId = imageId
 
             };
 
-            return Database.InsertAsync(restaurant);
+            return Database.InsertOrReplaceAsync(restaurant);
         }
 
         public Task<Restaurant> GetRestaurantAsync(int id)
@@ -89,14 +79,14 @@ namespace GlutenFree.Services
         public Task<List<Restaurant>> GetRestaurantAsyncProvince(string province)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Equals(province))
+                .Where(r => r.Provincia.Nome.Equals(province))
                 .ToListAsync();
         }
 
         public Task<List<Restaurant>> GetRestaurantAsyncRegion(string region)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Equals(region))
+                .Where(r => r.Regione.Nome.Equals(region))
                 .ToListAsync();
         }
 
@@ -135,7 +125,7 @@ namespace GlutenFree.Services
         public Task<List<Restaurant>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Equals(province))
+                .Where(r => r.Provincia.Nome.Equals(province))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .ToListAsync();
         }
@@ -143,7 +133,7 @@ namespace GlutenFree.Services
         public Task<List<Restaurant>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Equals(province))
+                .Where(r => r.Provincia.Nome.Equals(province))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
@@ -152,7 +142,7 @@ namespace GlutenFree.Services
         public Task<List<Restaurant>> GetRestaurantAsyncRegionDishType(string region, string dishType)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Equals(region))
+                .Where(r => r.Regione.Nome.Equals(region))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .ToListAsync();
         }
@@ -160,7 +150,7 @@ namespace GlutenFree.Services
         public Task<List<Restaurant>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
         {
             return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Equals(region))
+                .Where(r => r.Regione.Nome.Equals(region))
                 .Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();

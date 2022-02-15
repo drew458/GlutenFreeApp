@@ -27,7 +27,7 @@ namespace GlutenFree.Services
                 //WriteIndented = true
                 //ReferenceHandler = ReferenceHandler.Preserve,
                 PropertyNameCaseInsensitive = true,
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
             };
         }
 
@@ -38,14 +38,28 @@ namespace GlutenFree.Services
             Uri uri = new Uri(Constants.APIRestaurantsGet);
             try
             {
-                var response = await httpClient.GetAsync(uri);
+                Restaurants = await httpClient.GetFromJsonAsync<List<RestaurantFromQuery>>(uri, serializerOptions);
+                /* var response = await httpClient.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     //var content = await response.Content.ReadAsStringAsync();
                     Restaurants = await response.Content.ReadFromJsonAsync<List<RestaurantFromQuery>>(serializerOptions);
                     //Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
-                    Console.WriteLine(Restaurants);
-                }
+                    
+                } */
+                Console.WriteLine(Restaurants);
+            }
+            catch (HttpRequestException) // Non success
+            {
+                Console.WriteLine("An error occurred.");
+            }
+            catch (NotSupportedException) // When content type is not valid
+            {
+                Console.WriteLine("The content type is not supported.");
+            }
+            catch (JsonException) // Invalid JSON
+            {
+                Console.WriteLine("Invalid JSON.");
             }
             catch (Exception ex)
             {

@@ -10,7 +10,7 @@ namespace GlutenFree.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RistorantiPage : ContentPage
     {
-        RistorantiViewModel _viewModel;
+        readonly RistorantiViewModel _viewModel;
 
         public RistorantiPage()
         {
