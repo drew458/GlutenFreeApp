@@ -77,14 +77,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\RestaurantPage.xaml.cs">
-      <DependentUpon>RestaurantPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\ProvincePage.xaml.cs">
       <DependentUpon>ProvincePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RegioniPage.xaml.cs">
       <DependentUpon>RegioniPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RestaurantPage.xaml.cs">
+      <DependentUpon>RestaurantPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -99,9 +99,6 @@
     <EmbeddedResource Update="Views\RegistrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RestaurantPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\RegioniPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -109,6 +106,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProvincePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RestaurantPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RistorantiPage.xaml">

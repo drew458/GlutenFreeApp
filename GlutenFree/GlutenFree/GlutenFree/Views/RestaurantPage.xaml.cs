@@ -20,5 +20,6 @@ namespace GlutenFree.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+        
     }
 }

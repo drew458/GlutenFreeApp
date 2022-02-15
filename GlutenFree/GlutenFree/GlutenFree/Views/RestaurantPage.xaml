@@ -5,13 +5,12 @@
              xmlns:controls="clr-namespace:GlutenFree.Controls"
              xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
              x:Class="GlutenFree.Views.RestaurantPage"
-             x:Name="RestaurantPage"
-             x:DataType="viewmodels:RestaurantViewModel">
-
-    <NavigationPage.TitleView>
+             x:DataType="viewmodels:RestaurantViewModel" >
+    
+    <!-- <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal"
                      Padding="10, 0">
-            <!-- Go back button 
+            Go back button 
             <Button Text="{x:Static fontawesome:FontAwesomeIcons.ChevronLeft}"
                     BackgroundColor="{DynamicResource mainBackground}"
                     TextColor="{DynamicResource mainLabel}"
@@ -19,9 +18,9 @@
                     WidthRequest="40"
                     Command="{prism:GoBack }"
                     HeightRequest="40"
-                    CornerRadius="10"/> -->
+                    CornerRadius="10"/>
 
-            <!-- Profile Image 
+            Profile Image 
             <yummy:PancakeView CornerRadius="20"
                                HasShadow="True"
                                HorizontalOptions="EndAndExpand"
@@ -31,13 +30,13 @@
                                Elevation="1">
                 <Image Source="https://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
                                             Aspect="AspectFill"/> 
-            </yummy:PancakeView> -->
-       </StackLayout>
-    </NavigationPage.TitleView>
+            </yummy:PancakeView>
+        </StackLayout>
+    </NavigationPage.TitleView> -->
 
     <ContentPage.Content>
         <controls:ExtendedScrollView HasTopPadding="False">
-            <StackLayout Padding="0, 0, 0, 40" x:DataType="viewmodels:RestaurantViewModel">
+            <StackLayout Padding="0, 0, 0, 40" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -48,7 +47,7 @@
                         Source="https://en.wikipedia.org/wiki/North_American_XB-70_Valkyrie#/media/File:North_American_XB-70A_Valkyrie_in_flight_(cropped).jpg"
                         HeightRequest="400"
                         Aspect="AspectFill"/>
-                    
+
                     <!-- Restaurant details container -->
                     <yummy:PancakeView Grid.Row="1"
                                        x:Name="detailContainer"
@@ -93,7 +92,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            
+
                             <!-- Description -->
                             <Label Text="Description"
                                    Style="{StaticResource cardTitleStyle}"
@@ -107,8 +106,8 @@
                                    Grid.Row="2"/>
                             <BoxView Style="{StaticResource borderStyle}"
                                      Grid.Row="3"/>
-                            
-                            <!-- Photos -->
+
+                            <!-- Photos 
                             <Label Text="Photos"
                                    Grid.Row="4"
                                    Style="{StaticResource cardTitleStyle}"
@@ -137,8 +136,8 @@
                                         </StackLayout>
                                     </DataTemplate>
                                 </CarouselView.ItemTemplate>
-                            </CarouselView>
-                            
+                            </CarouselView> -->
+
                         </Grid>
                     </yummy:PancakeView>
                 </Grid>

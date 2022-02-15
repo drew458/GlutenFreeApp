@@ -17,6 +17,7 @@ namespace GlutenFree
 
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
             Routing.RegisterRoute(nameof(ProvincePage), typeof(ProvincePage));
+            Routing.RegisterRoute(nameof(RestaurantPage), typeof(RestaurantPage));
         }
 
     }

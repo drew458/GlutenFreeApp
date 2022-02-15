@@ -23,9 +23,9 @@ namespace GlutenFree.Services
             Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         }
 
-        public Task<List<Restaurant>> GetRestaurantsAsync()
+        public Task<List<RestaurantFromQuery>> GetRestaurantsAsync()
         {
-            return Database.Table<Restaurant>().ToListAsync();
+            return Database.Table<RestaurantFromQuery>().ToListAsync();
         }
 
         public Task AddRestaurantAsync(int id,string name, string address, string city, string province, string region, 
@@ -50,108 +50,108 @@ namespace GlutenFree.Services
             return Database.InsertOrReplaceAsync(restaurant);
         }
 
-        public Task<Restaurant> GetRestaurantAsync(int id)
+        public Task<RestaurantFromQuery> GetRestaurantAsync(int id)
         {
 
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .FirstOrDefaultAsync(r => r.ID == id);
         }
 
         public Task DeleteRestaurantAsync(int id)
         {
-            return Database.DeleteAsync<Restaurant>(id);
+            return Database.DeleteAsync<RestaurantFromQuery>(id);
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncName(string name)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncName(string name)
         {
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .Where(r => r.Nome.Equals(name))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncCity(string city)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncCity(string city)
         {
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .Where(r => r.Citta.Equals(city))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncProvince(string province)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncProvince(string province)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Nome.Equals(province))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Provincia.Equals(province))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncRegion(string region)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncRegion(string region)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Nome.Equals(region))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Regione.Equals(region))
                 .ToListAsync();
         }
 
-        public async Task<List<Restaurant>> GetRestaurantAsyncDishType(string dishType)
+        public async Task<List<RestaurantFromQuery>> GetRestaurantAsyncDishType(string dishType)
         {
-            List<Restaurant> restaurants = await Database.Table<Restaurant>()
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+            List<RestaurantFromQuery> restaurants = await Database.Table<RestaurantFromQuery>()
+                .Where(r => r.IdTipoCucina.Equals(dishType))
                 .ToListAsync();
             return restaurants;
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncSpecialMenu(int specialMenu)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncSpecialMenu(int specialMenu)
         {
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncCityDishType(string city, string dishType)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncCityDishType(string city, string dishType)
         {
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .Where(r => r.Citta.Equals(city))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+                //.Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, int specialMenu)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncCityDishTypeSpecialMenu(string city, string dishType, int specialMenu)
         {
-            return Database.Table<Restaurant>()
+            return Database.Table<RestaurantFromQuery>()
                 .Where(r => r.Citta.Equals(city))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+                //.Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncProvinceDishType(string province, string dishType)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Nome.Equals(province))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Provincia.Equals(province))
+                //.Where(r => r.TipoCucina.Principale.Equals(dishType))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncProvinceDishTypeSpecialMenu(string province, string dishType, int specialMenu)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Provincia.Nome.Equals(province))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Provincia.Equals(province))
+                //.Where(r => r.TipoCucina.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncRegionDishType(string region, string dishType)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncRegionDishType(string region, string dishType)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Nome.Equals(region))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Regione.Equals(region))
+                //.Where(r => r.TipoCucina.Equals(dishType))
                 .ToListAsync();
         }
 
-        public Task<List<Restaurant>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
+        public Task<List<RestaurantFromQuery>> GetRestaurantAsyncRegionDishTypeSpecialMenu(string region, string dishType, int specialMenu)
         {
-            return Database.Table<Restaurant>()
-                .Where(r => r.Regione.Nome.Equals(region))
-                .Where(r => r.TipoCucina.Principale.Equals(dishType))
+            return Database.Table<RestaurantFromQuery>()
+                .Where(r => r.Regione.Equals(region))
+                //.Where(r => r.TipoCucina.Equals(dishType))
                 .Where(r => r.MenuAParte.Equals(specialMenu))
                 .ToListAsync();
         }
