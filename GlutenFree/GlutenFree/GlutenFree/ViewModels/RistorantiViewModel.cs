@@ -11,10 +11,10 @@ namespace GlutenFree.ViewModels
 {
     public class RistorantiViewModel : BaseViewModel
     {
-        public ObservableCollection<RestaurantFromQuery> ListaRistoranti { get; }
+        public ObservableCollection<Restaurant> ListaRistoranti { get; }
         public Restaurant _ristoranteSelezionato;
 
-        private RemoteRestaurantService remoteDbService;
+        private readonly RemoteRestaurantService remoteDbService;
 
         public Command<Restaurant> RistoranteTapped { get; }
         public Command LoadRistorantiCommand { get; }
@@ -22,7 +22,7 @@ namespace GlutenFree.ViewModels
         public RistorantiViewModel()
         {
             Title = AppResources.StringRestaurants;
-            ListaRistoranti = new ObservableCollection<RestaurantFromQuery>();
+            ListaRistoranti = new ObservableCollection<Restaurant>();
 
             remoteDbService = new RemoteRestaurantService();
 
@@ -37,7 +37,7 @@ namespace GlutenFree.ViewModels
             try
             {
                 ListaRistoranti.Clear();
-                var ristoranti = await remoteDbService.GetRestaurantsAsync();
+                var ristoranti = RestaurantFromQuery2RestaurantService.Convert(await remoteDbService.GetRestaurantsAsync());
                 foreach (var ristorante in ristoranti)
                 {
                     ListaRistoranti.Add(ristorante);
