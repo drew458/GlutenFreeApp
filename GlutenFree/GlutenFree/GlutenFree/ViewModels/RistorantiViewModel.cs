@@ -82,8 +82,7 @@ namespace GlutenFree.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync($"{nameof(RestaurantPage)}?{nameof(RestaurantViewModel.ID)}={nameof(ristorante.ID)}" +
-                $"&{nameof(RestaurantViewModel.Nome)}={ristorante.Nome}");
+            await Shell.Current.GoToAsync($"{nameof(RestaurantPage)}?{nameof(RestaurantViewModel.ID)}={nameof(ristorante.ID)}");
         }
     }
 }

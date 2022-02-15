@@ -5,8 +5,9 @@ namespace GlutenFree.ViewModels
 {
     public class RestaurantViewModel : BaseViewModel
     {
-        private string nomeRistorante;
         private int idRistorante;
+        private string nomeRistorante;
+        private string indirizzoRistorante;
 
         public RestaurantViewModel()
         {
@@ -22,7 +23,6 @@ namespace GlutenFree.ViewModels
                 LoadRistorante(value);
             }
         }
-
         public string Nome
         {
             get => nomeRistorante;
@@ -31,6 +31,19 @@ namespace GlutenFree.ViewModels
                 nomeRistorante = value;
             }
         }
+        public string Indirizzo
+        {
+            get => indirizzoRistorante;
+            set
+            {
+                indirizzoRistorante = value;
+            }
+        }
+
+        internal void OnAppearing()
+        {
+            
+        }
 
         private async void LoadRistorante(int idRistorante)
         {
@@ -38,6 +51,7 @@ namespace GlutenFree.ViewModels
 
             var ristorante = await localDb.GetRestaurantAsync(idRistorante);
             this.Nome = ristorante.Nome;
+            this.Indirizzo = ristorante.Indirizzo;
         }
     }
 }
