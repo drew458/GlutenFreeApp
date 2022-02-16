@@ -1,11 +1,9 @@
-﻿using SQLite;
-using Xamarin.Forms.Maps;
+﻿using Xamarin.Forms.Maps;
 
 namespace GlutenFree.Models
 {
     public class Restaurant
     {
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Nome { get; set; }
         public string Indirizzo { get; set; }

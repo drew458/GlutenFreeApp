@@ -39,5 +39,36 @@ namespace GlutenFree.Services
 
             return restaurants;
         }
+
+        public static Restaurant ConvertRestaurant(RestaurantFromQuery restaurantFromQuery)
+        {
+            Restaurant restaurant = new Restaurant
+            {
+                ID = restaurantFromQuery.ID,
+                Nome = restaurantFromQuery.Nome,
+                Indirizzo = restaurantFromQuery.Indirizzo,
+                Citta = restaurantFromQuery.Citta,
+                Provincia = new Provincia
+                {
+                    Nome = restaurantFromQuery.Nome
+                },
+                Regione = new Regione
+                {
+                    Nome = restaurantFromQuery.Nome
+                },
+                Latitudine = restaurantFromQuery.Latitudine,
+                Longitudine = restaurantFromQuery.Longitudine,
+                TipoCucina = new TipologieCucina
+                {
+                    IdTipoCucina = restaurantFromQuery.IdTipoCucina
+                },
+                MenuAParte = restaurantFromQuery.MenuAParte,
+                ImageId = restaurantFromQuery.ImageId,
+                Posizione = new Xamarin.Forms.Maps.Position(restaurantFromQuery.Latitudine, restaurantFromQuery.Longitudine)
+            };
+
+            return restaurant;
+        }
+
     }
 }

@@ -28,19 +28,27 @@
                 VerticalScrollBarVisibility="Never" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5" x:DataType="models:Restaurant" >
+                        <Grid Padding="5">
                             <Frame Style="{StaticResource RistorantiCard}">
-                                <Grid RowDefinitions="Auto,Auto"
-                                    ColumnDefinitions="Auto,Auto" >
-                                    <Label Grid.Column="1" 
+                                <Grid RowDefinitions="0,50,15"
+                                    ColumnDefinitions="Auto,Auto"
+                                    x:DataType="models:Restaurant">
+                                    <Label Grid.Row="1" 
+                                        Grid.Column="1" 
                                         Text="{Binding Nome}"
                                         Style="{StaticResource LabelRistorantiCard}" />
+                                    <Label Grid.Row="2"
+                                           Grid.Column="1"
+                                           Text="{Binding Indirizzo}" />
+                                    <Label Grid.Row="3"
+                                           Grid.Column="1"
+                                           Text="{Binding Citta}" />
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer 
+                                    <TapGestureRecognizer 
                                             NumberOfTapsRequired="1"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RistorantiViewModel}}, Path=RistoranteTapped}"
                                             CommandParameter="{Binding .}">
-                                        </TapGestureRecognizer>
+                                    </TapGestureRecognizer>
                                     </Grid.GestureRecognizers>
                                 </Grid>
                             </Frame>

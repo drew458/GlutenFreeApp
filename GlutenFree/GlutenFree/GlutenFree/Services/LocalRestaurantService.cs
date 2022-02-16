@@ -47,7 +47,8 @@ namespace GlutenFree.Services
 
             };
 
-            return Database.InsertOrReplaceAsync(restaurant);
+            var numberOfRows = Database.InsertOrReplaceAsync(restaurant);
+            return numberOfRows;
         }
 
         public Task<RestaurantFromQuery> GetRestaurantAsync(int id)

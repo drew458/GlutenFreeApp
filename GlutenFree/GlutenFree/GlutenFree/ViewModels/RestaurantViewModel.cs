@@ -8,6 +8,7 @@ namespace GlutenFree.ViewModels
         private int idRistorante;
         private string nomeRistorante;
         private string indirizzoRistorante;
+        private string cittaRistorante;
 
         public RestaurantViewModel()
         {
@@ -29,6 +30,7 @@ namespace GlutenFree.ViewModels
             set
             {
                 nomeRistorante = value;
+                OnPropertyChanged();
             }
         }
         public string Indirizzo
@@ -37,21 +39,30 @@ namespace GlutenFree.ViewModels
             set
             {
                 indirizzoRistorante = value;
+                OnPropertyChanged();
             }
         }
-
-        internal void OnAppearing()
+        public string Citta
         {
-            
+            get => cittaRistorante;
+            set
+            {
+                cittaRistorante = value;
+                OnPropertyChanged();
+            }
         }
 
         private async void LoadRistorante(int idRistorante)
         {
-            LocalRestaurantService localDb = await LocalRestaurantService.Instance;
+            //LocalRestaurantService localDb = await LocalRestaurantService.Instance;
+            RemoteRestaurantService remoteDbService = new RemoteRestaurantService();
 
-            var ristorante = await localDb.GetRestaurantAsync(idRistorante);
-            this.Nome = ristorante.Nome;
-            this.Indirizzo = ristorante.Indirizzo;
+            var ristorante = RestaurantFromQuery2RestaurantService.ConvertRestaurant(await remoteDbService.GetRestaurantAsync(idRistorante));
+
+            //var ristorante = await localDb.GetRestaurantAsync(idRistorante);
+            Nome = ristorante.Nome;
+            Indirizzo = ristorante.Indirizzo;
+            Citta = ristorante.Citta;
         }
     }
 }

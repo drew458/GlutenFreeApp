@@ -65,9 +65,8 @@
 
             <Style x:Key="LabelRistorantiCard" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Padding" Value="10"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="10"/>
             </Style>
 
             <Style x:Key="RegioniCard" TargetType="Frame">

@@ -43,7 +43,6 @@ namespace GlutenFree.ViewModels
                 foreach (var ristorante in ristoranti)
                 {
                     ListaRistoranti.Add(ristorante);
-                    Provincia prov = ristorante.Provincia;
                     await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta, ristorante.Provincia.Nome,
                         ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine, 
                         ristorante.TipoCucina.IdTipoCucina, ristorante.MenuAParte, ristorante.ImageId);
@@ -82,7 +81,7 @@ namespace GlutenFree.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync($"{nameof(RestaurantPage)}?{nameof(RestaurantViewModel.ID)}={nameof(ristorante.ID)}");
+            await Shell.Current.GoToAsync($"{nameof(RestaurantPage)}?{nameof(RestaurantViewModel.ID)}={ristorante.ID}");
         }
     }
 }
