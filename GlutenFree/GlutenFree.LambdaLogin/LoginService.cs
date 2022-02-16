@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace GlutenFree.Login
+namespace GlutenFreeApp.Login
 {
     class LoginService : DbService
     {

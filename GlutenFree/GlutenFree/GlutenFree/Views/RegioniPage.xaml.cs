@@ -1,10 +1,10 @@
-﻿using GlutenFree.Models;
-using GlutenFree.ViewModels;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     public partial class RegioniPage : ContentPage
     {

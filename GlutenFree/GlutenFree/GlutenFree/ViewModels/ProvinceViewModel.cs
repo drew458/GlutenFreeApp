@@ -1,10 +1,10 @@
-﻿using GlutenFree.Models;
-using GlutenFree.Resx;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Resx;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     [QueryProperty(nameof(Nome), nameof(Nome))]
     public class ProvinceViewModel : BaseViewModel

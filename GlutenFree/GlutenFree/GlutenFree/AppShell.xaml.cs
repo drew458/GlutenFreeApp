@@ -1,10 +1,10 @@
-﻿using GlutenFree.ViewModels;
-using GlutenFree.Views;
+﻿using GlutenFreeApp.ViewModels;
+using GlutenFreeApp.Views;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace GlutenFree
+namespace GlutenFreeApp
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {

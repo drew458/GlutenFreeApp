@@ -1,15 +1,13 @@
-﻿using GlutenFree.Helpers;
-using GlutenFree.Resources;
-using GlutenFree.Resx;
-using GlutenFree.Views;
+﻿using GlutenFreeApp.Helpers;
+using GlutenFreeApp.Resources;
+using GlutenFreeApp.Resx;
+using GlutenFreeApp.Views;
 using System;
-using System.Linq;
 using System.Net.Http;
-using System.Text.RegularExpressions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class RegistrationViewModel : BaseViewModel
     {

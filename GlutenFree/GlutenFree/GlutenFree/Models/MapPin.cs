@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms.Maps;
 
-namespace GlutenFree.Models
+namespace GlutenFreeApp.Models
 {
     public class MapPin : INotifyPropertyChanged
     {

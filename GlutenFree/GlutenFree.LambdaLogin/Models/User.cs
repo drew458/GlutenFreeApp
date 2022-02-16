@@ -1,4 +1,4 @@
-﻿namespace GlutenFree.Login.Models
+﻿namespace GlutenFreeApp.Login.Models
 {
     class User
     {

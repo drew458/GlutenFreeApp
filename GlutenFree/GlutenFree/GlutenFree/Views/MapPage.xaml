@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
-             xmlns:resources="clr-namespace:GlutenFree.Resx"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:DataType="viewmodels:MapViewModel"
-             x:Class="GlutenFree.Views.MapPage"
+             x:Class="GlutenFreeApp.Views.MapPage"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 

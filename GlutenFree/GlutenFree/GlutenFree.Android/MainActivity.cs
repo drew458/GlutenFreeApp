@@ -3,13 +3,13 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Android;
-using GlutenFree.Helpers;
+using GlutenFreeApp.Helpers;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 
-[assembly: Dependency(typeof(GlutenFree.Droid.Environment))]
+[assembly: Dependency(typeof(GlutenFreeApp.Droid.Environment))]
 
-namespace GlutenFree.Droid
+namespace GlutenFreeApp.Droid
 {
     [Activity(Label = "GlutenFree", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -43,8 +43,8 @@ namespace GlutenFree.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Platform.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -68,12 +68,11 @@ namespace GlutenFree.Droid
         }
     }
 
-    // guardare https://www.youtube.com/watch?v=GKJRR8_DSSs
     public class Environment : IEnvironment
     {
         public void SetStatusBarColor(System.Drawing.Color color, bool darkStatusBarTint)
         {
-            if (Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.Lollipop)
+            if (Build.VERSION.SdkInt < BuildVersionCodes.Lollipop)
                 return;
 
             var activity = Platform.CurrentActivity;
@@ -82,7 +81,7 @@ namespace GlutenFree.Droid
             window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
             window.SetStatusBarColor(color.ToPlatformColor());
 
-            if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.M)
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
             {
                 var flag = (Android.Views.StatusBarVisibility)Android.Views.SystemUiFlags.LightStatusBar;
                 window.DecorView.SystemUiVisibility = darkStatusBarTint ? flag : 0;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace GlutenFree.Models
+namespace GlutenFreeApp.Models
 {
     public class Regione
     {

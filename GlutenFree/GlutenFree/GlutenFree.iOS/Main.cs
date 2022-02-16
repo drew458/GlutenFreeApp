@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace GlutenFree.iOS
+namespace GlutenFreeApp.iOS
 {
     public class Application
     {

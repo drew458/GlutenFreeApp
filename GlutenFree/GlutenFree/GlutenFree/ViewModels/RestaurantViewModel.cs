@@ -1,7 +1,8 @@
-﻿using GlutenFree.Services;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Services;
 using System;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class RestaurantViewModel : BaseViewModel
     {
@@ -54,15 +55,20 @@ namespace GlutenFree.ViewModels
 
         private async void LoadRistorante(int idRistorante)
         {
-            //LocalRestaurantService localDb = await LocalRestaurantService.Instance;
-            RemoteRestaurantService remoteDbService = new RemoteRestaurantService();
+            try
+            {
+                LocalRestaurantService localDb = await LocalRestaurantService.Instance;
 
-            var ristorante = RestaurantFromQuery2RestaurantService.ConvertRestaurant(await remoteDbService.GetRestaurantAsync(idRistorante));
-
-            //var ristorante = await localDb.GetRestaurantAsync(idRistorante);
-            Nome = ristorante.Nome;
-            Indirizzo = ristorante.Indirizzo;
-            Citta = ristorante.Citta;
+                Restaurant ristorante = RestaurantFromQuery2RestaurantService.ConvertRestaurant(await localDb.GetRestaurantAsync(idRistorante));
+                
+                Nome = ristorante.Nome;
+                Indirizzo = ristorante.Indirizzo;
+                Citta = ristorante.Citta;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Impossibile caricare il ristorante");
+            }
         }
     }
 }

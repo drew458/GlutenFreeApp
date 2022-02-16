@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
-             xmlns:resources="clr-namespace:GlutenFree.Resx"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              x:DataType="viewmodels:RegioniViewModel"
-             x:Class="GlutenFree.Views.RegioniPage"
+             x:Class="GlutenFreeApp.Views.RegioniPage"
              Shell.NavBarIsVisible="True" 
              x:Name="ListaRegioni"
              BackgroundColor="{AppThemeBinding 

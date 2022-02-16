@@ -1,6 +1,6 @@
 ﻿using Xamarin.Essentials;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     public static class Settings
     {

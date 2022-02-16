@@ -1,7 +1,7 @@
-﻿using GlutenFree.Models;
+﻿using GlutenFreeApp.Models;
 using System.Collections.Generic;
 
-namespace GlutenFree.Services
+namespace GlutenFreeApp.Services
 {
     public static class RestaurantFromQuery2RestaurantService
     {

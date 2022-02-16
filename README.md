@@ -4,7 +4,7 @@ Carefully selected gluten free restaurants in Italy ready to be explored ğŸ”ğŸ¥
 
 ## Platforms
 * iOS 8+
-* Android 5+ (Lollipop)
+* Android 5+ (Target: 11+)
 
 ## Features
 * Interactive map with pins

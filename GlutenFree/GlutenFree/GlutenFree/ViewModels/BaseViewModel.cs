@@ -1,5 +1,5 @@
-﻿using GlutenFree.Models;
-using GlutenFree.Services;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

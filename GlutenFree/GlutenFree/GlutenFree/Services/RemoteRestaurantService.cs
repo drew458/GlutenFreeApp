@@ -1,5 +1,5 @@
-﻿using GlutenFree.Resources;
-using GlutenFree.Models;
+﻿using GlutenFreeApp.Resources;
+using GlutenFreeApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace GlutenFree.Services
+namespace GlutenFreeApp.Services
 {
     internal class RemoteRestaurantService : IRestaurantService
     {

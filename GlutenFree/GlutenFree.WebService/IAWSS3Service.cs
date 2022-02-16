@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Drawing;
 
-namespace GlutenFree.WebService
+namespace GlutenFreeApp.WebService
 {
     public interface IAWSS3Service
     {

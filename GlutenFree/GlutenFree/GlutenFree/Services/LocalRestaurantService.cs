@@ -1,12 +1,12 @@
-﻿using GlutenFree.Helpers;
-using GlutenFree.Models;
-using GlutenFree.Resources;
+﻿using GlutenFreeApp.Helpers;
+using GlutenFreeApp.Models;
+using GlutenFreeApp.Resources;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GlutenFree.Services
+namespace GlutenFreeApp.Services
 {
     public class LocalRestaurantService
     {

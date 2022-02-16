@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     public interface IMessageService
     {

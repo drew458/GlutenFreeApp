@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:GlutenFree.Views"
-       xmlns:resources="clr-namespace:GlutenFree.Resx"
+       xmlns:views="clr-namespace:GlutenFreeApp.Views"
+       xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
        x:Name="shell"
-       x:Class="GlutenFree.AppShell"
+       x:Class="GlutenFreeApp.AppShell"
        Shell.NavBarHasShadow="True"
        BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 

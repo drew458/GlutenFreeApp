@@ -1,4 +1,4 @@
-﻿namespace GlutenFree.Login
+﻿namespace GlutenFreeApp.Login
 {
     enum Codes
     {

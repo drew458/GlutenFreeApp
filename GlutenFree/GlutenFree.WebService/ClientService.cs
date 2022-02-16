@@ -1,9 +1,9 @@
 ﻿using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
-using GlutenFree.WebService.Constants;
+using GlutenFreeApp.WebService.Constants;
 
-namespace GlutenFree.WebService
+namespace GlutenFreeApp.WebService
 {
     public class ClientService
     {

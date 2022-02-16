@@ -1,10 +1,10 @@
-﻿using GlutenFree.Models;
-using GlutenFree.Resx;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Resx;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class MapViewModel : BaseViewModel
     {

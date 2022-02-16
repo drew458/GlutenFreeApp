@@ -1,5 +1,5 @@
 ﻿
-namespace GlutenFree.Models
+namespace GlutenFreeApp.Models
 {
     public class TipologieCucina
     {

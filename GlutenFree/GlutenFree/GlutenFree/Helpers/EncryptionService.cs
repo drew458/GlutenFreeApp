@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     public static class EncryptionService
     {

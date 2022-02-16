@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels" 
-             xmlns:resources="clr-namespace:GlutenFree.Resx"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels" 
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              x:DataType="viewmodels:LoginViewModel"
-             x:Class="GlutenFree.Views.LoginPage"
+             x:Class="GlutenFreeApp.Views.LoginPage"
              Shell.NavBarIsVisible="True"
              Shell.TabBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"

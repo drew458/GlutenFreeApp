@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GlutenFree.Resources.Fonts
+namespace GlutenFreeApp.Resources.Fonts
 {
     /// <summary>
     /// The unicode values for all FontAwesome icons.

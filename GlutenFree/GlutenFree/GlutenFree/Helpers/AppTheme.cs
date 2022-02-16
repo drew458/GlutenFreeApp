@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     public static class AppTheme
     {

@@ -1,10 +1,10 @@
 ﻿using Xamarin.Forms;
-using GlutenFree.Models;
+using GlutenFreeApp.Models;
 using System.Linq;
 using System.Collections.Generic;
-using GlutenFree.ViewModels;
+using GlutenFreeApp.ViewModels;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     public partial class ProvincePage : ContentPage
     {
@@ -13,10 +13,6 @@ namespace GlutenFree.Views
             InitializeComponent();
             BindingContext = new ProvinceViewModel();
         }
-
-
-        // alcuni pezzi presi da https://www.youtube.com/watch?v=_YefBlDAUHA & http://xamaringuyshow.com/2018/12/08/xamrin-forms-search-item-on-listview-mvvm-easy-approach/
-        // & https://github.com/webmasterdevlin/SearchOnNavBarDemo/blob/master/SearchOnNavBarDemo/SearchOnNavBarDemo/MainPage.xaml.cs
         
         private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GlutenFree.Models
+namespace GlutenFreeApp.Models
 {
     public class Provincia
     {

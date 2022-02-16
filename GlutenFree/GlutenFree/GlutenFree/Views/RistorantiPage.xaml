@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
-             xmlns:resources="clr-namespace:GlutenFree.Resx"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              x:DataType="viewmodels:RistorantiViewModel"
              x:Name="ListaRistoranti"
-             x:Class="GlutenFree.Views.RistorantiPage"
+             x:Class="GlutenFreeApp.Views.RistorantiPage"
              Shell.NavBarIsVisible="True"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding 

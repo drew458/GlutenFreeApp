@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     // guardare https://www.youtube.com/watch?v=GKJRR8_DSSs
     public interface IEnvironment

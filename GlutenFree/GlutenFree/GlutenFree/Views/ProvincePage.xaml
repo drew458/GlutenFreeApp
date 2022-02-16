@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GlutenFree.Views.ProvincePage"
-             xmlns:models="clr-namespace:GlutenFree.Models"
-             xmlns:views="clr-namespace:GlutenFree.Views"
-             xmlns:resources="clr-namespace:GlutenFree.Resx"
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
+             x:Class="GlutenFreeApp.Views.ProvincePage"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             xmlns:views="clr-namespace:GlutenFreeApp.Views"
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
              x:Name="ListaProvince"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 

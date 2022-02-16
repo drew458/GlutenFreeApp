@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>GlutenFree.Droid</RootNamespace>
-    <AssemblyName>GlutenFree.Android</AssemblyName>
+    <RootNamespace>GlutenFreeApp.Droid</RootNamespace>
+    <AssemblyName>GlutenFreeApp.Android</AssemblyName>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -91,9 +91,9 @@
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GlutenFree\GlutenFree.csproj">
+    <ProjectReference Include="..\GlutenFree\GlutenFreeApp.csproj">
       <Project>{003BCB3B-4E66-476D-9359-DAC559875FCA}</Project>
-      <Name>GlutenFree</Name>
+      <Name>GlutenFreeApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

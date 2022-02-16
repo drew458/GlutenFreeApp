@@ -1,8 +1,8 @@
-﻿using GlutenFree.ViewModels;
+﻿using GlutenFreeApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrationPage : ContentPage

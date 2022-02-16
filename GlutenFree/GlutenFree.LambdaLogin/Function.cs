@@ -4,12 +4,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using GlutenFree.Login;
+using GlutenFreeApp.Login;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace GlutenFree.LambdaLogin
+namespace GlutenFreeApp.LambdaLogin
 {
     public class Function
     {

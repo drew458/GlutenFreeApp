@@ -1,14 +1,14 @@
-﻿using GlutenFree.Models;
-using GlutenFree.Resx;
-using GlutenFree.Services;
-using GlutenFree.Views;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Resx;
+using GlutenFreeApp.Services;
+using GlutenFreeApp.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class RistorantiViewModel : BaseViewModel
     {

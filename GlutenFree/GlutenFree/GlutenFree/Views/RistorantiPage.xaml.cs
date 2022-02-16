@@ -1,11 +1,11 @@
-﻿using GlutenFree.Models;
-using GlutenFree.ViewModels;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RistorantiPage : ContentPage

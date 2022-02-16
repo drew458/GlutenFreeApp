@@ -1,147 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:viewmodels="clr-namespace:GlutenFree.ViewModels"
-             xmlns:models="clr-namespace:GlutenFree.Models"
-             x:Class="GlutenFree.Views.RestaurantPage"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             x:Class="GlutenFreeApp.Views.RestaurantPage"
              x:DataType="viewmodels:RestaurantViewModel" >
-    
-    <!-- <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal"
-                     Padding="10, 0">
-            Go back button 
-            <Button Text="{x:Static fontawesome:FontAwesomeIcons.ChevronLeft}"
-                    BackgroundColor="{DynamicResource mainBackground}"
-                    TextColor="{DynamicResource mainLabel}"
-                    FontFamily="{StaticResource FontAwesomeSolid}"
-                    WidthRequest="40"
-                    Command="{prism:GoBack }"
-                    HeightRequest="40"
-                    CornerRadius="10"/>
 
-            Profile Image 
-            <yummy:PancakeView CornerRadius="20"
-                               HasShadow="True"
-                               HorizontalOptions="EndAndExpand"
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               VerticalOptions="CenterAndExpand"
-                               Elevation="1">
-                <Image Source="https://www.venmond.com/demo/vendroid/img/avatar/big.jpg"
-                                            Aspect="AspectFill"/> 
-            </yummy:PancakeView>
+    <ScrollView>
+
+        <StackLayout x:DataType="models:Restaurant">
+
+            <Label Text="{Binding Nome}" FontSize="Title" TextColor="Black" />
+            <Label Text="{Binding Citta}" FontSize="Subtitle" TextColor="Black"/>
+            <Label Text="{Binding Indirizzo}" FontSize="Medium" TextColor="Black"/>
+
         </StackLayout>
-    </NavigationPage.TitleView> -->
 
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="0, 0, 0, 40" >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Image 
-                        Source="https://en.wikipedia.org/wiki/North_American_XB-70_Valkyrie#/media/File:North_American_XB-70A_Valkyrie_in_flight_(cropped).jpg"
-                        HeightRequest="400"
-                        Aspect="AspectFill"/>
-
-                    <!-- Restaurant details container -->
-                    <yummy:PancakeView Grid.Row="1"
-                                       x:Name="detailContainer"
-                                       Style="{StaticResource cardContainerStyle}"
-                                       Margin="20, -50, 20, 0">
-                        <Grid Padding="10, 15" RowSpacing="0"
-                              x:DataType="models:Restaurant" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Label Text="{Binding Nome}"
-                                   Style="{StaticResource cardTitleStyle}"
-                                   Margin="10, 0, 0 , 0"/>
-                            <Label Text="{Binding Indirizzo}"
-                                   Margin="10, 0, 0 , 10"
-                                   FontSize="Small"
-                                   TextColor="{DynamicResource secondaryLabel}"
-                                   Grid.Row="1"/>
-                            <BoxView Style="{StaticResource borderStyle}"
-                                     Grid.Row="2"/>
-                        </Grid>
-                    </yummy:PancakeView>
-
-                    <!-- Restaurant Description and Photos container -->
-                    <yummy:PancakeView Grid.Row="2"
-                                       Style="{StaticResource cardContainerStyle}"
-                                       x:Name="descriptionContainer"
-                                       Margin="20, 20, 20, 0">
-                        <Grid Padding="10, 15"
-                              RowSpacing="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <!-- Description -->
-                            <Label Text="Description"
-                                   Style="{StaticResource cardTitleStyle}"
-                                   Margin="10, 0, 0, 10"/>
-                            <BoxView Style="{StaticResource borderStyle}"
-                                     Grid.Row="1"/>
-                            <Label Text="TEST"
-                                   Margin="10"
-                                   FontSize="Small"
-                                   TextColor="{DynamicResource secondaryLabel}"
-                                   Grid.Row="2"/>
-                            <BoxView Style="{StaticResource borderStyle}"
-                                     Grid.Row="3"/>
-
-                            <!-- Photos 
-                            <Label Text="Photos"
-                                   Grid.Row="4"
-                                   Style="{StaticResource cardTitleStyle}"
-                                   Margin=" 10"/>
-                            <BoxView Style="{StaticResource borderStyle}"
-                                     Grid.Row="5"/>
-                            <CarouselView ItemsSource="{Binding Images}"
-                                         HorizontalScrollBarVisibility="Never"
-                                         HeightRequest="300"
-                                         PeekAreaInsets="40"
-                                         Grid.Row="6">
-                                <CarouselView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Horizontal"
-                                                       SnapPointsAlignment="Center"
-                                                       SnapPointsType="MandatorySingle"
-                                                       ItemSpacing="20" />
-                                </CarouselView.ItemsLayout>
-                                <CarouselView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Padding="0, 20">
-                                            <yummy:PancakeView CornerRadius="10"
-                                                              VerticalOptions="FillAndExpand" >
-                                                <Image Source="{Binding }"
-                                                       Aspect="AspectFill"/>
-                                            </yummy:PancakeView>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CarouselView.ItemTemplate>
-                            </CarouselView> -->
-
-                        </Grid>
-                    </yummy:PancakeView>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

@@ -1,6 +1,6 @@
-﻿using GlutenFree.Models;
-using GlutenFree.Resx;
-using GlutenFree.Views;
+﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Resx;
+using GlutenFreeApp.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace GlutenFree.ViewModels
+namespace GlutenFreeApp.ViewModels
 {
     public class RegioniViewModel : BaseViewModel
     {

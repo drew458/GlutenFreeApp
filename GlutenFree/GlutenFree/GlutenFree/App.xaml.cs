@@ -1,10 +1,10 @@
-﻿using GlutenFree.Services;
-using GlutenFree.Views;
+﻿using GlutenFreeApp.Services;
+using GlutenFreeApp.Views;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace GlutenFree
+namespace GlutenFreeApp
 {
     public partial class App : Application
     {

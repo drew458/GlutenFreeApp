@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace GlutenFree.Models
+namespace GlutenFreeApp.Models
 {
     public class RestaurantFromQuery
     {

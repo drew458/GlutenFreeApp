@@ -1,11 +1,11 @@
-﻿using GlutenFree.Models;
+﻿using GlutenFreeApp.Models;
 using SQLite;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace GlutenFree.Services
+namespace GlutenFreeApp.Services
 {
     public class RegioniProvinceService : IRegioniProvinceService
     {

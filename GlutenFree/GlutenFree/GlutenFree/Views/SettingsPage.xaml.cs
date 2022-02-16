@@ -1,9 +1,9 @@
-﻿using GlutenFree.Helpers;
+﻿using GlutenFreeApp.Helpers;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage

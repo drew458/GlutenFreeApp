@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFree.Android", "GlutenFree\GlutenFree.Android\GlutenFree.Android.csproj", "{80B95A16-EC11-4D93-8DD3-90918AAB7929}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFreeApp.Android", "GlutenFree\GlutenFree.Android\GlutenFreeApp.Android.csproj", "{80B95A16-EC11-4D93-8DD3-90918AAB7929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFree.iOS", "GlutenFree\GlutenFree.iOS\GlutenFree.iOS.csproj", "{DC8ED054-3D45-4B15-9256-9B270536F09C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFreeApp.iOS", "GlutenFree\GlutenFree.iOS\GlutenFreeApp.iOS.csproj", "{DC8ED054-3D45-4B15-9256-9B270536F09C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlutenFree", "GlutenFree\GlutenFree\GlutenFree.csproj", "{003BCB3B-4E66-476D-9359-DAC559875FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlutenFreeApp", "GlutenFree\GlutenFree\GlutenFreeApp.csproj", "{003BCB3B-4E66-476D-9359-DAC559875FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFree.WebService", "GlutenFree.WebService\GlutenFree.WebService.csproj", "{B8DFCF78-C78C-4A5B-91BA-F28687AA08A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlutenFreeApp.WebService", "GlutenFree.WebService\GlutenFreeApp.WebService.csproj", "{B8DFCF78-C78C-4A5B-91BA-F28687AA08A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlutenFree.LambdaLogin", "GlutenFree.LambdaLogin\GlutenFree.LambdaLogin.csproj", "{731FA6CE-C475-42BF-8A4D-3C01842B52C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlutenFreeApp.LambdaLogin", "GlutenFree.LambdaLogin\GlutenFreeApp.LambdaLogin.csproj", "{731FA6CE-C475-42BF-8A4D-3C01842B52C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

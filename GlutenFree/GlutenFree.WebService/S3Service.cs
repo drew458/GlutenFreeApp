@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace GlutenFree.WebService
+namespace GlutenFreeApp.WebService
 {
     public class S3Service : IAWSS3Service
     {

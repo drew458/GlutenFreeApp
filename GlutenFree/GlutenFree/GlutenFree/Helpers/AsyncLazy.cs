@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     // https://docs.microsoft.com/en-us/xamarin/xamarin-forms/data-cloud/data/databases
 

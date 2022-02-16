@@ -1,8 +1,8 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using GlutenFree.ViewModels;
+using GlutenFreeApp.ViewModels;
 
-namespace GlutenFree.Views
+namespace GlutenFreeApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage

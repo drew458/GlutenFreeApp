@@ -1,8 +1,8 @@
-﻿using GlutenFree.Models;
+﻿using GlutenFreeApp.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GlutenFree.Services
+namespace GlutenFreeApp.Services
 {
     public interface IRestaurantService
     {

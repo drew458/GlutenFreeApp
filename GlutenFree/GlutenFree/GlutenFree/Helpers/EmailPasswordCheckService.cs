@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace GlutenFree.Helpers
+namespace GlutenFreeApp.Helpers
 {
     public static class EmailPasswordCheckService
     {
