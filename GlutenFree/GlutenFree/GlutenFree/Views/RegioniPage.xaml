@@ -6,8 +6,8 @@
              xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              x:DataType="viewmodels:RegioniViewModel"
              x:Class="GlutenFreeApp.Views.RegioniPage"
-             Shell.NavBarIsVisible="True" 
-             x:Name="ListaRegioni"
+             Shell.NavBarIsVisible="True"
+             Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}">
@@ -29,8 +29,8 @@
                     <DataTemplate>
                         <Grid Padding="3" x:DataType="models:Regione" >
                             <Frame Style="{StaticResource RegioniCard}">
-                                <Grid RowDefinitions="Auto,Auto"
-                                    ColumnDefinitions="Auto,Auto" >
+                                <Grid RowDefinitions="*,3"
+                                    ColumnDefinitions="70,*" >
                                     <Image Grid.RowSpan="2" 
                                         Source="{Binding Immagine}" 
                                         Aspect="AspectFill"

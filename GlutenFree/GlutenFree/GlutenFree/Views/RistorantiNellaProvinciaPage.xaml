@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:GlutenFreeApp.Models"
+             xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
+             xmlns:resources="clr-namespace:GlutenFreeApp.Resx" 
+             x:DataType="viewmodels:RistorantiNellaProvinciaViewModel"
+             x:Class="GlutenFreeApp.Views.RistorantiNellaProvinciaPage" 
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}" >
+
+    <StackLayout Padding="10,0,10,0" >
+        <SearchBar TextChanged="SearchBar_OnTextChanged"
+                   Placeholder="{x:Static resources:AppResources.PlaceholderRestaurants}"
+                   Style="{StaticResource SearchBar}" />
+
+        <CollectionView x:Name="RistorantiNellaProvinciaCollectionView" 
+                            x:DataType="viewmodels:RistorantiNellaProvinciaViewModel"
+                            ItemsSource="{Binding ListaRistoranti}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Frame Style="{StaticResource RistorantiCard}">
+                            <Grid RowDefinitions="0,25,25"
+                                    ColumnDefinitions="Auto,Auto"
+                                    x:DataType="models:Restaurant">
+                                <Label Grid.Row="1" 
+                                        Grid.Column="1" 
+                                        Text="{Binding Nome}"
+                                        Style="{StaticResource LabelRistorantiCard}" />
+                                <Label Grid.Row="2"
+                                           Grid.Column="1"
+                                           Text="{Binding Indirizzo}" />
+                                <Label Grid.Row="3"
+                                           Grid.Column="1"
+                                           Text="{Binding TipoCucina}"
+                                           FontAttributes="Italic"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RistorantiNellaProvinciaViewModel}}, Path=RistoranteTapped}"
+                                            CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <StackLayout Padding="12">
+                    <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.RestaurantsNotLoading}" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+        </CollectionView>
+    </StackLayout>
+    
+</ContentPage>

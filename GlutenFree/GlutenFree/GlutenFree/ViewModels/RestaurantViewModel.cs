@@ -2,7 +2,6 @@
 using GlutenFreeApp.Services;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -84,18 +83,16 @@ namespace GlutenFreeApp.ViewModels
 
         public void ApplyQueryAttributes(IDictionary<string, string> query)
         {
-            try
+            if(query.ContainsKey(nameof(Nome)) && query.ContainsKey(nameof(Indirizzo)))
             {
-                string nome = HttpUtility.UrlDecode(query["Nome"]);
-                string indirizzo = HttpUtility.UrlDecode(query["Indirizzo"]);
-                LoadRistorante(nome, indirizzoRistorante);
+                LoadRistorante(HttpUtility.UrlDecode(query["Nome"]), HttpUtility.UrlDecode(query["Indirizzo"]));
             }
-            catch (Exception)
+            else
             {
                 Int32.TryParse(HttpUtility.UrlDecode(query["ID"]), out int id);
 
                 LoadRistorante(id);
-            }
+            }                
         }
 
         internal void OnAppearing()

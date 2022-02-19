@@ -1,5 +1,6 @@
 ﻿using GlutenFreeApp.Models;
 using GlutenFreeApp.Resx;
+using GlutenFreeApp.Views;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -11,16 +12,7 @@ namespace GlutenFreeApp.ViewModels
     {
         private string nomeRegione;
         private IList<Provincia> listaProvince;
-
-        public IList<Provincia> ListaProvince
-        {
-            get => listaProvince;
-            set
-            {
-                listaProvince = value;
-                OnPropertyChanged();
-            }
-        }
+        public Command<Provincia> ProvinciaTapped { get; }
 
         public string Nome
         {
@@ -33,9 +25,20 @@ namespace GlutenFreeApp.ViewModels
             }
         }
 
+        public IList<Provincia> ListaProvince
+        {
+            get => listaProvince;
+            set
+            {
+                listaProvince = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ProvinceViewModel()
         {
             Title = AppResources.StringProvinces;
+            ProvinciaTapped = new Command<Provincia>(OnProvinciaSelezionata);
         }
 
         public async void LoadProvince(string nomeRegione)
@@ -50,6 +53,16 @@ namespace GlutenFreeApp.ViewModels
             {
                 Console.WriteLine("Impossibile caricare la provincia");
             }
+        }
+
+        private async void OnProvinciaSelezionata(Provincia provincia)
+        {
+            if (provincia == null)
+            {
+                return;
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(RistorantiNellaProvinciaPage)}?{nameof(RistorantiNellaProvinciaViewModel.Provincia)}={provincia.Nome}");
         }
     }
 }

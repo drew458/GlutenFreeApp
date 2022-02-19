@@ -2,7 +2,6 @@
 using GlutenFreeApp.Models;
 using GlutenFreeApp.Resources;
 using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,7 +27,7 @@ namespace GlutenFreeApp.Services
             return Database.Table<RestaurantFromQuery>().ToListAsync();
         }
 
-        public Task AddRestaurantAsync(int id,string name, string address, string city, string province, string region, 
+        public Task<int> AddRestaurantAsync(int id,string name, string address, string city, string province, string region, 
             double latitude, double longitude, string dishType, int specialMenu, int imageId, string url)
         {
             var restaurant = new RestaurantFromQuery()

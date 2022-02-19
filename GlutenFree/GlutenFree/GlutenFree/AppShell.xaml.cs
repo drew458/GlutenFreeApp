@@ -8,9 +8,6 @@ namespace GlutenFreeApp
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
-        // per capire le "routes", guardare codice nell'esempio:
-        // https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/Xaminals
-
         public AppShell()
         {
             InitializeComponent();
@@ -18,7 +15,7 @@ namespace GlutenFreeApp
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
             Routing.RegisterRoute(nameof(ProvincePage), typeof(ProvincePage));
             Routing.RegisterRoute(nameof(RestaurantPage), typeof(RestaurantPage));
+            Routing.RegisterRoute(nameof(RistorantiNellaProvinciaPage), typeof(RistorantiNellaProvinciaPage));
         }
-
     }
 }

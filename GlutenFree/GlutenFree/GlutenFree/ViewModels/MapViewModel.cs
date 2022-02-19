@@ -5,23 +5,20 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace GlutenFreeApp.ViewModels
 {
     public class MapViewModel : BaseViewModel
     {        
-        private readonly ObservableCollection<MapPin> _luoghi;
-        private ObservableCollection<Restaurant> ListaRistoranti { get; }
-        private readonly RemoteRestaurantService remoteDbService;
-        public IEnumerable Luoghi => _luoghi;
+        private readonly ObservableCollection<MapPin> _ristoranti;
+        private readonly RemoteRestaurantService remoteDb;
+        public IEnumerable Ristoranti => _ristoranti;
         
         public MapViewModel()
         {
             Title = AppResources.StringMap;
-            _luoghi = new ObservableCollection<MapPin>();
-            ListaRistoranti = new ObservableCollection<Restaurant>();
-            remoteDbService = new RemoteRestaurantService();
+            _ristoranti = new ObservableCollection<MapPin>();
+            remoteDb = new RemoteRestaurantService();
             LoadPins();
         }
 
@@ -31,23 +28,19 @@ namespace GlutenFreeApp.ViewModels
 
             try
             {
-                ListaRistoranti.Clear();
-                var ristoranti = RestaurantFromQuery2RestaurantService.Convert(await remoteDbService.GetRestaurantsAsync());
+                var ristoranti = RestaurantFromQuery2RestaurantService.Convert(await remoteDb.GetRestaurantsAsync());
                 foreach (var ristorante in ristoranti)
                 {
-                    ListaRistoranti.Add(ristorante);
+                    this._ristoranti.Add(new MapPin(ristorante.Indirizzo, ristorante.Nome, ristorante.Posizione));
                     await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta,
                         ristorante.Provincia.Nome, ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine,
                         ristorante.TipoCucina, ristorante.MenuAParte, ristorante.ImageId, ristorante.URL);
-
-                    _luoghi.Add(new MapPin(ristorante.Indirizzo, ristorante.Nome, ristorante.Posizione));
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-
         }
     }
 }

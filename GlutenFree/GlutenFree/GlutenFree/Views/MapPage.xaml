@@ -16,20 +16,20 @@
              ios:Page.UseSafeArea="True" >
 
     <StackLayout>
-        <SearchBar Placeholder="{x:Static resources:AppResources.PlaceholderMap}"
+        <!-- <SearchBar Placeholder="{x:Static resources:AppResources.PlaceholderMap}"
                    Style="{StaticResource SearchBar}" >
             
-        </SearchBar>
+        </SearchBar> -->
         <maps:Map x:Name="map" 
                 MapType="Hybrid" 
                 IsShowingUser="True"
-                ItemsSource="{Binding Luoghi}" >
+                ItemsSource="{Binding Ristoranti}" >
             <maps:Map.ItemTemplate>
                 <DataTemplate x:DataType="models:MapPin" >
                     <maps:Pin Position="{Binding Posizione}"
                         Address="{Binding Indirizzo}"
                         Label="{Binding Descrizione}"
-                        InfoWindowClicked="Pin_InfoWindowClicked" />
+                        InfoWindowClicked="Pin_InfoWindowClicked"/>
                 </DataTemplate>
             </maps:Map.ItemTemplate>
         </maps:Map>
