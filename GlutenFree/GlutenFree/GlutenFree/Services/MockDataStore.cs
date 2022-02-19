@@ -238,47 +238,6 @@ namespace GlutenFreeApp.Services
                         new Provincia
                         {
                             Nome = "Roma",
-                            Ristoranti = new List<Restaurant>
-                            {
-                                new Restaurant
-                                {
-                                    Nome="Zenzero Biorestaurant",
-                                    Indirizzo="Via Mar dei Sargassi 68",
-                                    Citta="Roma",
-                                    Provincia = new Provincia()
-                                    {
-                                        Nome = "Roma"
-                                    },
-                                    Regione = new Regione()
-                                    {
-                                        Nome="Lazio"
-                                    },
-                                    Latitudine=41.941984280954166,
-                                    Longitudine=12.471496285720992,
-                                    TipoCucina= "Bio",
-                                    ImageId=9029470,
-                                    Posizione = new Position(41.941984280954166, 12.471496285720992)
-                                },
-                                new Restaurant
-                                {
-                                    Nome="Etienne",
-                                    Indirizzo="Via Scirrè 18",
-                                    Citta="Roma",
-                                    Provincia = new Provincia()
-                                    {
-                                        Nome = "Roma"
-                                    },
-                                    Regione = new Regione()
-                                    {
-                                        Nome="Lazio"
-                                    },
-                                    Latitudine=41.93000418001416,
-                                    Longitudine=12.523370795508573,
-                                    TipoCucina= "Gourmet",
-                                    ImageId=544194,
-                                    Posizione = new Position(41.93000418001416, 12.523370795508573)
-                                },
-                            }
                         },
 
                         new Provincia

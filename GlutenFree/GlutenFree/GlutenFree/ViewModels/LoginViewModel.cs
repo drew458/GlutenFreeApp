@@ -4,7 +4,6 @@ using GlutenFreeApp.Resx;
 using GlutenFreeApp.Views;
 using System;
 using System.Net.Http;
-using System.Text.RegularExpressions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -79,9 +78,6 @@ namespace GlutenFreeApp.ViewModels
             try
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
-                //string responseBody = await response.Content.ReadAsStringAsync();
-                // Above three lines can be replaced with new helper method below
-                // string responseBody = await client.GetStringAsync(uri);
                 try
                 {
                     response.EnsureSuccessStatusCode();

@@ -19,11 +19,11 @@ namespace GlutenFreeApp.Services
                     Citta = restaurantFromQuery.Citta,
                     Provincia = new Provincia
                     {
-                        Nome = restaurantFromQuery.Nome
+                        Nome = restaurantFromQuery.Provincia
                     },
                     Regione = new Regione
                     {
-                        Nome = restaurantFromQuery.Nome
+                        Nome = restaurantFromQuery.Provincia
                     },
                     Latitudine = restaurantFromQuery.Latitudine,
                     Longitudine = restaurantFromQuery.Longitudine,
@@ -48,11 +48,11 @@ namespace GlutenFreeApp.Services
                 Citta = restaurantFromQuery.Citta,
                 Provincia = new Provincia
                 {
-                    Nome = restaurantFromQuery.Nome
+                    Nome = restaurantFromQuery.Provincia
                 },
                 Regione = new Regione
                 {
-                    Nome = restaurantFromQuery.Nome
+                    Nome = restaurantFromQuery.Regione
                 },
                 Latitudine = restaurantFromQuery.Latitudine,
                 Longitudine = restaurantFromQuery.Longitudine,

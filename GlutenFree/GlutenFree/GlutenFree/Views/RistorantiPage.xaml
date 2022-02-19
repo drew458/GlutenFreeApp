@@ -30,7 +30,7 @@
                     <DataTemplate>
                         <Grid Padding="5">
                             <Frame Style="{StaticResource RistorantiCard}">
-                                <Grid RowDefinitions="0,50,15"
+                                <Grid RowDefinitions="0,30,20,20"
                                     ColumnDefinitions="Auto,Auto"
                                     x:DataType="models:Restaurant">
                                     <Label Grid.Row="1" 
@@ -43,6 +43,10 @@
                                     <Label Grid.Row="3"
                                            Grid.Column="1"
                                            Text="{Binding Citta}" />
+                                    <Label Grid.Row="4"
+                                           Grid.Column="1"
+                                           Text="{Binding TipoCucina}"
+                                           FontAttributes="Italic"/>
                                     <Grid.GestureRecognizers>
                                     <TapGestureRecognizer 
                                             NumberOfTapsRequired="1"

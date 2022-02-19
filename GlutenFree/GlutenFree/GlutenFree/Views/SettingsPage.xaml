@@ -6,8 +6,6 @@
              Title="{x:Static resources:AppResources.StringSettings}"
              BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark}, 
                                 Light={StaticResource WindowBackgroundColor}}" >
-
-    <!-- guardare https://www.youtube.com/watch?v=GKJRR8_DSSs -->
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -102,47 +100,7 @@
         <ScrollView>
             <Grid Padding="12" ColumnDefinitions="{OnIdiom Phone='Auto,*,Auto', Default='.05*,.9*,.05*'}">
                 <StackLayout Grid.Column="1">
-                    <!-- <Label Style="{DynamicResource BLabelMedium}" Text="CADENCE SENSOR" /> 
-                    <Frame Style="{DynamicResource BCard}">
-                        <Grid ColumnDefinitions="*,*"
-                            ColumnSpacing="10"
-                            RowDefinitions="Auto,Auto,Auto"
-                            RowSpacing="10">    
-                            <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal">
-                                <Label Style="{DynamicResource BLabelSmall}" Text="Display Name:" VerticalOptions="Center" />
-                                <Entry
-                            x:Name="EntryDisplayName"
-                            BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark},
-                                                              Light={StaticResource WindowBackgroundColor}}"
-                            HorizontalOptions="FillAndExpand"
-                            Style="{DynamicResource BEntry}"
-                            TextColor="{AppThemeBinding Dark=White,
-                                                        Light=Black}" />
-                            </StackLayout>
-                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                <Label Style="{DynamicResource BLabelSmall}" Text="Id:" VerticalOptions="Center" />
-                                <Label
-                            x:Name="LabelId"
-                            Style="{DynamicResource BLabelMicro}"
-                            Text=""
-                            VerticalOptions="Center" />
-                            </StackLayout>
-                            <Button
-                        Grid.Row="2"
-                        Command="{Binding BuySensorCommand}"
-                        HorizontalOptions="FillAndExpand"
-                        Style="{DynamicResource BButton}"
-                        Text="Buy Sensor" />
-                            <Button
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Command="{Binding SetupSensorCommand}"
-                        HorizontalOptions="FillAndExpand"
-                        Style="{DynamicResource BButton}"
-                        Text="Setup Sensor" />
-                        </Grid>
-                    </Frame> -->
-
+                    
                     <Label Margin="0,12,0,0"
                         Style="{DynamicResource LabelMediumCardTitle}"
                         Text="{x:Static resources:AppResources.LabelThemeSettingsPage}" />
@@ -158,10 +116,8 @@
                                 Value="System">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image  Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSettings}, Color=#323130}" />
-                                        <!-- <Label FontSize="Small"
-                                            Text="{x:Static resources:AppResources.LabelSystemSettingsPage}"
-                                            TextColor="#323130" /> -->
+                                        <Image  Source="{FontImage FontFamily=FAS, 
+                                            Glyph={StaticResource IconSettings}, Color=#323130}" />
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
@@ -171,10 +127,8 @@
                                 Value="Light">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image  Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSun}, Color=#323130}" />
-                                        <!-- <Label FontSize="Small"
-                                            Text="{x:Static resources:AppResources.LabelLightSettingsPage}"
-                                            TextColor="#323130" /> -->
+                                        <Image  Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconSun}, 
+                                            Color=#323130}" />
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
@@ -184,10 +138,8 @@
                                 Value="Dark">
                                 <RadioButton.Content>
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                        <Image Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconMoon}, Color=#323130}" />
-                                        <!-- <Label FontSize="Small"
-                                            Text="{x:Static resources:AppResources.LabelDarkSettingsPage}"
-                                            TextColor="#323130" /> -->
+                                        <Image Source="{FontImage FontFamily=FAS, Glyph={StaticResource IconMoon}, 
+                                            Color=#323130}" />
                                     </StackLayout>
                                 </RadioButton.Content>
                             </RadioButton>
