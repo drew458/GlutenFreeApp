@@ -4,8 +4,6 @@ using GlutenFreeApp.Services;
 using GlutenFreeApp.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Web;
 using Xamarin.Forms;
 
 namespace GlutenFreeApp.ViewModels

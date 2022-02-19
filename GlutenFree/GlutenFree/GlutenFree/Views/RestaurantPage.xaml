@@ -16,13 +16,14 @@
 
         <StackLayout x:DataType="viewmodels:RestaurantViewModel">
 
-            <Label Text="{Binding Nome}" FontSize="Title" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" Padding="30"
-                   FontAttributes="Bold" />
-            <Label Text="{Binding Indirizzo}" FontSize="Medium" TextColor="Black" HorizontalOptions="Center" Padding="10" />
-            <Label Text="{Binding Citta}" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
-            <Label Text="{Binding TipoCucina}" FontSize="Subtitle" TextColor="Black" HorizontalOptions="Center"/>
+            <Label Text="{Binding Nome}" FontSize="Title" HorizontalOptions="Center" VerticalOptions="Center" Padding="30"
+                   FontAttributes="Bold" Style="{StaticResource BaseLabel}" />
+            <Label Text="{Binding Indirizzo}" FontSize="Medium" Style="{StaticResource BaseLabel}" HorizontalOptions="Center" Padding="10" />
+            <Label Text="{Binding Citta}" FontSize="Subtitle" Style="{StaticResource BaseLabel}" HorizontalOptions="Center"/>
+            <Label Text="{Binding TipoCucina}" FontSize="Subtitle" Style="{StaticResource BaseLabel}" HorizontalOptions="Center"/>
 
-            <Button Text="{x:Static resources:AppResources.VisitWebsite}" CornerRadius="30" VerticalOptions="CenterAndExpand"  Command="{Binding VisitWebsiteButtonTapped}" />
+            <Button Text="{x:Static resources:AppResources.VisitWebsite}" VerticalOptions="CenterAndExpand" 
+                    Command="{Binding VisitWebsiteButtonTapped}" Style="{StaticResource BaseButton}" />
 
         </StackLayout>
 

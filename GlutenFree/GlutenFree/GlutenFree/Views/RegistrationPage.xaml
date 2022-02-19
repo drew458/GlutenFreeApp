@@ -26,8 +26,9 @@
             IsPassword="True" 
             Placeholder="Confirm Password" Style="{StaticResource Entry}"/>
         <Button Text="{x:Static resources:AppResources.StringRegistration}" 
-                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegistrationViewModel}}, Path=RegistrationButtonTapped}"
-                CommandParameter="{Binding .}" />
+                Command="{Binding RegistrationButtonTapped}"
+                CommandParameter="{Binding .}"
+                Style="{StaticResource BaseButton}"/>
         <ActivityIndicator IsRunning="{Binding ActivityIndicatorSpinning}"
                            Color="Black" />
     </StackLayout>

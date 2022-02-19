@@ -4,7 +4,6 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:models="clr-namespace:GlutenFreeApp.Models"
              xmlns:viewmodels="clr-namespace:GlutenFreeApp.ViewModels"
-             xmlns:resources="clr-namespace:GlutenFreeApp.Resx"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:DataType="viewmodels:MapViewModel"
              x:Class="GlutenFreeApp.Views.MapPage"
