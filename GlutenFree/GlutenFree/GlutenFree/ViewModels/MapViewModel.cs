@@ -1,45 +1,53 @@
 ﻿using GlutenFreeApp.Models;
 using GlutenFreeApp.Resx;
+using GlutenFreeApp.Services;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace GlutenFreeApp.ViewModels
 {
     public class MapViewModel : BaseViewModel
     {        
-        private ObservableCollection<MapPin> _luoghi;
+        private readonly ObservableCollection<MapPin> _luoghi;
+        private ObservableCollection<Restaurant> ListaRistoranti { get; }
+        private readonly RemoteRestaurantService remoteDbService;
         public IEnumerable Luoghi => _luoghi;
+        
         public MapViewModel()
         {
             Title = AppResources.StringMap;
+            _luoghi = new ObservableCollection<MapPin>();
+            ListaRistoranti = new ObservableCollection<Restaurant>();
+            remoteDbService = new RemoteRestaurantService();
             LoadPins();
         }
 
         private async void LoadPins()
         {
-            IEnumerable<Regione> regioni = await DataStore.GetItemsAsync();
-            IList<Provincia> province = new List<Provincia>();
-            IList<Restaurant> ristoranti = new List<Restaurant>();
-            _luoghi = new ObservableCollection<MapPin>();
+            LocalRestaurantService localDb = await LocalRestaurantService.Instance;
 
-            foreach (Regione regione in regioni)
+            try
             {
-                foreach (Provincia provincia in regione.Province)
+                ListaRistoranti.Clear();
+                var ristoranti = RestaurantFromQuery2RestaurantService.Convert(await remoteDbService.GetRestaurantsAsync());
+                foreach (var ristorante in ristoranti)
                 {
-                    province.Add(provincia);
-                    if (provincia.Ristoranti != null)
-                    {
-                        foreach (Restaurant Restaurant in provincia.Ristoranti)
-                        {
-                            ristoranti.Add(Restaurant);
+                    ListaRistoranti.Add(ristorante);
+                    await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta,
+                        ristorante.Provincia.Nome, ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine,
+                        ristorante.TipoCucina, ristorante.MenuAParte, ristorante.ImageId, ristorante.URL);
 
-                            _luoghi.Add(new MapPin(Restaurant.Indirizzo, Restaurant.Nome, Restaurant.Posizione));
-                        }
-                    }
+                    _luoghi.Add(new MapPin(ristorante.Indirizzo, ristorante.Nome, ristorante.Posizione));
                 }
             }
-            
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
         }
     }
 }

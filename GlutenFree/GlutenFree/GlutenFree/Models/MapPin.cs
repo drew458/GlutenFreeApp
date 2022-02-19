@@ -5,7 +5,6 @@ namespace GlutenFreeApp.Models
 {
     public class MapPin : INotifyPropertyChanged
     {
-        // preso da https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithMaps/WorkingWithMaps/WorkingWithMaps/ViewModels/Location.cs
 
         private Position _posizione;
 
