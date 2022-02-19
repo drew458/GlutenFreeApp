@@ -39,13 +39,16 @@
                                         Style="{StaticResource LabelRistorantiCard}" />
                                     <Label Grid.Row="2"
                                            Grid.Column="1"
-                                           Text="{Binding Indirizzo}" />
+                                           Text="{Binding Indirizzo}"
+                                           Style="{StaticResource BaseLabel}" />
                                     <Label Grid.Row="3"
                                            Grid.Column="1"
-                                           Text="{Binding Citta}" />
+                                           Text="{Binding Citta}"
+                                           Style="{StaticResource BaseLabel}" />
                                     <Label Grid.Row="4"
                                            Grid.Column="1"
                                            Text="{Binding TipoCucina}"
+                                           Style="{StaticResource BaseLabel}"
                                            FontAttributes="Italic"/>
                                     <Grid.GestureRecognizers>
                                     <TapGestureRecognizer 

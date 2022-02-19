@@ -1,4 +1,5 @@
 ﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Resx;
 using GlutenFreeApp.Services;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,13 @@ namespace GlutenFreeApp.ViewModels
         private string tipoCucina;
         private string url;
 
+        private string indCitta;
+
         public Command VisitWebsiteButtonTapped { get; }
 
         public RestaurantViewModel()
         {
-            Title = Nome;
+            Title = AppResources.StringRestaurants;
             VisitWebsiteButtonTapped = new Command(OnVisitWebsiteButtonTappedAsync);
         }
 
@@ -80,6 +83,15 @@ namespace GlutenFreeApp.ViewModels
                 OnPropertyChanged();
             }
         }
+        public string IndCitta
+        {
+            get => indCitta;
+            set
+            {
+                indCitta = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void ApplyQueryAttributes(IDictionary<string, string> query)
         {
@@ -113,6 +125,8 @@ namespace GlutenFreeApp.ViewModels
                 Citta = ristorante.Citta;
                 TipoCucina = ristorante.TipoCucina;
                 URL = ristorante.URL;
+
+                IndCitta = Indirizzo + " - " + Citta;
             }
             catch (Exception)
             {
@@ -136,6 +150,8 @@ namespace GlutenFreeApp.ViewModels
                         Citta = ristorante.Citta;
                         TipoCucina = ristorante.TipoCucina;
                         URL = ristorante.URL;
+
+                        IndCitta = Indirizzo + " - " + Citta;
                     }
                 }
             }

@@ -169,9 +169,9 @@
     <value>Ajustes</value>
   </data>
   <data name="StringsRestaurants" xml:space="preserve">
-    <value>Ristoranti</value>
+    <value>Restaurantes</value>
   </data>
   <data name="VisitWebsite" xml:space="preserve">
-    <value>Visitar el sitio web</value>
+    <value>Visitar la pagina web</value>
   </data>
 </root>
