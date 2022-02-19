@@ -171,4 +171,7 @@
   <data name="StringsRestaurants" xml:space="preserve">
     <value>Ristoranti</value>
   </data>
+  <data name="VisitWebsite" xml:space="preserve">
+    <value>Visitar el sitio web</value>
+  </data>
 </root>

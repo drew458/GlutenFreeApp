@@ -23,9 +23,6 @@ namespace GlutenFreeApp.Services
             httpClient = new HttpClient();
             serializerOptions = new JsonSerializerOptions
             {
-                //PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                //WriteIndented = true
-                //ReferenceHandler = ReferenceHandler.Preserve,
                 PropertyNameCaseInsensitive = true,
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
             };
@@ -39,14 +36,6 @@ namespace GlutenFreeApp.Services
             try
             {
                 Restaurants = await httpClient.GetFromJsonAsync<List<RestaurantFromQuery>>(uri, serializerOptions);
-                /* var response = await httpClient.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
-                    //var content = await response.Content.ReadAsStringAsync();
-                    Restaurants = await response.Content.ReadFromJsonAsync<List<RestaurantFromQuery>>(serializerOptions);
-                    //Restaurants = JsonSerializer.Deserialize<List<RestaurantFromQuery>>(content, serializerOptions);
-                    
-                } */
                 Console.WriteLine(Restaurants);
             }
             catch (HttpRequestException) // Non success
@@ -69,29 +58,28 @@ namespace GlutenFreeApp.Services
             return Restaurants;
         }
 
-        public async Task AddRestaurantAsync(string name, string address, string city, string province, string region, double latitude, double longitude, string dishType, int specialMenu)
+        public async Task AddRestaurantAsync(string name, string address, string city, string province, string region, 
+            double latitude, double longitude, string dishType, int specialMenu, int imageId, string url)
         {
             Uri uri = new Uri(Constants.APIRestaurantsCreate);
 
             try
             {
-                /* Add parameter Restaurant restaurant in the method parameters before using
-                 * string json = JsonSerializer.Serialize<Restaurant>(restaurant, serializerOptions);
-                 * StringContent content = new StringContent(json, Encoding.UTF8, "application/json"); */
-
                 HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri)
                 {
                     Content = JsonContent.Create(new
                     {
-                        name = name,
-                        address = address,
-                        city = city,
-                        province = province,
-                        region = region,
-                        latitude = latitude,
-                        longitude = longitude,
-                        dishType = dishType,
-                        specialMenu = specialMenu
+                        name,
+                        address,
+                        city,
+                        province,
+                        region,
+                        latitude,
+                        longitude,
+                        dishType,
+                        specialMenu,
+                        imageId,
+                        url
                     })
                 };
 
@@ -114,13 +102,11 @@ namespace GlutenFreeApp.Services
 
         public async Task DeleteRestaurantAsync(int id)
         {
-            string query = Constants.APIRestaurantsDelete + "/id={0}";
-
-            Uri uri = new Uri(string.Format(query, id));
+            string query = Constants.APIRestaurantsDelete + "/id=" +id;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -140,13 +126,11 @@ namespace GlutenFreeApp.Services
 
         public async Task<RestaurantFromQuery> GetRestaurantAsync(int id)
         {
-            string query = Constants.APIRestaurantsGet + "/id={0}";
-
-            Uri uri = new Uri(string.Format(query, id));
+            string query = Constants.APIRestaurantsGet + "/id=" +id;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -167,13 +151,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/name={0}";
-
-            Uri uri = new Uri(string.Format(query, name));
+            string query = Constants.APIRestaurantsGet + "/name=" +name;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -195,13 +177,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/city={0}";
-
-            Uri uri = new Uri(string.Format(query, city));
+            string query = Constants.APIRestaurantsGet + "/city=" +city;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -223,13 +203,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/province={0}";
-
-            Uri uri = new Uri(string.Format(query, province));
+            string query = Constants.APIRestaurantsGet + "/province=" + province;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -251,13 +229,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/region={0}";
-
-            Uri uri = new Uri(string.Format(query, region));
+            string query = Constants.APIRestaurantsGet + "/region=" + region;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -279,13 +255,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/dishType={0}";
-
-            Uri uri = new Uri(string.Format(query, dishType));
+            string query = Constants.APIRestaurantsGet + "/dishType=" + dishType;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -307,13 +281,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/specialMenu={0}";
-
-            Uri uri = new Uri(string.Format(query, specialMenu));
+            string query = Constants.APIRestaurantsGet + "/specialMenu=" + specialMenu;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -335,13 +307,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/city={0}&dishType={1}";
-
-            Uri uri = new Uri(string.Format(query, city, dishType));
+            string query = Constants.APIRestaurantsGet + "/city=" +city+ "&dishType=" +dishType;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -363,15 +333,12 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            object[] parameters = { city, dishType, specialMenu };
-
-            string query = Constants.APIRestaurantsGet + "/city={0}&dishType={1}&specialMenu={2}";
-
-            Uri uri = new Uri(string.Format(query, parameters));
+            string query = Constants.APIRestaurantsGet + "/city=" +city+ "&dishType=" +dishType+ 
+                "&specialMenu=" +specialMenu;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -393,13 +360,11 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/province={0}&dishType={1}";
-
-            Uri uri = new Uri(string.Format(query, province, dishType));
+            string query = Constants.APIRestaurantsGet + "/province=" +province+ "&dishType=" +dishType;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -421,15 +386,12 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            object[] parameters = { province, dishType, specialMenu };
-
-            string query = Constants.APIRestaurantsGet + "/province={0}&dishType={1}&specialMenu={2}";
-
-            Uri uri = new Uri(string.Format(query, parameters));
+            string query = Constants.APIRestaurantsGet + "/province=" +province+ "&dishType=" +dishType+ 
+                "&specialMenu=" +specialMenu;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -452,13 +414,11 @@ namespace GlutenFreeApp.Services
 
             Restaurants = new List<RestaurantFromQuery>();
 
-            string query = Constants.APIRestaurantsGet + "/region={0}&dishType={1}";
-
-            Uri uri = new Uri(string.Format(query, region, dishType));
+            string query = Constants.APIRestaurantsGet + "/region=" +region+ "&dishType=" +dishType;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -480,15 +440,12 @@ namespace GlutenFreeApp.Services
         {
             Restaurants = new List<RestaurantFromQuery>();
 
-            object[] parameters = { region, dishType, specialMenu };
-
-            string query = Constants.APIRestaurantsGet + "/region={0}&dishType={1}&specialMenu={2}";
-
-            Uri uri = new Uri(string.Format(query, parameters));
+            string query = Constants.APIRestaurantsGet + "/region=" +region+ "&dishType=" +dishType+ 
+                "&specialMenu=" +specialMenu;
 
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
+                HttpResponseMessage response = await httpClient.GetAsync(query);
 
                 if (response.IsSuccessStatusCode)
                 {

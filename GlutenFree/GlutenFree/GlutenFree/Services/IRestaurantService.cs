@@ -9,7 +9,7 @@ namespace GlutenFreeApp.Services
         //Task<IEnumerable<Restaurant>> RefreshRestaurantsAsync();
         Task<IEnumerable<RestaurantFromQuery>> GetRestaurantsAsync();
         Task AddRestaurantAsync(string name, string address, string city, string province, string region, 
-            double latitude, double longitude, string dishType, int specialMenu);
+            double latitude, double longitude, string dishType, int specialMenu, int imageId, string url);
         Task<RestaurantFromQuery> GetRestaurantAsync(int id);
         Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncName(string name);
         Task<IEnumerable<RestaurantFromQuery>> GetRestaurantAsyncCity(string city);

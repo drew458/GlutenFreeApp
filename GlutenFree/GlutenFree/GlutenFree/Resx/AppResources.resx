@@ -171,4 +171,7 @@
   <data name="StringSettings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="VisitWebsite" xml:space="preserve">
+    <value>Visit Website</value>
+  </data>
 </root>

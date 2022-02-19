@@ -221,5 +221,14 @@ namespace GlutenFreeApp.Resx {
                 return ResourceManager.GetString("StringSettings", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit Website.
+        /// </summary>
+        internal static string VisitWebsite {
+            get {
+                return ResourceManager.GetString("VisitWebsite", resourceCulture);
+            }
+        }
     }
 }
