@@ -30,6 +30,7 @@ LATITUDE = "latitude"
 LONGITUDE = "longitude"
 DISHTYPE = "dishType"
 SPECIALMENU = "specialMenu"
+URL = "URL"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -42,9 +43,8 @@ database_name = os.environ["DBNAME"]
 
 # Connection to db
 try:
-    connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name,
-                                 client_flag=CLIENT.MULTI_STATEMENTS, charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host=endpoint, user=username, passwd=password, db=database_name, 
+                            client_flag=CLIENT.MULTI_STATEMENTS, charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 except pymysql.MySQLError as e:
     logger.error("ERROR: Unexpected error: Could not connect to MySQL instance.")
     logger.error(e)
@@ -69,6 +69,7 @@ def lambda_handler(event, context):
             logger.info("Parameters found!")
 
             if RESTAURANT_ID in event['queryStringParameters']:
+                
                 # Get restaurant with specific ID
                 restaurantId = event['queryStringParameters']['restaurantId']
 
@@ -77,6 +78,7 @@ def lambda_handler(event, context):
                 cursor.execute('SELECT * FROM falesiedb.Ristoranti WHERE ID=' + restaurantId)
 
             elif CITY in event['queryStringParameters']:
+                
                 # Get restaurants in a city
                 city = event['queryStringParameters']['city']
 
@@ -84,14 +86,13 @@ def lambda_handler(event, context):
                     dishType = event['queryStringParameters']['dishType']
                     try:
                         specialMenu = event['queryStringParameters']['specialMenu']
-                        logger.info(
-                            "Parameters city=" + city + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+                        logger.info("Parameters city=" + city + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina ' \
                                 'WHERE Citta="' + city + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters city=" + city + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina ' \
                                 'WHERE Citta="' + city + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
@@ -102,6 +103,7 @@ def lambda_handler(event, context):
                 cursor.execute(query)
 
             elif PROVINCE in event['queryStringParameters']:
+                
                 # Get restaurants in a province
                 province = event['queryStringParameters']['province']
 
@@ -109,14 +111,13 @@ def lambda_handler(event, context):
                     dishType = event['queryStringParameters']['dishType']
                     try:
                         specialMenu = event['queryStringParameters']['specialMenu']
-                        logger.info(
-                            "Parameters province=" + province + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+                        logger.info("Parameters province=" + province + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina ' \
                                 'WHERE Provincia="' + province + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters province=" + province + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina ' \
                                 'WHERE Provincia="' + province + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
@@ -127,6 +128,7 @@ def lambda_handler(event, context):
                 cursor.execute(query)
 
             elif REGION in event['queryStringParameters']:
+                
                 # Get restaurants in a region
                 region = event['queryStringParameters']['region']
 
@@ -134,14 +136,13 @@ def lambda_handler(event, context):
                     dishType = event['queryStringParameters']['dishType']
                     try:
                         specialMenu = event['queryStringParameters']['specialMenu']
-                        logger.info(
-                            "Parameters region=" + region + " and dishType=" + dishType + " and specialMenu" + specialMenu)
+                        logger.info("Parameters region=" + region + " and dishType=" + dishType + " and specialMenu" + specialMenu)
 
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina ' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina ' \
                                 'WHERE Regione="' + region + '" AND Principale="' + dishType + '" AND MenuAParte="' + specialMenu + '"'
                     except KeyError:
                         logger.info("Parameters region=" + region + " and dishType=" + dishType)
-                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.IdTipoCucina=tc.IdTipoCucina' \
+                        query = 'SELECT * FROM falesiedb.Ristoranti r join falesiedb.TipologieCucina tc on r.TipoCucina=tc.TipoCucina' \
                                 ' WHERE Regione="' + region + '" AND Principale="' + dishType + '"'
 
                 except KeyError:
@@ -152,6 +153,7 @@ def lambda_handler(event, context):
                 cursor.execute(query)
 
             elif DISHTYPE in event['queryStringParameters']:
+                
                 # Get restaurants with a specific dish type
                 dishType = event['queryStringParameters']['dishType']
 
@@ -161,6 +163,7 @@ def lambda_handler(event, context):
                 cursor.execute(query, (dishType,))
 
             elif SPECIALMENU in event['queryStringParameters']:
+                
                 # Get restaurants with a special menu
                 specialMenu = event['queryStringParameters']['specialMenu']
 
@@ -199,6 +202,7 @@ def lambda_handler(event, context):
         latitude = decodedBody['latitude']
         longitude = decodedBody['longitude']
         specialMenu = decodedBody['specialMenu']
+        URL = decodedBody["URL"]
 
         print(decodedBody)
 
@@ -221,9 +225,9 @@ def lambda_handler(event, context):
                     logger.info("All tertiaryDishType, secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
-                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
-                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `TipoCucina` , `Principale`, `Secondaria`, `Terziaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "','" + tertiaryDishType + "'); " \
+                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`, `ImageId`, `URL`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + URL + "');"
                 except KeyError:
                     raise KeyError
             except KeyError:
@@ -238,9 +242,9 @@ def lambda_handler(event, context):
                     logger.info("Both secondaryDishType and primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
-                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
-                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `TipoCucina` , `Principale`, `Secondaria`) VALUES ('" + tipoCucinaId + "','" + tipoCucinaFKId + "','" + primaryDishType + "','" + secondaryDishType + "'); " \
+                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`, `ImageId`, `URL`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + URL + "');"
                 except KeyError:
                     raise KeyError
 
@@ -250,9 +254,9 @@ def lambda_handler(event, context):
                     logger.info("Only primaryDishType found")
 
                     query = "INSERT INTO `falesiedb`.`Immagini`(`ID`, `ImageId`) VALUES ('" + imageId + "', '" + imageFKId + "'); " \
-                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `IdTipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
-                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `IdTipoCucina`, `MenuAParte`, `ImageId`) VALUES ('" + \
-                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + "');"
+                            "INSERT INTO `falesiedb`.`TipologieCucina`(`ID`, `TipoCucina` , `Principale`) VALUES ('" + tipoCucinaId + "', '" + tipoCucinaFKId + "' ,'" + primaryDishType + "'); " \
+                            "INSERT INTO `falesiedb`.`Ristoranti` (`ID`, `Nome`, `Indirizzo`, `Citta`, `Provincia`, `Regione`, `Latitudine`, `Longitudine`, `TipoCucina`, `MenuAParte`, `ImageId`, `URL`) VALUES ('" + \
+                            restaurantId + "', '" + name + "', '" + address + "', '" + city + "', '" + province + "', '" + region + "', '" + latitude + "', '" + longitude + "', '" + tipoCucinaFKId + "', '" + specialMenu + "', '" + imageFKId + URL + "');"
                 except KeyError:
                     logger.info("No dishType inserted!")
 
@@ -293,15 +297,14 @@ def lambda_handler(event, context):
         dishTypeId = resultList[10]
 
         logger.info("ImageId:" + str(imageId))
-        logger.info("IdTipoCucina:" + str(dishTypeId))
+        logger.info("TipoCucina:" + str(dishTypeId))
 
-        query = ("DELETE FROM falesiedb.Ristoranti WHERE ID=" + str(
-            restaurantId) + "; DELETE FROM falesiedb.Immagini WHERE ImageId=" +
-                 str(imageId) + "; DELETE FROM falesiedb.TipologieCucina WHERE IdTipoCucina=" + str(dishTypeId))
+        query = ("DELETE FROM falesiedb.Ristoranti WHERE ID=" + str(restaurantId) + "; DELETE FROM falesiedb.Immagini WHERE ImageId=" + 
+            str(imageId) + "; DELETE FROM falesiedb.TipologieCucina WHERE TipoCucina=" + str(dishTypeId))
 
         cursor.execute(query)
         connection.commit()
-
+        
         response = {
             "Deleted restaurantId": restaurantId,
             "Deleted imageId": imageId,
