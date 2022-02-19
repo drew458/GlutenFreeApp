@@ -7,10 +7,18 @@ namespace GlutenFreeApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestaurantPage : ContentPage
     {
+        RestaurantViewModel _viewModel;
+
         public RestaurantPage()
         {
             InitializeComponent();
-            BindingContext = new RestaurantViewModel();
+            BindingContext = _viewModel = new RestaurantViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }

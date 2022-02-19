@@ -27,20 +27,18 @@ namespace GlutenFreeApp.Services
                     },
                     Latitudine = restaurantFromQuery.Latitudine,
                     Longitudine = restaurantFromQuery.Longitudine,
-                    TipoCucina = new TipologieCucina
-                    {
-                        IdTipoCucina = restaurantFromQuery.IdTipoCucina
-                    },
+                    TipoCucina = restaurantFromQuery.TipoCucina,
                     MenuAParte = restaurantFromQuery.MenuAParte,
                     ImageId = restaurantFromQuery.ImageId,
-                    Posizione = new Xamarin.Forms.Maps.Position(restaurantFromQuery.Latitudine, restaurantFromQuery.Longitudine)
+                    Posizione = new Xamarin.Forms.Maps.Position(restaurantFromQuery.Latitudine, restaurantFromQuery.Longitudine),
+                    URL = restaurantFromQuery.URL
                 });
             }
 
             return restaurants;
         }
 
-        public static Restaurant ConvertRestaurant(RestaurantFromQuery restaurantFromQuery)
+        public static Restaurant Convert(RestaurantFromQuery restaurantFromQuery)
         {
             Restaurant restaurant = new Restaurant
             {
@@ -58,13 +56,11 @@ namespace GlutenFreeApp.Services
                 },
                 Latitudine = restaurantFromQuery.Latitudine,
                 Longitudine = restaurantFromQuery.Longitudine,
-                TipoCucina = new TipologieCucina
-                {
-                    IdTipoCucina = restaurantFromQuery.IdTipoCucina
-                },
+                TipoCucina = restaurantFromQuery.TipoCucina,
                 MenuAParte = restaurantFromQuery.MenuAParte,
                 ImageId = restaurantFromQuery.ImageId,
-                Posizione = new Xamarin.Forms.Maps.Position(restaurantFromQuery.Latitudine, restaurantFromQuery.Longitudine)
+                Posizione = new Xamarin.Forms.Maps.Position(restaurantFromQuery.Latitudine, restaurantFromQuery.Longitudine),
+                URL = restaurantFromQuery.URL
             };
 
             return restaurant;

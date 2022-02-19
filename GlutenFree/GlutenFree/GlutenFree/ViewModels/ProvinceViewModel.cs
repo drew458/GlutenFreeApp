@@ -12,17 +12,9 @@ namespace GlutenFreeApp.ViewModels
         private string nomeRegione;
         private IList<Provincia> listaProvince;
 
-        // per capire auto-property, guardare https://www.w3schools.com/cs/cs_properties.php
-        // per capire OnPropertyChanged(), guardare https://stackoverflow.com/questions/57442915/how-to-set-listview-itemssource-to-a-viewmodel-in-xamarin
-
-        // auto-property
         public IList<Provincia> ListaProvince
         {
-            get
-            {
-                return listaProvince;
-            }
-
+            get => listaProvince;
             set
             {
                 listaProvince = value;

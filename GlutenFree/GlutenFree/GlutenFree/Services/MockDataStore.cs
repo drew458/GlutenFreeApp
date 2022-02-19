@@ -1,4 +1,5 @@
 ﻿using GlutenFreeApp.Models;
+using GlutenFreeApp.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Abruzzo",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_abruzzo.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_abruzzo.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -46,7 +47,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Basilicata",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_basilicata.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_basilicata.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -64,7 +65,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Calabria",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_calabria.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_calabria.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -97,7 +98,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Campania",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_campania.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_campania.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -130,7 +131,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Emilia Romagna",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_emiliaromagna.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_emiliaromagna.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -188,7 +189,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Friuli Venezia Giulia",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_friuli.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_friuli.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -216,7 +217,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Lazio",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_lazio.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_lazio.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -254,10 +255,7 @@ namespace GlutenFreeApp.Services
                                     },
                                     Latitudine=41.941984280954166,
                                     Longitudine=12.471496285720992,
-                                    TipoCucina= new TipologieCucina
-                                    {
-                                        IdTipoCucina=740671,
-                                    },
+                                    TipoCucina= "Bio",
                                     ImageId=9029470,
                                     Posizione = new Position(41.941984280954166, 12.471496285720992)
                                 },
@@ -276,10 +274,7 @@ namespace GlutenFreeApp.Services
                                     },
                                     Latitudine=41.93000418001416,
                                     Longitudine=12.523370795508573,
-                                    TipoCucina= new TipologieCucina
-                                    {
-                                        IdTipoCucina=361825,
-                                    },
+                                    TipoCucina= "Gourmet",
                                     ImageId=544194,
                                     Posizione = new Position(41.93000418001416, 12.523370795508573)
                                 },
@@ -296,7 +291,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Liguria",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_liguria.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_liguria.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -324,7 +319,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Lombardia",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_lombardia.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_lombardia.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -392,7 +387,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Marche",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_marche.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_marche.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -425,7 +420,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Molise",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_molise.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_molise.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -443,7 +438,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Piemonte",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_piemonte.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_piemonte.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -491,7 +486,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Puglia",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_puglia.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_puglia.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -529,7 +524,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Sardegna",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_sardegna.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_sardegna.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -562,7 +557,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Sicilia",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_sicilia.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_sicilia.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -615,7 +610,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Toscana",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_toscana.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_toscana.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -673,7 +668,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Trentino Alto Adige",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_trentino.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_trentino.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -691,7 +686,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Umbria",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_umbria.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_umbria.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -709,7 +704,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Valle d'Aosta",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_valleaosta.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_valleaosta.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia
@@ -722,7 +717,7 @@ namespace GlutenFreeApp.Services
                 new Regione
                 {
                     Nome = "Veneto",
-                    Immagine = ImageSource.FromResource("GlutenFree.Resources.Images.flag_veneto.png"),
+                    Immagine = ImageSource.FromResource("GlutenFreeApp.Resources.Images.flag_veneto.png"),
                     Province = new List<Provincia>
                     {
                         new Provincia

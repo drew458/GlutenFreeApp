@@ -43,9 +43,9 @@ namespace GlutenFreeApp.ViewModels
                 foreach (var ristorante in ristoranti)
                 {
                     ListaRistoranti.Add(ristorante);
-                    await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta, ristorante.Provincia.Nome,
-                        ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine, 
-                        ristorante.TipoCucina.IdTipoCucina, ristorante.MenuAParte, ristorante.ImageId);
+                    await localDb.AddRestaurantAsync(ristorante.ID, ristorante.Nome, ristorante.Indirizzo, ristorante.Citta,
+                        ristorante.Provincia.Nome, ristorante.Regione.Nome, ristorante.Latitudine, ristorante.Longitudine, 
+                        ristorante.TipoCucina, ristorante.MenuAParte, ristorante.ImageId, ristorante.URL);
                 }
             }
             catch (Exception ex)

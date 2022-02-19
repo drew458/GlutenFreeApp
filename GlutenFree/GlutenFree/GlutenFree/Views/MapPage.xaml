@@ -27,8 +27,9 @@
             <maps:Map.ItemTemplate>
                 <DataTemplate x:DataType="models:MapPin" >
                     <maps:Pin Position="{Binding Posizione}"
-                              Address="{Binding Indirizzo}"
-                              Label="{Binding Descrizione}" />
+                        Address="{Binding Indirizzo}"
+                        Label="{Binding Descrizione}"
+                        InfoWindowClicked="Pin_InfoWindowClicked" />
                 </DataTemplate>
             </maps:Map.ItemTemplate>
         </maps:Map>

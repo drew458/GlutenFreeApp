@@ -7,15 +7,9 @@ using System.Collections.ObjectModel;
 namespace GlutenFreeApp.ViewModels
 {
     public class MapViewModel : BaseViewModel
-    {
-        //alcuni pezzi presi da
-        // https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithMaps/WorkingWithMaps/WorkingWithMaps/ViewModels/PinItemsSourcePageViewModel.cs
-
+    {        
         private ObservableCollection<MapPin> _luoghi;
-
         public IEnumerable Luoghi => _luoghi;
-
-
         public MapViewModel()
         {
             Title = AppResources.StringMap;

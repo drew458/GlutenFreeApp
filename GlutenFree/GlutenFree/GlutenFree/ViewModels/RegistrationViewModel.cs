@@ -116,6 +116,7 @@ namespace GlutenFreeApp.ViewModels
                 }
                 else
                 {
+                    ActivityIndicatorSpinning = false;
                     await _messageService.ShowPopUpAsync("Registration error", "Password inserted does not match", "OK");
                     PasswordEntry = null;
                     RepeatedPasswordEntry = null;

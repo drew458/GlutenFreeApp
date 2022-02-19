@@ -104,7 +104,7 @@ namespace GlutenFreeApp.ViewModels
             }
         }
 
-        private async void OnRegistrationButtonTapped(object obj)
+        private async void OnRegistrationButtonTapped()
         {
             await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
         }

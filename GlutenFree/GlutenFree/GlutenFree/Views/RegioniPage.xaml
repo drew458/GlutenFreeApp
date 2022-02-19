@@ -10,10 +10,7 @@
              x:Name="ListaRegioni"
              BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
-                        Light={StaticResource WindowBackgroundColor}}"
-             Title="{Binding Title}" >
-    
-    <!-- BUG: Il titolo (Title) della pagina si visualizza solo su iOS e non su Android -->
+                        Light={StaticResource WindowBackgroundColor}}">
 
     <StackLayout>
         <SearchBar TextChanged="SearchBar_OnTextChanged"

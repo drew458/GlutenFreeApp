@@ -29,7 +29,7 @@ namespace GlutenFreeApp.Services
         }
 
         public Task AddRestaurantAsync(int id,string name, string address, string city, string province, string region, 
-            double latitude, double longitude, int dishType, int specialMenu, int imageId)
+            double latitude, double longitude, string dishType, int specialMenu, int imageId, string url)
         {
             var restaurant = new RestaurantFromQuery()
             {
@@ -41,9 +41,10 @@ namespace GlutenFreeApp.Services
                 Regione = region,
                 Latitudine = latitude,
                 Longitudine = longitude,
-                IdTipoCucina = dishType,
+                TipoCucina = dishType,
                 MenuAParte = specialMenu,
-                ImageId = imageId
+                ImageId = imageId,
+                URL = url
 
             };
 
@@ -94,7 +95,7 @@ namespace GlutenFreeApp.Services
         public async Task<List<RestaurantFromQuery>> GetRestaurantAsyncDishType(string dishType)
         {
             List<RestaurantFromQuery> restaurants = await Database.Table<RestaurantFromQuery>()
-                .Where(r => r.IdTipoCucina.Equals(dishType))
+                .Where(r => r.TipoCucina.Equals(dishType))
                 .ToListAsync();
             return restaurants;
         }
