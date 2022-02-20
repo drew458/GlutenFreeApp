@@ -65,7 +65,8 @@ namespace GlutenFreeApp.ViewModels
             if (!EmailEntry.Contains("@"))
             {
                 ActivityIndicatorSpinning = false;
-                await _messageService.ShowPopUpAsync("Login error", "Email not valid", "OK");
+                await _messageService.ShowPopUpAsync(AppResources.LoginErrorTitle, AppResources.LoginErrorDescription, 
+                    "OK");
                 PasswordEntry = null;
             }
 
@@ -95,7 +96,8 @@ namespace GlutenFreeApp.ViewModels
             catch (Exception)
             {
                 ActivityIndicatorSpinning = false;
-                await _messageService.ShowPopUpAsync("Login error", "Wrong email or password", "OK");
+                await _messageService.ShowPopUpAsync(AppResources.LoginErrorTitle, 
+                    AppResources.LoginErrorDescription, "OK");
                 PasswordEntry = null;
             }
         }

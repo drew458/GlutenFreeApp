@@ -150,7 +150,8 @@
                         Style="{DynamicResource LabelMediumCardTitle}"
                         Text="Logout" />
                     <Frame Style="{DynamicResource RegioniCard}">
-                        <Button Text="Logout" Clicked="Button_Clicked" Style="{StaticResource BaseButton}" />
+                        <Button Text="Logout" Clicked="Button_Clicked" Style="{StaticResource BaseButton}"
+                                BorderColor="DarkOrange" BorderWidth="1"/>
                     </Frame>
                     
                 </StackLayout>

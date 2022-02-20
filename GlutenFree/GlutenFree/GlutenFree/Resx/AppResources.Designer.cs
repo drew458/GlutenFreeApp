@@ -61,6 +61,15 @@ namespace GlutenFreeApp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        internal static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         internal static string LabelDarkSettingsPage {
@@ -93,6 +102,24 @@ namespace GlutenFreeApp.Resx {
         internal static string LabelThemeSettingsPage {
             get {
                 return ResourceManager.GetString("LabelThemeSettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong email or password.
+        /// </summary>
+        internal static string LoginErrorDescription {
+            get {
+                return ResourceManager.GetString("LoginErrorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login error.
+        /// </summary>
+        internal static string LoginErrorTitle {
+            get {
+                return ResourceManager.GetString("LoginErrorTitle", resourceCulture);
             }
         }
         
@@ -147,6 +174,42 @@ namespace GlutenFreeApp.Resx {
         internal static string RegionsNotLoading {
             get {
                 return ResourceManager.GetString("RegionsNotLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email not valid.
+        /// </summary>
+        internal static string RegistrationErrorMailNotValid {
+            get {
+                return ResourceManager.GetString("RegistrationErrorMailNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords inserted do not match.
+        /// </summary>
+        internal static string RegistrationErrorNoPasswordMatch {
+            get {
+                return ResourceManager.GetString("RegistrationErrorNoPasswordMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must cointain at least on special character, a number and an upper case letter.
+        /// </summary>
+        internal static string RegistrationErrorPasswordNotValid {
+            get {
+                return ResourceManager.GetString("RegistrationErrorPasswordNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration error.
+        /// </summary>
+        internal static string RegistrationErrorTitle {
+            get {
+                return ResourceManager.GetString("RegistrationErrorTitle", resourceCulture);
             }
         }
         

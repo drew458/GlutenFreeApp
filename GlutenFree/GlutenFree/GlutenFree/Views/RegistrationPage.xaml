@@ -7,24 +7,24 @@
              x:Class="GlutenFreeApp.Views.RegistrationPage"
              Shell.NavBarIsVisible="True"
              Shell.TabBarIsVisible="False"
-             Title="{Binding Title}" BackgroundColor="{AppThemeBinding 
-                        Dark={StaticResource WindowBackgroundColorDark}, 
+             Title="{Binding Title}" 
+             BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}" >
 
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
-        <Label Text="Email:" Style="{StaticResource BaseLabel}" />
+        <Label Text="Email" Style="{StaticResource BaseLabel}" />
         <Entry Text="{Binding EmailEntry}" Placeholder="Email" Style="{StaticResource Entry}"
                Keyboard="Email" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
                ClearButtonVisibility="WhileEditing" />
-        <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
+        <Label Text="Password" Style="{StaticResource BaseLabel}"/>
         <Entry Text="{Binding PasswordEntry}" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
             IsPassword="True" Placeholder="Password" 
             Style="{StaticResource Entry}" />
-        <Label Text="Confirm Password:" Style="{StaticResource BaseLabel}"/>
+        <Label Text="{x:Static resources:AppResources.ConfirmPassword}" Style="{StaticResource BaseLabel}"/>
         <Entry Text="{Binding RepeatedPasswordEntry}" 
             IsPassword="True" 
-            Placeholder="Confirm Password" Style="{StaticResource Entry}"/>
+            Placeholder="{x:Static resources:AppResources.ConfirmPassword}" Style="{StaticResource Entry}"/>
         <Button Text="{x:Static resources:AppResources.StringRegistration}" 
                 Command="{Binding RegistrationButtonTapped}"
                 CommandParameter="{Binding .}"

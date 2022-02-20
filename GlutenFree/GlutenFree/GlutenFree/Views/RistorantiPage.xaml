@@ -64,7 +64,8 @@
                 </CollectionView.ItemTemplate>
                 <CollectionView.EmptyView>
                     <StackLayout Padding="12">
-                        <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.RestaurantsNotLoading}" />
+                        <Label HorizontalOptions="Center" Text="{x:Static resources:AppResources.RestaurantsNotLoading}"
+                               Style="{StaticResource BaseLabel}"/>
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>

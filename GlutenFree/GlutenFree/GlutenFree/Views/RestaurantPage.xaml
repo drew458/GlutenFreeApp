@@ -6,26 +6,26 @@
              x:Name="Ristorante"
              x:Class="GlutenFreeApp.Views.RestaurantPage"
              x:DataType="viewmodels:RestaurantViewModel"
-             BackgroundColor="#FF9900"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="True"
-             Shell.TabBarIsVisible="False"
-             Shell.TabBarBackgroundColor="#FF9900">
+             Shell.TabBarIsVisible="False">
 
     <ScrollView>
 
         <StackLayout x:DataType="viewmodels:RestaurantViewModel">
 
             <Label Text="{Binding Nome}" FontSize="35" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Padding="30"
-                   FontAttributes="Bold" Style="{StaticResource LabelRestaurantPage}" />
-            <Label Text="{Binding IndCitta}" FontSize="Medium" Style="{StaticResource LabelRestaurantPage}" HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding TipoCucina}" FontSize="Subtitle" FontAttributes="Italic" Style="{StaticResource LabelRestaurantPage}" 
+                   FontAttributes="Bold" Style="{StaticResource BaseLabel}" />
+            <Label Text="{Binding IndCitta}" FontSize="Medium" Style="{StaticResource BaseLabel}" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding TipoCucina}" FontSize="Subtitle" FontAttributes="Italic" Style="{StaticResource BaseLabel}" 
                    HorizontalOptions="Center" Padding="30"/>
 
             <Button Text="{x:Static resources:AppResources.VisitWebsite}" VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand" Padding="18" 
-                    Command="{Binding VisitWebsiteButtonTapped}" Style="{StaticResource BaseButton}"
-                    BackgroundColor="Black" TextColor="White"/>
+                    Command="{Binding VisitWebsiteButtonTapped}" Style="{StaticResource BaseButton}"/>
 
         </StackLayout>
 

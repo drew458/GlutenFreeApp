@@ -73,7 +73,8 @@ namespace GlutenFreeApp.ViewModels
             if (!EmailEntry.Contains("@"))
             {
                 ActivityIndicatorSpinning = false;
-                await _messageService.ShowPopUpAsync("Registration error", "Email not valid", "OK");
+                await _messageService.ShowPopUpAsync(AppResources.RegistrationErrorTitle, 
+                    AppResources.RegistrationErrorMailNotValid, "OK");
                 PasswordEntry = null;
             }
 
@@ -104,7 +105,8 @@ namespace GlutenFreeApp.ViewModels
                     catch (Exception)
                     {
                         ActivityIndicatorSpinning = false;
-                        await _messageService.ShowPopUpAsync("Login error", "Wrong email or password", "OK");
+                        await _messageService.ShowPopUpAsync(AppResources.RegistrationErrorTitle, 
+                            AppResources.LoginErrorDescription, "OK");
                         PasswordEntry = null;
                         RepeatedPasswordEntry = null;
                     }
@@ -117,7 +119,8 @@ namespace GlutenFreeApp.ViewModels
                 else
                 {
                     ActivityIndicatorSpinning = false;
-                    await _messageService.ShowPopUpAsync("Registration error", "Password inserted does not match", "OK");
+                    await _messageService.ShowPopUpAsync(AppResources.RegistrationErrorTitle, 
+                        AppResources.RegistrationErrorNoPasswordMatch, "OK");
                     PasswordEntry = null;
                     RepeatedPasswordEntry = null;
                 }
@@ -125,8 +128,8 @@ namespace GlutenFreeApp.ViewModels
             else
             {
                 ActivityIndicatorSpinning = false;
-                await _messageService.ShowPopUpAsync("Registration error", 
-                    "Password must cointain at least on special character, a number and an upper case letter", "OK");
+                await _messageService.ShowPopUpAsync(AppResources.RegistrationErrorTitle, 
+                    AppResources.RegistrationErrorPasswordNotValid, "OK");
                 PasswordEntry = null;
                 RepeatedPasswordEntry = null;
             }

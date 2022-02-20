@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Conferma password</value>
+  </data>
   <data name="LabelDarkSettingsPage" xml:space="preserve">
     <value>Scuro</value>
   </data>
@@ -128,6 +131,12 @@
   </data>
   <data name="LabelThemeSettingsPage" xml:space="preserve">
     <value>Tema</value>
+  </data>
+  <data name="LoginErrorDescription" xml:space="preserve">
+    <value>Email o password sbagliata</value>
+  </data>
+  <data name="LoginErrorTitle" xml:space="preserve">
+    <value>Errore nel login</value>
   </data>
   <data name="PlaceholderMap" xml:space="preserve">
     <value>Cerca un ristorante...</value>
@@ -146,6 +155,18 @@
   </data>
   <data name="RegionsNotLoading" xml:space="preserve">
     <value>Nessuna regione da visualizzare</value>
+  </data>
+  <data name="RegistrationErrorMailNotValid" xml:space="preserve">
+    <value>Email non valida</value>
+  </data>
+  <data name="RegistrationErrorNoPasswordMatch" xml:space="preserve">
+    <value>Le due password inserite non combaciano</value>
+  </data>
+  <data name="RegistrationErrorPasswordNotValid" xml:space="preserve">
+    <value>La password deve contenere almeno un carattere maiuscolo, un carattere speciale ed un numero</value>
+  </data>
+  <data name="RegistrationErrorTitle" xml:space="preserve">
+    <value>Errore nella registrazione</value>
   </data>
   <data name="RestaurantsNotLoading" xml:space="preserve">
     <value>Nessun ristorante da visualizzare</value>

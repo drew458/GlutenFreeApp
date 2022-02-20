@@ -14,12 +14,12 @@
     
     <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand" >
-        <Label Text="Email:" Style="{StaticResource BaseLabel}"/>
+        <Label Text="Email" Style="{StaticResource BaseLabel}"/>
         <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email"
                IsSpellCheckEnabled="False" IsTextPredictionEnabled="False"
                ClearButtonVisibility="WhileEditing" Style="{StaticResource Entry}"
                Text="{Binding EmailEntry}"/>
-        <Label Text="Password:" Style="{StaticResource BaseLabel}"/>
+        <Label Text="Password" Style="{StaticResource BaseLabel}"/>
         <Entry x:Name="usernameEntry" IsPassword="True" IsSpellCheckEnabled="False"
                Placeholder="Password" Style="{StaticResource Entry}" IsTextPredictionEnabled="False" 
                Text="{Binding PasswordEntry}" />
