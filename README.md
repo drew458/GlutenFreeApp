@@ -25,7 +25,7 @@ Carefully selected gluten free restaurants in Italy ready to be explored üçîü•
 * Key-Value store in native Preferences storage 
 
 ## Backend Architecture
-![Backend Architecture](/resources/GlutenFreeApp-arch.png)
+![Backend Architecture](/resources/GlutenFreeApp-arch.jpg)
 
 ## Login/Registration Flow
-![Backend Architecture](/resources/GlutenFreeApp-loginFlow.png)
+![Backend Architecture](/resources/GlutenFreeApp-loginFlow.jpg)
