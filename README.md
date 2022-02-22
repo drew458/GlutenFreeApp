@@ -2,6 +2,13 @@
 
 Carefully selected gluten free restaurants in Italy ready to be explored 🍔🥗
 
+## UI
+
+![Map page](/resources/page-map.jpg)
+![Restaurants page](/resources/page-restaurants.jpg)
+![Regions page](/resources/page-regions.jpg)
+![Restaurant detail page](/resources/page-restaurantdetail.jpg)
+
 ## Platforms
 * iOS 8+
 * Android 5+ (Target: 11+)
