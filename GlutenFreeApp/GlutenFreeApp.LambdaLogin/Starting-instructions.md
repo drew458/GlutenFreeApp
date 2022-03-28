@@ -38,12 +38,12 @@ If already installed check if new version is available.
 
 Execute unit tests
 ```
-    cd "GlutenFree.LambdaLogin/test/GlutenFree.LambdaLogin.Tests"
+    cd "GlutenFreeApp.LambdaLogin/test/GlutenFreeApp.LambdaLogin.Tests"
     dotnet test
 ```
 
 Deploy function to AWS Lambda
 ```
-    cd "GlutenFree.LambdaLogin/src/GlutenFree.LambdaLogin"
+    cd "GlutenFreeApp.LambdaLogin/src/GlutenFreeApp.LambdaLogin"
     dotnet lambda deploy-function
 ```

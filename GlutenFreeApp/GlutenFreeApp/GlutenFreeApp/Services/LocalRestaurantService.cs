@@ -1,7 +1,6 @@
-﻿using GlutenFree.Resources;
+﻿using GlutenFreeApp.Resources;
 using GlutenFreeApp.Helpers;
 using GlutenFreeApp.Models;
-using GlutenFreeApp.Resources;
 using SQLite;
 using System.Collections.Generic;
 using System.Threading.Tasks;

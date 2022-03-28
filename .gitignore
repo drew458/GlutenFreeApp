@@ -193,10 +193,10 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vscode/settings.json
-MCtabbed2/MCtabbed2/MCtabbed2.Android/Resources/values/strings.xml
-GlutenFree/RDSQuery/.idea/
-GlutenFree/RDSQuery/Requests/
-GlutenFree/GlutenFree/GlutenFree/Resources/Constants.cs
-GlutenFree/GlutenFree.WebService/Constants/Strings.cs
-GlutenFree/GlutenFree.LambdaLogin/dbSec.txt
-GlutenFree/GlutenFree.LambdaLogin/aws-lambda-tools-defaults.json
+GlutenFreeApp/RDSQuery/.idea/
+GlutenFreeApp/RDSQuery/Requests/
+GlutenFreeApp/GlutenFreeApp/GlutenFreeApp/Resources/Constants.cs
+GlutenFreeApp/GlutenFreeApp.WebService/Constants/Strings.cs
+GlutenFreeApp/GlutenFreeApp.LambdaLogin/dbSec.txt
+GlutenFreeApp/GlutenFreeApp.LambdaLogin/aws-lambda-tools-defaults.json
+GlutenFreeApp/GlutenFreeApp/GlutenFreeApp.Android/Resources/values/strings.xml

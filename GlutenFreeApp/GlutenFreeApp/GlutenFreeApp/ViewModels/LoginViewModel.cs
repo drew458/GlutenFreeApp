@@ -1,6 +1,5 @@
-﻿using GlutenFree.Resources;
+﻿using GlutenFreeApp.Resources;
 using GlutenFreeApp.Helpers;
-using GlutenFreeApp.Resources;
 using GlutenFreeApp.Resx;
 using GlutenFreeApp.Views;
 using System;
