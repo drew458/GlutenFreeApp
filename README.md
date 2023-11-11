@@ -2,7 +2,7 @@
 
 Carefully selected gluten free restaurants in Italy ready to be explored 🍔🥗
 
-## User Interface
+## UI
 
 ![Map page](/resources/page-map.jpg)
 ![Restaurants page](/resources/page-restaurants.jpg)
